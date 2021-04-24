@@ -1,4 +1,4 @@
-INSERT INTO cosplay.heroes (id, name_ru, name_eng, code, created_at, updated_at) VALUES
+INSERT INTO heroes (id, name_ru, name_eng, code, created_at, updated_at) VALUES
 (1, null, 'Thor', 'thor', '2021-04-20 19:52:18', '2021-04-20 21:52:18'),
 (2, null, 'Flash', 'flash', '2021-04-20 19:52:18', '2021-04-20 21:52:18'),
 (3, null, 'Black Panther', 'black_panther', '2021-04-20 19:52:18', '2021-04-20 21:52:18'),

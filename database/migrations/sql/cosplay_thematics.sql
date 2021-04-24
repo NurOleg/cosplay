@@ -1,4 +1,4 @@
-INSERT INTO cosplay.thematics (id, name_ru, name_eng, code, created_at, updated_at) VALUES
+INSERT INTO thematics (id, name_ru, name_eng, code, created_at, updated_at) VALUES
 (1, null, 'Space', 'space', '2021-04-20 19:52:15', '2021-04-20 21:52:15'),
 (2, null, 'Jungle', 'jungle', '2021-04-20 19:52:15', '2021-04-20 21:52:15'),
 (3, null, 'Game', 'game', '2021-04-20 19:52:15', '2021-04-20 21:52:15'),

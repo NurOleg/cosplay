@@ -19,7 +19,7 @@ class CreateGarbsTable extends Migration
     {
         Schema::create('garbs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('executant_id');
             $table->unsignedBigInteger('fandom_id');
             $table->unsignedBigInteger('thematic_id');
             $table->unsignedBigInteger('hero_id');
@@ -29,9 +29,9 @@ class CreateGarbsTable extends Migration
 
         Schema::table('garbs', function (Blueprint $table) {
             $table
-                ->foreign('user_id')
+                ->foreign('executant_id')
                 ->references('id')
-                ->on('users');
+                ->on('executants');
 
             $table
                 ->foreign('fandom_id')

@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FandomController;
 use App\Http\Controllers\Admin\ThematicController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\App\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,9 @@ use App\Http\Controllers\Admin\HeroController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/main', [HomeController::class, 'index'])->name('main');
+Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
 
 
 Route::prefix('admin')->group(function () {
@@ -54,6 +59,16 @@ Route::prefix('admin')->group(function () {
             Route::get('/update/{hero}', [HeroController::class, 'detail'])->name('hero_detail');
             Route::post('/update/{hero}', [HeroController::class, 'update'])->name('hero_update');
             Route::delete('/delete/{hero}', [HeroController::class, 'delete'])->name('hero_delete');
+        });
+
+        Route::group(['prefix' => 'news'], function () {
+            Route::get('/', [NewsController::class, 'index'])->name('news_index');
+            Route::get('/create', [NewsController::class, 'create'])->name('news_create');
+            Route::post('/store', [NewsController::class, 'store'])->name('news_store');
+            Route::get('/update/{news}', [NewsController::class, 'detail'])->name('news_detail');
+            Route::post('/update/{news}', [NewsController::class, 'update'])->name('news_update');
+            Route::delete('/delete/{news}', [NewsController::class, 'delete'])->name('news_delete');
+            Route::post('/image/store', [NewsController::class, 'storeImage'])->name('news_image_store');
         });
     });
 

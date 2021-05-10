@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
     <link href="{{ asset('vendor/quill/quill.snow.css') }}" rel="stylesheet"/>
     <script src="{{ asset('vendor/jquery-3.4.1.slim.min.js') }}"></script>
+    <script src="//cdn.tiny.cloud/1/bv9ryzf27qzwtpt39vfz8ko4bprmqjjarr0j7yo9nmel0dvx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 <svg width="24" height="24" viewBox="0 0 24 24" style="display:none">
@@ -504,6 +505,28 @@
                       ></div>
                     </span>
                                 <span class="mr-auto menu-name">Герои</span>
+                            </a>
+                        </li>
+                    </div>
+
+                    <div class="sidebar-item">
+                        <li class="nav-item
+                            @if(strpos(request()->route()->getPrefix(), 'news') !== false)
+                            active
+@endif
+                            ">
+                            <a
+                                class="nav-link d-flex align-items-center nav-link"
+                                href="{{ route('news_index') }}"
+                            >
+                    <span class="animated-icon">
+                      <div
+                          style="width:18px;height:18px"
+                          data-animation-path="vendor/animated-icons/shopping-bag/shopping-bag.json"
+                          data-anim-loop="false"
+                      ></div>
+                    </span>
+                                <span class="mr-auto menu-name">Новости</span>
                             </a>
                         </li>
                     </div>

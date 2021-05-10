@@ -3,8 +3,8 @@
 
 namespace App\Services\Admin;
 
-use App\Http\Requests\Admin\Garb\StoreGarbRequest;
-use App\Http\Requests\Admin\Garb\UpdateGarbRequest;
+use App\Http\Requests\Admin\Garb\StoreNewsRequest;
+use App\Http\Requests\Admin\Garb\UpdateNewsRequest;
 use App\Models\Garb;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -19,20 +19,20 @@ final class GarbService
     }
 
     /**
-     * @param StoreGarbRequest $request
+     * @param StoreNewsRequest $request
      * @return Garb
      */
-    public function store(StoreGarbRequest $request): Garb
+    public function store(StoreNewsRequest $request): Garb
     {
         return Garb::create($request->validated());
     }
 
     /**
-     * @param UpdateGarbRequest $request
+     * @param UpdateNewsRequest $request
      * @param Garb $garb
      * @return Garb
      */
-    public function update(UpdateGarbRequest $request, Garb $garb): Garb
+    public function update(UpdateNewsRequest $request, Garb $garb): Garb
     {
         $garb->update($request->validated());
 

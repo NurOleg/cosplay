@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Garb\StoreGarbRequest;
-use App\Http\Requests\Admin\Garb\UpdateGarbRequest;
+use App\Http\Requests\Admin\Garb\StoreNewsRequest;
+use App\Http\Requests\Admin\Garb\UpdateNewsRequest;
 use App\Models\Garb;
 use App\Services\Admin\GarbService;
 use Illuminate\Contracts\View\View;
@@ -46,10 +46,10 @@ class GarbController extends Controller
     }
 
     /**
-     * @param StoreGarbRequest $request
+     * @param StoreNewsRequest $request
      * @return RedirectResponse
      */
-    public function store(StoreGarbRequest $request): RedirectResponse
+    public function store(StoreNewsRequest $request): RedirectResponse
     {
         if ($Garb = $this->garbService->store($request)) {
             return redirect()->route('garb_index')->with('success', 'Костюм успешно создан!');
@@ -68,11 +68,11 @@ class GarbController extends Controller
     }
 
     /**
-     * @param UpdateGarbRequest $request
+     * @param UpdateNewsRequest $request
      * @param Garb $garb
      * @return RedirectResponse
      */
-    public function update(UpdateGarbRequest $request, Garb $garb): RedirectResponse
+    public function update(UpdateNewsRequest $request, Garb $garb): RedirectResponse
     {
         if ($updatedGarb = $this->garbService->update($request, $garb)) {
             return redirect()->route('garb_index')->with('success', 'Костюм успешно обновлён!');

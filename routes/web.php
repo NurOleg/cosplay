@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\FandomController;
 use App\Http\Controllers\Admin\ThematicController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\App\NewsController as AppNewsController;
 use App\Http\Controllers\App\HomeController;
 
 /*
@@ -25,6 +26,12 @@ Route::get('/', function () {
 
 Route::get('/main', [HomeController::class, 'index'])->name('main');
 Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
+
+
+Route::group(['prefix' => 'news'], function () {
+    Route::get('/', [AppNewsController::class, 'index'])->name('public_news_index');
+    Route::get('/{news}', [AppNewsController::class, 'detail'])->name('public_news_detail');
+});
 
 
 Route::prefix('admin')->group(function () {

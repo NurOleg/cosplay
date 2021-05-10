@@ -40,7 +40,6 @@
                                         Нет
                                     @endif
                                 </td>
-                                <td>{!! $newsOne->body !!}</td>
                                 <td>{{$newsOne->created_at}}</td>
                                 <td>{{$newsOne->updated_at}}</td>
                             </tr>

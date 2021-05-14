@@ -3,13 +3,13 @@
         <ul class="number-pages__list">
             @for($i = 1; $i <= $paginator->lastPage(); $i++)
                 <li class="number-pages__item">
-                    <a class="
                     @if($i == $paginator->currentPage())
-                    active
+                        <span class="active number-pages__link">{{ $i }}</span>
+                    @else
+                        <a class="number-pages__link" href="{{ $i == 1 ? '/news' : $paginator->url($i) }}">
+                            {{ $i }}
+                        </a>
                     @endif
-                    number-pages__link" href="{{ $paginator->url($i) }}">
-                        {{ $i }}
-                    </a>
                 </li>
             @endfor
         </ul>

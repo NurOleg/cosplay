@@ -23,14 +23,12 @@ class StoreNewsRequest extends BaseNewsRequest
     {
         return array_merge(parent::rules(),
             [
-                [
-                    //'slug'            => ['required'],
+                    'slug'            => ['required', 'unique:news'],
                     //'active'          => ['required'],
                     //'name'            => ['required'],
                     //'body'            => ['required'],
                     //'preview_img_src' => ['required'],
                     //'preview_body'    => ['required'],
-                ]
             ]);
     }
 }

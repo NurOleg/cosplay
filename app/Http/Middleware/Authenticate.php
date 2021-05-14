@@ -23,13 +23,12 @@ class Authenticate extends Middleware
     }
 
     /**
-     * Handle an incoming request.
-     *
-     * @param  Request  $request
-     * @param  Closure  $next
-     * @return mixed
+     * @param Request $request
+     * @param Closure $next
+     * @param string[] $guards
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next, ...$guards)
     {
         if (auth()->user() && auth()->user()->id == 1) {
             return $next($request);

@@ -24,7 +24,7 @@ class BaseNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'slug'            => ['unique:news', 'max:255'],
+            'slug'            => ['max:255'],
             //'active' => ['required'],
             'name'            => ['max:255'],
             'body'            => ['string'],

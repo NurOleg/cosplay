@@ -43,7 +43,13 @@ final class NewsService
      */
     public function update(UpdateNewsRequest $request, News $news): News
     {
-        $news->update($request->validated());
+        /** @var UploadedFile $file */
+        $file = $request->file('preview_img_src');
+        $path = Storage::disk('public')->put('/news/' . $request->get('slug') , $file);
+        $active = $request->get('active') === 'on';
+        $data = array_merge($request->all(), ['preview_img_src' => $path, 'active' => $active]);
+
+        $news->update($data);
 
         return $news;
     }

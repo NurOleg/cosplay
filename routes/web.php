@@ -74,7 +74,7 @@ Route::prefix('admin')->group(function () {
             Route::post('/store', [NewsController::class, 'store'])->name('news_store');
             Route::get('/update/{news}', [NewsController::class, 'detail'])->name('news_detail');
             Route::post('/update/{news}', [NewsController::class, 'update'])->name('news_update');
-            Route::delete('/delete/{news}', [NewsController::class, 'delete'])->name('news_delete');
+            Route::get('/delete/{news}', [NewsController::class, 'delete'])->name('news_delete');
             Route::post('/image/store', [NewsController::class, 'storeImage'])->name('news_image_store');
         });
     });

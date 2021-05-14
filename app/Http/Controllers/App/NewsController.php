@@ -33,9 +33,9 @@ class NewsController extends Controller
      */
     public function index(): View
     {
-        $news = $this->newsService->index();
+        $news = News::whereActive(1)->paginate(1);
 
-        return view('admin.news.index', ['news' => $news]);
+        return view('app.news.index', ['news' => $news]);
 
     }
 

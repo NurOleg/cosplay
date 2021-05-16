@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\AdminAuthenticate;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\FandomController;
@@ -7,7 +9,9 @@ use App\Http\Controllers\Admin\ThematicController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\App\NewsController as AppNewsController;
+use App\Http\Controllers\App\LoginController as AppLoginController;
 use App\Http\Controllers\App\HomeController;
+use App\Http\Controllers\App\PersonalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +31,18 @@ Route::get('/', function () {
 Route::get('/main', [HomeController::class, 'index'])->name('main');
 Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
 
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('/login', [AppLoginController::class, 'loginForm'])->name('public_login_form');
+    Route::get('/register', [AppLoginController::class, 'registerForm'])->name('public_register_form');
+    Route::post('/login', [AppLoginController::class, 'login'])->name('public_login');
+    Route::post('/register', [AppLoginController::class, 'register'])->name('public_register');
+});
+
+Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
+    Route::get('/settings', [PersonalController::class, 'settingsForm'])->name('personal_settings');
+    Route::post('/settings', [PersonalController::class, 'update'])->name('personal_settings_update');
+});
+
 
 Route::group(['prefix' => 'news'], function () {
     Route::get('/', [AppNewsController::class, 'index'])->name('public_news_index');
@@ -40,7 +56,7 @@ Route::prefix('admin')->group(function () {
 //    Route::get('/register', [LoginController::class, 'registerForm'])->name('register_form');
 //    Route::post('/register', [LoginController::class, 'register'])->name('register');
 
-    Route::group(['middleware' => 'auth', 'namespace' => 'admin'], function () {
+    Route::group(['middleware' => 'auth.admin', 'namespace' => 'admin'], function () {
         Route::group(['prefix' => 'fandom'], function () {
             Route::get('/', [FandomController::class, 'index'])->name('fandom_index');
             Route::get('/create', [FandomController::class, 'create'])->name('fandom_create');

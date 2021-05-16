@@ -15,15 +15,16 @@ class CreateExecutantsTable extends Migration
     {
         Schema::create('executants', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('fullname');
-            $table->string('phone');
+            $table->string('email')->nullable()->default(null);
+            $table->string('fullname')->nullable()->default(null);
+            $table->string('phone')->nullable()->default(null);
             $table->string('password');
             $table->enum('sex', ['male', 'female']);
-            $table->string('nickname');
-            $table->string('country');
-            $table->string('city');
-            $table->string('description');
+            $table->string('nickname')->nullable()->default(null);
+            $table->string('nickname_eng')->nullable()->default(null);
+            $table->string('country')->nullable()->default(null);
+            $table->string('city')->nullable()->default(null);
+            $table->string('description')->nullable()->default(null);
             $table->boolean('is_pro')->default(false);
             $table->timestamp('pro_until')->nullable()->default(null);
             $table->timestamps();

@@ -2,11 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Customer;
+use App\Models\Executant;
+use App\Models\User;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Authenticate extends Middleware
+class PublicAuthenticate extends Middleware
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
@@ -29,10 +32,10 @@ class Authenticate extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if (auth()->guard('executant')->user() || auth()->guard('customer')->user()) {
+        if (auth()->user() instanceof Executant || auth()->user() instanceof Customer) {
             return $next($request);
         }
 
-        return redirect(route('login'));
+        return redirect(route('public_login_form'));
     }
 }

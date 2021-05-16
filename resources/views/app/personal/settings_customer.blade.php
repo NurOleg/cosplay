@@ -18,7 +18,7 @@
                                                                            id="setting-form-img"><label
                             class="setting-form-img__body" for="setting-form-img">
                             <div class="ibg setting-form-img__img-wrapper">
-                                <img src="{{ $user->image->count() > 0 ? Storage::url($user->image->path) : asset('images/photo.6edb12fe.jpg') }}"
+                                <img src="{{ $user->image && $user->image->count() > 0 ? Storage::url($user->image->path) : asset('images/photo.6edb12fe.jpg') }}"
                                                                                 alt="your photo"
                                                                                 aria-hidden="true"></div>
                             <div class="setting-form-img__title">

@@ -141,7 +141,7 @@
 {{--                    </div>--}}
                     <div class="signin-form__footer">
                         <button class="btn btn--large btn--red">Зарегистрироваться</button>
-                        <div class="signin-form__finish">Уже есть аккаунт? <a class="link link--red" href="#">Войти</a>
+                        <div class="signin-form__finish">Уже есть аккаунт? <a class="link link--red" href="{{ route('public_login_form') }}">Войти</a>
                         </div>
                     </div>
                 </form>
@@ -202,7 +202,7 @@
 {{--                    </div>--}}
                     <div class="signin-form__footer">
                         <button class="btn btn--large btn--red">Зарегистрироваться</button>
-                        <div class="signin-form__finish">Уже есть аккаунт? <a class="link link--red" href="#">Войти</a>
+                        <div class="signin-form__finish">Уже есть аккаунт? <a class="link link--red" href="{{ route('public_login_form') }}">Войти</a>
                         </div>
                     </div>
                 </form>

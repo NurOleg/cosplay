@@ -64,31 +64,38 @@ final class LoginService
     public function login(LoginRequest $request): RedirectResponse
     {
         $phoneOrEmail = $request->get('email_or_phone');
-        if (Customer::where('password', bcrypt($request->get('password')))
-            ->where(function ($q) use ($phoneOrEmail) {
-                $q
-                    ->where('phone', $phoneOrEmail)
-                    ->orWhere('email', $phoneOrEmail);
-            })->exists()) {
 
-            $request->session()->regenerate();
+        $customer = Customer::where('phone', $phoneOrEmail)
+            ->orWhere('email', $phoneOrEmail)->first();
 
-            return redirect()->intended(route('customer_personal'));
+        $executant = Executant::where('phone', $phoneOrEmail)
+            ->orWhere('email', $phoneOrEmail)->first();
+
+        if ($customer === null && $executant === null) {
+            return back()->withErrors([
+                'email' => 'Вы ещё не зарегестрированы либо ввели неправильный email/телефон.',
+            ]);
         }
 
-        if (Executant::where('password', bcrypt($request->get('password')))
-            ->where(function ($q) use ($phoneOrEmail) {
-                $q
-                    ->where('phone', $phoneOrEmail)
-                    ->orWhere('email', $phoneOrEmail);
-            })->exists()) {
-            $request->session()->regenerate();
-
-            return redirect()->intended(route('personal_settings'));
+        if (($customer && !Hash::check($request->get('password'), $customer->password))
+        || ($executant && !Hash::check($request->get('password'), $executant->password))) {
+            return back()->withErrors([
+                'email' => 'Вы ещё не зарегестрированы либо ввели неправильный пароль.',
+            ]);
         }
 
-        return back()->withErrors([
-            'email' => 'Вы ещё не зарегестрированы либо ввели неправильный пароль.',
-        ]);
+        $request->session()->regenerate();
+
+        if ($customer !== null) {
+            auth()->guard('customer')->login($customer);
+        } elseif ($executant !== null) {
+            auth()->guard('executant')->login($executant);
+        } else {
+            return back()->withErrors([
+                'email' => 'Что-то пошло не так.',
+            ]);
+        }
+
+        return redirect()->intended(route('personal_settings'));
     }
 }

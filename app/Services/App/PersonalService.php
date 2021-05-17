@@ -43,21 +43,22 @@ final class PersonalService
 
             /** @var UploadedFile $file */
             $file = $request->file('image');
-            $path = Storage::disk('public')->put('/' . $type . '/' . $authUser->id, $file);
+            $path = Storage::disk('public')->put('/' . $type . '/' . $authUser->id, $file->getContent());
 
-            $user
-                ->image()
-                ->save(
-                    new Image([
-                        'order' => 1,
-                        'path'  => $path
-                    ])
-                );
+            if ($path) {
+                $user
+                    ->image()
+                    ->save(
+                        new Image([
+                            'order' => 1,
+                            'path'  => $path
+                        ])
+                    );
+            }
         }
 
         $user->fill($request->validated());
         $user->save();
-        //$user->image()->save();
 
         return $user;
     }

@@ -12,6 +12,7 @@ use App\Http\Controllers\App\NewsController as AppNewsController;
 use App\Http\Controllers\App\LoginController as AppLoginController;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\App\PersonalController;
+use App\Http\Controllers\App\Personal\GarbController as PersonalGarbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,17 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
     Route::get('/settings', [PersonalController::class, 'settingsForm'])->name('personal_settings');
     Route::post('/settings', [PersonalController::class, 'update'])->name('personal_settings_update');
+
+    Route::group(['namespace' => 'admin'], function () {
+        Route::group(['prefix' => 'garb'], function () {
+            Route::get('/', [PersonalGarbController::class, 'index'])->name('personal_garb_index');
+            Route::get('/create', [PersonalGarbController::class, 'create'])->name('personal_garb_create');
+            Route::post('/store', [PersonalGarbController::class, 'store'])->name('personal_garb_store');
+            Route::get('/update/{garb}', [PersonalGarbController::class, 'detail'])->name('personal_garb_detail');
+            Route::post('/update/{garb}', [PersonalGarbController::class, 'update'])->name('personal_garb_update');
+            Route::delete('/delete/{garb}', [PersonalGarbController::class, 'delete'])->name('personal_garb_delete');
+        });
+    });
 });
 
 

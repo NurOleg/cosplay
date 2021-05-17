@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Garb extends Model
 {
@@ -13,7 +14,17 @@ class Garb extends Model
     /**
      * @var string[]
      */
-    protected $fillable = ['user_id', 'fandom_id', 'thematic_id', 'hero_id', 'active'];
+    protected $fillable = [
+        'user_id',
+        'fandom_id',
+        'executant_id',
+        'thematic_id',
+        'concretization',
+        'concretization_eng',
+        'description',
+        'hero_id',
+        'active'
+    ];
 
     /**
      * @return BelongsTo
@@ -45,5 +56,13 @@ class Garb extends Model
     public function fandom(): BelongsTo
     {
         return $this->belongsTo(Fandom::class);
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

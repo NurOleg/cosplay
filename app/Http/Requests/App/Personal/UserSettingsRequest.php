@@ -39,11 +39,12 @@ class UserSettingsRequest extends FormRequest
     private static function executantRules(): array
     {
         return [
-            'fullname' => ['string'],
-            'sex'      => ['string', 'in:male,female'],
-            'nickname' => ['string'],
-            'country'  => ['string'],
-            'city'     => ['string'],
+            'fullname'     => ['string'],
+            'sex'          => ['string', 'in:male,female'],
+            'nickname'     => ['string'],
+            'nickname_eng' => ['string'],
+            'country'      => ['string'],
+            'city'         => ['string'],
         ];
     }
 

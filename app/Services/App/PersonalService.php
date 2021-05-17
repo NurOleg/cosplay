@@ -56,6 +56,7 @@ final class PersonalService
         }
 
         $user->fill($request->validated());
+        $user->save();
         //$user->image()->save();
 
         return $user;

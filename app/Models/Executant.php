@@ -18,6 +18,7 @@ class Executant extends Authenticatable
         'password',
         'sex',
         'nickname',
+        'nickname_eng',
         'country',
         'city',
         'description',

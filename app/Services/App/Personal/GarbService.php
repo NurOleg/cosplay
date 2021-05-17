@@ -6,6 +6,7 @@ namespace App\Services\App\Personal;
 use App\Http\Requests\Admin\Garb\StoreNewsRequest;
 use App\Http\Requests\Admin\Garb\UpdateNewsRequest;
 use App\Http\Requests\App\Personal\Garb\StoreGarbRequest;
+use App\Http\Requests\App\Personal\Garb\UpdateGarbRequest;
 use App\Models\Garb;
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Collection;
@@ -63,12 +64,48 @@ final class GarbService
     }
 
     /**
-     * @param UpdateNewsRequest $request
+     * @param UpdateGarbRequest $request
      * @param Garb $garb
      * @return Garb
      */
-    public function update(UpdateNewsRequest $request, Garb $garb): Garb
+    public function update(UpdateGarbRequest $request, Garb $garb): Garb
     {
+        $updatedFiles = explode(',', $request->get('changed_files'));
+        $authUser = auth()->guard('executant')->user();
+        $files = $request->files->get('photo');
+
+        if (!empty($updatedFiles)) {
+            foreach ($updatedFiles as $file) {
+                if (empty($file)) {
+                    continue;
+                }
+
+                $imageToDelete = $garb
+                    ->images()
+                    ->whereOrder($file)
+                    ->first();
+
+                if ($imageToDelete !== null) {
+                    $imageToDelete->delete();
+                }
+            }
+
+            $images = [];
+            foreach ($files as $k => $file) {
+                /** @var UploadedFile $file */
+                $storagePath = '/garb/' . $authUser->id . '/' . $file->getClientOriginalName();
+                if (!Storage::disk('public')->put($storagePath, $file->getContent())) {
+                    continue;
+                }
+
+                $images[] = new Image([
+                    'order' => $k + 1,
+                    'path'  => $storagePath
+                ]);
+            }
+            $garb->images()->saveMany($images);
+        }
+
         $garb->update($request->validated());
 
         return $garb;

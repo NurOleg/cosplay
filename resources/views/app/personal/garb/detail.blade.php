@@ -9,40 +9,45 @@
                 <img class="title__icon" src="{{ asset('images//logo.5af45d3e.svg') }}"
                      alt="Лого" aria-hidden="true">
                 <h1 class="title__text">Изменить костюм</h1></div>
-            <form class="customers-form__form" action="#" method="post" enctype="multipart/form-data">
+            <form class="customers-form__form" action="{{ route('personal_garb_update', ['garb' => $garb->id]) }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <input type="hidden" name="fandom_id" value="{{ $garb->fandom_id }}">
                 <input type="hidden" name="hero_id" value="{{ $garb->hero_id }}">
                 <input type="hidden" name="thematic_id" value="{{ $garb->thematic_id }}">
                 <input type="hidden" name="active" value="1">
+                <input type="hidden" name="changed_files" id="changed_files" value="">
 
                 <div class="customers-form__images">
                     <div class="customers-form__image-field customers-form__image-field--main">
                         <div class="input-field__title"> Добавить фото</div>
                         <label class="customers-form__image ibg" for="img1">
-                            <img src="{{ isset($garb->images[0]) ? Storage::url($garb->images[0]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
-                                 alt="photo"></label><input
+                            <img
+                                src="{{ isset($garb->images[0]) ? Storage::url($garb->images[0]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
+                                alt="photo"></label><input
                             class="customers-form__input" id="img1" type="file"
                             accept="image/x-png,image/gif,image/jpeg" name="photo[]"></div>
                     <div class="row wrap">
                         <div class="customers-form__image-field customers-form__image-field--min"><label
-                                class="customers-form__image ibg" for="photo1">
-                                <img src="{{ isset($garb->images[1]) ? Storage::url($garb->images[1]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
-                                     alt="photo"></label><input
-                                class="customers-form__input" id="photo1" type="file"
-                                accept="image/x-png,image/gif,image/jpeg" name="photo[]"></div>
-                        <div class="customers-form__image-field customers-form__image-field--min"><label
                                 class="customers-form__image ibg" for="photo2">
-                                <img src="{{ isset($garb->images[2]) ? Storage::url($garb->images[2]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
-                                     alt="photo"></label><input
+                                <img
+                                    src="{{ isset($garb->images[1]) ? Storage::url($garb->images[1]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
+                                    alt="photo"></label><input
                                 class="customers-form__input" id="photo2" type="file"
                                 accept="image/x-png,image/gif,image/jpeg" name="photo[]"></div>
                         <div class="customers-form__image-field customers-form__image-field--min"><label
                                 class="customers-form__image ibg" for="photo3">
-                                <img src="{{ isset($garb->images[3]) ? Storage::url($garb->images[3]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
-                                     alt="photo"></label><input
+                                <img
+                                    src="{{ isset($garb->images[2]) ? Storage::url($garb->images[2]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
+                                    alt="photo"></label><input
                                 class="customers-form__input" id="photo3" type="file"
+                                accept="image/x-png,image/gif,image/jpeg" name="photo[]"></div>
+                        <div class="customers-form__image-field customers-form__image-field--min"><label
+                                class="customers-form__image ibg" for="photo4">
+                                <img
+                                    src="{{ isset($garb->images[3]) ? Storage::url($garb->images[3]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
+                                    alt="photo"></label><input
+                                class="customers-form__input" id="photo4" type="file"
                                 accept="image/x-png,image/gif,image/jpeg" name="photo[]"></div>
                     </div>
                 </div>
@@ -214,4 +219,12 @@
             </form>
         </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            console.log('qqqq');
+            $('body').on('change', '.customers-form__input', function () {
+                $('#changed_files').val($('#changed_files').val() + ',' + $(this).attr('id').replace(/[^-+\d]/g, ""));
+            });
+        });
+    </script>
 @endsection

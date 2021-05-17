@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Garb\StoreNewsRequest;
 use App\Http\Requests\Admin\Garb\UpdateNewsRequest;
 use App\Http\Requests\App\Personal\Garb\StoreGarbRequest;
+use App\Http\Requests\App\Personal\Garb\UpdateGarbRequest;
 use App\Models\Garb;
 use App\Services\App\Personal\GarbService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class GarbController extends Controller
 {
@@ -73,14 +75,16 @@ class GarbController extends Controller
     }
 
     /**
-     * @param UpdateNewsRequest $request
+     * @param UpdateGarbRequest $request
      * @param Garb $garb
      * @return RedirectResponse
      */
-    public function update(UpdateNewsRequest $request, Garb $garb): RedirectResponse
+    public function update(UpdateGarbRequest $request, Garb $garb): RedirectResponse
     {
         if ($updatedGarb = $this->garbService->update($request, $garb)) {
-            return redirect()->route('garb_index')->with('success', 'Костюм успешно обновлён!');
+            return redirect()
+                ->route('personal_garb_detail', ['garb' => $updatedGarb])
+                ->with('success', 'Костюм успешно обновлён!');
         }
 
         return redirect()->back()->withErrors('Что-то пошло не так. Не удалось обновить костюм.');

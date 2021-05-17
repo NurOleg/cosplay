@@ -63,6 +63,8 @@ class Garb extends Model
      */
     public function images(): MorphMany
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this
+            ->morphMany(Image::class, 'imageable')
+            ->orderBy('order');
     }
 }

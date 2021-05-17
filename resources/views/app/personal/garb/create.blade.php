@@ -3,7 +3,7 @@
     <section class="customers-form">
         <div class="container">
             <div class="hero-form__title title title--center">
-                <img class="title__icon" src="{{ asset('images//logo.5af45d3e.svg') }}"
+                <img class="title__icon" src="{{ asset('images/logo.5af45d3e.svg') }}"
                                                                    alt="Лого" aria-hidden="true">
                 <h1 class="title__text">Изменить / Добавить костюм</h1></div>
             <form class="customers-form__form" action="{{ route('personal_garb_store') }}" method="post" enctype="multipart/form-data">

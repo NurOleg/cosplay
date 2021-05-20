@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/main.aa07570a.css') }}">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="{{ asset('js/script.5a81296d.js') }}"></script>
-    <script src="{{ asset('js/customers.21fc3e2b.js') }}"></script>
     <title>Главная</title>
 </head>
 <body>
@@ -93,6 +89,10 @@
             </div>
         </div>
     </footer>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+        <script src="{{ asset('js/script.5a81296d.js') }}"></script>
+        <script src="{{ asset('js/customers.21fc3e2b.js') }}"></script>
 </div>
 </body>
 </html>

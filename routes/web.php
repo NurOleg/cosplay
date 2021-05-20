@@ -12,6 +12,7 @@ use App\Http\Controllers\App\NewsController as AppNewsController;
 use App\Http\Controllers\App\LoginController as AppLoginController;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\App\PersonalController;
+use App\Http\Controllers\App\ExecutantController;
 use App\Http\Controllers\App\Personal\GarbController as PersonalGarbController;
 
 /*
@@ -31,6 +32,10 @@ Route::get('/', function () {
 
 Route::get('/main', [HomeController::class, 'index'])->name('main');
 Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
+
+Route::group(['prefix' => 'executant'], function () {
+    Route::get('/', [ExecutantController::class, 'index'])->name('executant_index');
+});
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/login', [AppLoginController::class, 'loginForm'])->name('public_login_form');

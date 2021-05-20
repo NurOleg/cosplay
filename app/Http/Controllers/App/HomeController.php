@@ -4,6 +4,7 @@ namespace App\Http\Controllers\App;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Executant;
 use App\Models\Fandom;
 use App\Models\Hero;
 use App\Models\Thematic;

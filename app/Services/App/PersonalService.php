@@ -43,18 +43,18 @@ final class PersonalService
 
             /** @var UploadedFile $file */
             $file = $request->file('image');
-            $path = Storage::disk('public')->put('/' . $type . '/' . $authUser->id, $file->getContent());
-
-            if ($path) {
-                $user
-                    ->image()
-                    ->save(
-                        new Image([
-                            'order' => 1,
-                            'path'  => $path
-                        ])
-                    );
+            $storagePath = '/' . $type . '/' . $authUser->id . '/' . $file->getClientOriginalName();
+            if (!Storage::disk('public')->put($storagePath, $file->getContent())) {
+                throw new \Exception('Не удалось загрузить фото.');
             }
+            $user
+                ->image()
+                ->save(
+                    new Image([
+                        'order' => 1,
+                        'path'  => $storagePath
+                    ])
+                );
         }
 
         $user->fill($request->validated());

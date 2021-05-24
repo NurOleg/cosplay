@@ -15,7 +15,7 @@ final class HeroService
      */
     public function index(): Collection
     {
-        return Hero::all();
+        return Hero::orderBy('is_new', 'desc')->get();
     }
 
     /**

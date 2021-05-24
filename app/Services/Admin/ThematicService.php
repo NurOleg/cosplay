@@ -15,7 +15,7 @@ final class ThematicService
      */
     public function index(): Collection
     {
-        return Thematic::all();
+        return Thematic::orderBy('is_new', 'desc')->get();
     }
 
     /**

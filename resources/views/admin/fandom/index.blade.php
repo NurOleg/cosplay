@@ -16,6 +16,7 @@
                         <thead>
                         <tr>
                             <th>№</th>
+                            <th>Новый</th>
                             <th>Название, RUS</th>
                             <th>Название, ENG</th>
                             <th>Код</th>
@@ -28,6 +29,12 @@
                         @foreach($fandoms as $fandom)
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
+                                <th scope="row">
+                                    @if($fandom->is_new == 1)
+                                        Да
+                                    @else
+                                        Нет
+                                    @endif</th>
                                 <td>
                                     <a href="{{ route('fandom_detail', ['fandom' => $fandom->id]) }}">{{$fandom->name_ru}}</a>
                                 </td>

@@ -15,7 +15,7 @@ final class FandomService
      */
     public function index(): Collection
     {
-        return Fandom::all();
+        return Fandom::orderBy('is_new', 'desc')->get();
     }
 
     /**

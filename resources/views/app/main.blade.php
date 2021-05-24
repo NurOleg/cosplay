@@ -21,7 +21,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -37,7 +37,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -53,7 +53,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -69,7 +69,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -85,7 +85,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -101,7 +101,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -117,7 +117,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -133,7 +133,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -149,7 +149,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -165,7 +165,7 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="/main-cosplay.4c35c863.jpg"
+                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"

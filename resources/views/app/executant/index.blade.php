@@ -24,7 +24,7 @@
                                     <div class="cosplay-card-search__status cosplay-card-search__status--pro">PRO</div>
                                     <a href="#">
                                         <img class="cosplay-card-search__img"
-                                             src="{{ Storage::url($executant->image->path) }}"
+                                             src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
                                                       alt="cosplay photo">
                                     </a>
                                 </div>

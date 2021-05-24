@@ -72,4 +72,9 @@ final class ExecutantService
 
         return $executantQuery->with('image')->get();
     }
+
+    public function detail()
+    {
+
+    }
 }

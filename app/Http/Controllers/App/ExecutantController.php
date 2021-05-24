@@ -30,4 +30,9 @@ class ExecutantController extends Controller
 
         return view('app.executant.index', compact('executants'));
     }
+
+    public function detail()
+    {
+
+    }
 }

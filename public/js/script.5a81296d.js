@@ -94,7 +94,7 @@ parcelRequire = function (e, r, t, n) {
             var t = $(this).val(), e = $(this).attr("data-name");
             if (!(t.length < a)) {
                 var n = $(this).parent().children("datalist");
-                fetch("http://cosplay.promo/filter?".concat(e, "=").concat(t)).then(function (t) {
+                fetch("https://cosplay.promo/filter?".concat(e, "=").concat(t)).then(function (t) {
                     return t.json()
                 }).then(function (t) {
                     n.html(t.map(function (t) {

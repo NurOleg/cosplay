@@ -12,5 +12,5 @@ class Thematic extends Model
     /**
      * @var string[]
      */
-    protected $fillable = ['name_ru', 'name_eng', 'code', 'active'];
+    protected $fillable = ['name_ru', 'name_eng', 'code', 'active', 'is_new'];
 }

@@ -12,9 +12,9 @@ class StoreGarbRequest extends BaseGarbRequest
     public function rules(): array
     {
         return array_merge(parent::rules(), [
-            'thematic_id'        => ['required'],
-            'hero_id'            => ['required'],
-            'fandom_id'          => ['required'],
+            //'thematic_id'        => ['required'],
+            //'hero_id'            => ['required'],
+            //'fandom_id'          => ['required'],
             'concretization'     => ['required'],
             'concretization_eng' => ['required'],
             'description'        => ['required'],

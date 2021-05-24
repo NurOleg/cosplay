@@ -47,7 +47,7 @@ final class GarbService
                 'name_ru'  => $request->get('world'),
                 'name_eng' => $request->get('worldEn'),
                 'code'     => self::slugify($request->get('worldEn'), '_'),
-                'is_new' => true
+                'is_new'   => true
             ]);
 
             $data['fandom_id'] = $fandom->id;
@@ -58,7 +58,7 @@ final class GarbService
                 'name_ru'  => $request->get('hero'),
                 'name_eng' => $request->get('heroEn'),
                 'code'     => self::slugify($request->get('heroEn'), '_'),
-                'is_new' => true
+                'is_new'   => true
             ]);
 
             $data['hero_id'] = $hero->id;
@@ -69,7 +69,7 @@ final class GarbService
                 'name_ru'  => $request->get('thematic'),
                 'name_eng' => $request->get('thematicEn'),
                 'code'     => self::slugify($request->get('thematicEn'), '_'),
-                'is_new' => true
+                'is_new'   => true
             ]);
 
             $data['thematic_id'] = $thematic->id;

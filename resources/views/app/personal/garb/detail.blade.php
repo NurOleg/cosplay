@@ -219,12 +219,14 @@
             </form>
         </div>
     </section>
-    <script>
-        $(document).ready(function () {
-            console.log('qqqq');
-            $('body').on('change', '.customers-form__input', function () {
-                $('#changed_files').val($('#changed_files').val() + ',' + $(this).attr('id').replace(/[^-+\d]/g, ""));
+    @push('script')
+        <script>
+            $(document).ready(function () {
+                console.log('qqqq');
+                $('body').on('change', '.customers-form__input', function () {
+                    $('#changed_files').val($('#changed_files').val() + ',' + $(this).attr('id').replace(/[^-+\d]/g, ""));
+                });
             });
-        });
-    </script>
+        </script>
+    @endpush
 @endsection

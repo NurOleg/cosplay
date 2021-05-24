@@ -3,14 +3,11 @@
         <div class="cosplay-block-form__item">
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Специализация</div>
-                <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
-                                                               name="thematic" list="thematic"
-                                                               data-name="thematic">
-                    <datalist id="thematic">
-                        <option value="Чебурашка"></option>
-                        <option value="Крокодил Гена"></option>
-                        <option value="Шапокляк"></option>
-                    </datalist>
+                <div class="input-field__input-wrapper">
+                    <input class="input-field__input" type="text"
+                                                               name="concretization" list="concretization"
+                                                               data-name="concretization">
+                    <datalist id="concretization"></datalist>
                 </div>
             </div>
         </div>
@@ -20,9 +17,6 @@
                 <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
                                                                name="city" list="city" data-name="city">
                     <datalist id="city">
-                        <option value="Чебурашка"></option>
-                        <option value="Крокодил Гена"></option>
-                        <option value="Шапокляк"></option>
                     </datalist>
                 </div>
             </div>
@@ -40,8 +34,8 @@
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Вселенная</div>
                 <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
-                                                               name="world" list="world" data-name="world">
-                    <datalist id="world"></datalist>
+                                                               name="fandom" list="fandom" data-name="fandom">
+                    <datalist id="fandom"></datalist>
                 </div>
             </div>
         </div>

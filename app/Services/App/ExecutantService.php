@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\App;
 
 use App\Http\Requests\App\Executant\ListExecutantRequest;
@@ -15,43 +16,57 @@ final class ExecutantService
     {
         $executantQuery = Executant::query();
 
-        if ($request->has('hero')) {
+        if ($request->filled('hero')) {
             $executantQuery->whereHas('garbs', function ($builder) use ($request) {
                 $builder->whereHas('hero', function ($b) use ($request) {
-                    $b->whereCode($request->get('hero'));
+                    $b
+                        ->where('name_ru', $request->get('hero'))
+                        ->orWhere('name_eng', $request->get('hero'));
                 });
             });
         }
 
-        if ($request->has('fandom')) {
+        if ($request->filled('fandom')) {
             $executantQuery->whereHas('garbs', function ($builder) use ($request) {
                 $builder->whereHas('fandom', function ($b) use ($request) {
-                    $b->whereCode($request->get('fandom'));
+                    $b
+                        ->where('name_ru', $request->get('fandom'))
+                        ->orWhere('name_eng', $request->get('fandom'));
                 });
             });
         }
 
-        if ($request->has('thematic')) {
+        if ($request->filled('thematic')) {
             $executantQuery->whereHas('garbs', function ($builder) use ($request) {
                 $builder->whereHas('thematic', function ($b) use ($request) {
-                    $b->whereCode($request->get('thematic'));
+                    $b
+                        ->where('name_ru', $request->get('thematic'))
+                        ->orWhere('name_eng', $request->get('thematic'));
                 });
             });
         }
 
-        if ($request->has('sex')) {
+        if ($request->filled('concretization')) {
+            $executantQuery->whereHas('garbs', function ($builder) use ($request) {
+                $builder
+                        ->where('concretization', $request->get('concretization'))
+                        ->orWhere('concretization_eng', $request->get('concretization'));
+            });
+        }
+
+        if ($request->filled('sex')) {
             $executantQuery->whereSex($request->get('sex'));
         }
 
-        if ($request->has('nickname')) {
+        if ($request->filled('nickname')) {
             $executantQuery->whereNickname($request->get('nickname'));
         }
 
-        if ($request->has('city')) {
+        if ($request->filled('city')) {
             $executantQuery->whereCity($request->get('city'));
         }
 
-        if ($request->has('name')) {
+        if ($request->filled('name')) {
             $executantQuery->whereName($request->get('name'));
         }
 

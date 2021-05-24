@@ -23,14 +23,15 @@ class ListExecutantRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'fandom'   => ['string'],
-            'hero'     => ['string'],
-            'thematic' => ['string'],
-            'city'     => ['string'],
-            'nickname' => ['string'],
-            'name'     => ['string'],
-            'sex'      => ['string','in:male,female'],
-        ];
+        return [];
+        //return [
+        //    'fandom'   => ['string'],
+        //    'hero'     => ['string'],
+        //    'thematic' => ['string'],
+        //    'city'     => ['string'],
+        //    'nickname' => ['string'],
+        //    'name'     => ['string'],
+        //    'sex'      => ['string','in:male,female'],
+        //];
     }
 }

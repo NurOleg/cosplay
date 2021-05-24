@@ -92,14 +92,13 @@ parcelRequire = function (e, r, t, n) {
             t.children(r).val($(this).text()), t.removeClass("focus")
         }), $("[data-selection] input").on("input", function () {
             var t = $(this).val(), e = $(this).attr("data-name");
-            if (console.log(e, t), !(t.length < a)) {
-                var n = $(this).children("datalist");
-                fetch("/filter?".concat(e, "=").concat(t), {mode: "no-cors"}).then(function (t) {
-                // fetch("http://cosplay.promo/?".concat(e, "=").concat(t), {mode: "no-cors"}).then(function (t) {
-                    return console.log(t), t.text()
+            if (!(t.length < a)) {
+                var n = $(this).parent().children("datalist");
+                fetch("http://cosplay.promo/filter?".concat(e, "=").concat(t)).then(function (t) {
+                    return t.json()
                 }).then(function (t) {
-                    return n.html(t.map(function (t) {
-                        return ' <option value="'.concat(t.name_ru, '"></option>')
+                    n.html(t.map(function (t) {
+                        return '<option value="'.concat(t.name_ru, '"></option>\n              <option value="').concat(t.name_eng, '"></option>')
                     }))
                 })
             }
@@ -131,4 +130,4 @@ parcelRequire = function (e, r, t, n) {
         "../assets/image/no-photo.jpg": "h2VP"
     }]
 }, {}, ["hQWJ"], null)
-//# sourceMappingURL=/script.1fea1dae.js.map
+//# sourceMappingURL=/script.02435601.js.map

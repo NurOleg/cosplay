@@ -93,6 +93,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
         <script src="{{ asset('js/script.5a81296d.js') }}"></script>
         <script src="{{ asset('js/customers.21fc3e2b.js') }}"></script>
+        @stack('script')
 </div>
 </body>
 </html>

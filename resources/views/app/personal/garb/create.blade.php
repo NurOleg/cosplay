@@ -10,9 +10,9 @@
                   enctype="multipart/form-data">
                 @csrf
 
-                <input type="hidden" name="fandom_id" value="1">
-                <input type="hidden" name="hero_id" value="8">
-                <input type="hidden" name="thematic_id" value="8">
+                <input type="hidden" name="fandom_id" value="">
+                <input type="hidden" name="hero_id" value="">
+                <input type="hidden" name="thematic_id" value="">
                 <input type="hidden" name="active" value="1">
 
                 <div class="customers-form__images">

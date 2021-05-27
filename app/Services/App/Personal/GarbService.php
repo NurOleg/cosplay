@@ -40,6 +40,7 @@ final class GarbService
         $authUser = auth()->guard('executant')->user();
         $data = $request->validated();
         $data['executant_id'] = $authUser->id;
+        $data['code'] = self::slugify($request->get('heroEn'), '_');
         $files = $request->files->get('photo');
 
         if ($request->get('fandom_id') === null) {

@@ -35,6 +35,7 @@ Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
 
 Route::group(['prefix' => 'executant'], function () {
     Route::get('/', [ExecutantController::class, 'index'])->name('executant_index');
+    Route::get('/{executant}', [ExecutantController::class, 'detail'])->name('executant_detail');
 });
 
 Route::group(['prefix' => 'auth'], function () {

@@ -30,14 +30,15 @@
                                             <div class="cosplay-card-search__status cosplay-card-search__status--pro">
                                                 PRO
                                             </div>
-                                            <a href="#">
+                                            <a href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">
                                                 <img class="cosplay-card-search__img"
                                                      src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
                                                      alt="cosplay photo">
                                             </a>
                                         </div>
                                         <div class="cosplay-card-search__body">
-                                            <a class="cosplay-card-search__name" href="#">{{ $executant->fullname }}</a>
+                                            <a class="cosplay-card-search__name"
+                                               href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">{{ $executant->fullname }}</a>
                                             <div class="cosplay-card-search__person">Косплеер</div>
                                         </div>
                                     </div>

@@ -4,6 +4,7 @@ namespace App\Services\App;
 
 use App\Http\Requests\App\Executant\ListExecutantRequest;
 use App\Models\Executant;
+use App\Models\Garb;
 use Illuminate\Support\Collection;
 
 final class ExecutantService
@@ -49,8 +50,8 @@ final class ExecutantService
         if ($request->filled('concretization')) {
             $executantQuery->whereHas('garbs', function ($builder) use ($request) {
                 $builder
-                        ->where('concretization', $request->get('concretization'))
-                        ->orWhere('concretization_eng', $request->get('concretization'));
+                    ->where('concretization', $request->get('concretization'))
+                    ->orWhere('concretization_eng', $request->get('concretization'));
             });
         }
 
@@ -70,11 +71,37 @@ final class ExecutantService
             $executantQuery->whereName($request->get('name'));
         }
 
-        return $executantQuery->with('image')->get();
+        return $executantQuery->with(['image', 'garbs.hero'])->get();
     }
 
-    public function detail()
+    /**
+     * @param string $heroName
+     * @param Collection $executants
+     * @return string
+     */
+    public function getActiveTab(string $heroName, Collection $executants): string
     {
+        if ($heroName === '') {
+            return '';
+        }
 
+        foreach ($executants as $executant) {
+            foreach ($executant->garbs as $garb) {
+                if ($garb->hero->name_ru === $heroName || $garb->hero->name_eng === $heroName) {
+                    return $garb->code;
+                }
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * @param Executant $executant
+     * @return Executant
+     */
+    public function detail(Executant $executant): Executant
+    {
+        return $executant->load(['garbs', 'garbs.images', 'garbs.fandom', 'garbs.thematic', 'garbs.hero']);
     }
 }

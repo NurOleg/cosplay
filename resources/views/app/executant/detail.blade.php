@@ -9,8 +9,9 @@
             <div class="cosplayer-about-item">
                 <div class="cosplayer-about-item__row">
                     <div class="cosplayer-about-item__column">
-                        <div class="cosplayer-about-item__img ibg"><img src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
-                                                                        alt="cosplayer.img"></div>
+                        <div class="cosplayer-about-item__img ibg"><img
+                                src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
+                                alt="cosplayer.img"></div>
                         <div class="cosplayer-about-item__city cosplayer-city">Москва</div>
                         <div class="cosplayer-about-item__name">{{ $executant->fullname }}</div>
                         <div class="cosplayer-about-item__person">Косплеер</div>
@@ -32,51 +33,49 @@
             <div class="title"><h2 class="title__text">Образы</h2></div>
             <div class="cosplayer-shape__tabs cosplayer-shape-tabs">
                 @foreach($executant->garbs as $garb)
-                <a
-                    class="active cosplayer-shape-tab cosplayer-shape-tabs__tab" href="#{{ $garb->concretization_eng }}"><span
-                        class="cosplayer-shape-tab__title">{{ $garb->hero->name_ru }}</span><span
-                        class="cosplayer-shape-tab__subtitle">{{ $garb->concretization }}</span></a>
-                    @endforeach
+                    <a
+                        class="
+{{--                        active --}}
+                            cosplayer-shape-tab cosplayer-shape-tabs__tab"
+                        href="#{{ $garb->code }}"><span
+                            class="cosplayer-shape-tab__title">{{ $garb->hero->name_ru }}</span><span
+                            class="cosplayer-shape-tab__subtitle">{{ $garb->concretization }}</span></a>
+                @endforeach
             </div>
-            <div class="cosplayer-shape-item open" id="spider-man">
-                <div class="cosplayer-shape__row">
-                    <div class="cosplayer-shape__column">
-                        <div class="cosplayer-shape__slider cosplayer-shape-slider__wrapper">
-                            <div class="cosplayer-shape-slider">
-                                <div class="cosplayer-shape-slider__item ibg"><img src="/spider-men.0dae2722.jpg"
-                                                                                   alt="cosplay img" aria-hidden="true">
-                                </div>
-                                <div class="cosplayer-shape-slider__item ibg"><img src="/spider-men.0dae2722.jpg"
-                                                                                   alt="cosplay img" aria-hidden="true">
-                                </div>
-                                <div class="cosplayer-shape-slider__item ibg"><img src="/spider-men.0dae2722.jpg"
-                                                                                   alt="cosplay img" aria-hidden="true">
-                                </div>
-                                <div class="cosplayer-shape-slider__item ibg"><img src="/spider-men.0dae2722.jpg"
-                                                                                   alt="cosplay img" aria-hidden="true">
-                                </div>
-                                <div class="cosplayer-shape-slider__item ibg"><img src="/spider-men.0dae2722.jpg"
-                                                                                   alt="cosplay img" aria-hidden="true">
+            @foreach($executant->garbs as $garb)
+                <div class="cosplayer-shape-item open" id="{{ $garb->code }}">
+                    <div class="cosplayer-shape__row">
+                        <div class="cosplayer-shape__column">
+                            <div class="cosplayer-shape__slider cosplayer-shape-slider__wrapper">
+                                <div class="cosplayer-shape-slider">
+                                    @foreach($garb->images as $image)
+                                        <div class="cosplayer-shape-slider__item ibg">
+                                            <img src="{{Storage::url($image->path)}}"
+                                                 alt="cosplay img"
+                                                 aria-hidden="true">
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="cosplayer-shape__column">
-                        <div class="cosplayer-shape__about cosplayer-shape-about">
-                            <div class="cosplayer-shape-about__title">Тематика: супергерои</div>
-                            <div class="cosplayer-shape-about__subtitle">Вселенная: Марвел</div>
-                            <div class="cosplayer-shape-about__body">
-                                <div class="cosplayer-shape-about__cosplay-title">О косплее "Человек-Паук"</div>
-                                <div class="cosplayer-shape-about__text"><p>Короткие тексты размещают с одной целью –
-                                        поприветствовать читателя и немного рассказать о себе. Собственно, именно так в
-                                        идеале и должна выглядеть основная страница ресурса. Если бы не стремление
-                                        поисковых систем высоко ранжировать запросы с главной страницы, думаю, 80%
-                                        сайтов с радостью бы ограничивались скромным приветственным форматом.</p></div>
+                        <div class="cosplayer-shape__column">
+                            <div class="cosplayer-shape__about cosplayer-shape-about">
+                                <div class="cosplayer-shape-about__title">Тематика: {{ $garb->thematic->name_ru }}</div>
+                                <div class="cosplayer-shape-about__subtitle">
+                                    Вселенная: {{ $garb->fandom->name_ru }}</div>
+                                <div class="cosplayer-shape-about__body">
+                                    <div class="cosplayer-shape-about__cosplay-title">О косплее
+                                        "{{ $garb->hero->name_ru }}"
+                                    </div>
+                                    <div class="cosplayer-shape-about__text">
+                                        <p>{{ $garb->description }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <section class="cosplayer-services section">
@@ -137,5 +136,7 @@
             </form>
         </div>
     </section>
-
+    @push('script')
+        <script src="{{ asset('js/cosplayer.js') }}"></script>
+    @endpush
 @endsection

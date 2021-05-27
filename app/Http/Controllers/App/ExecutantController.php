@@ -5,8 +5,9 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\App\Executant\ListExecutantRequest;
+use App\Models\Executant;
 use App\Services\App\ExecutantService;
-use Illuminate\Support\Facades\View;
+use Illuminate\Contracts\View\View;
 
 class ExecutantController extends Controller
 {
@@ -22,17 +23,24 @@ class ExecutantController extends Controller
 
     /**
      * @param ListExecutantRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return View
      */
     public function index(ListExecutantRequest $request)
     {
         $executants = $this->executantService->index($request);
+        $tab = $this->executantService->getActiveTab($request->get('hero', ''), $executants);
 
-        return view('app.executant.index', compact('executants'));
+        return view('app.executant.index', compact(['executants', 'tab']));
     }
 
-    public function detail()
+    /**
+     * @param Executant $executant
+     * @return View
+     */
+    public function detail(Executant $executant)
     {
+        $executant = $this->executantService->detail($executant);
 
+        return view('app.executant.detail', compact('executant'));
     }
 }

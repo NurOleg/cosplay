@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -27,5 +28,13 @@ class Customer extends Authenticatable
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
     }
 }

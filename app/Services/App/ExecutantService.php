@@ -75,13 +75,13 @@ final class ExecutantService
     }
 
     /**
-     * @param string $heroName
+     * @param ?string $heroName
      * @param Collection $executants
      * @return string
      */
-    public function getActiveTab(string $heroName, Collection $executants): string
+    public function getActiveTab(?string $heroName, Collection $executants): string
     {
-        if ($heroName === '') {
+        if ($heroName === null) {
             return '';
         }
 

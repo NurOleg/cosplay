@@ -28,33 +28,33 @@ class UserSettingsRequest extends FormRequest
             : self::customerRules();
 
         return array_merge($extraRules, [
-            'email'       => ['string', 'email', 'max:255'],
-            'phone'       => ['string', 'min:8'],
-            'city'        => ['string'],
-            'description' => ['string'],
-            'image'       => ['max:500', 'image'],
+            'email'       => ['string', 'email', 'max:255', 'nullable'],
+            'phone'       => ['string', 'min:8', 'nullable'],
+            'city'        => ['string', 'nullable'],
+            'description' => ['string', 'nullable'],
+            'image'       => ['max:500', 'image', 'nullable'],
         ]);
     }
 
     private static function executantRules(): array
     {
         return [
-            'fullname'     => ['string'],
-            'sex'          => ['string', 'in:male,female'],
-            'nickname'     => ['string'],
-            'nickname_eng' => ['string'],
-            'country'      => ['string'],
-            'city'         => ['string'],
+            'fullname'     => ['string', 'nullable'],
+            'sex'          => ['string', 'in:male,female', 'nullable'],
+            'nickname'     => ['string', 'nullable'],
+            'nickname_eng' => ['string', 'nullable'],
+            'country'      => ['string', 'nullable'],
+            'city'         => ['string', 'nullable'],
         ];
     }
 
     private static function customerRules(): array
     {
         return [
-            'name'         => ['string'],
-            'organization' => ['string'],
-            'country'      => ['string'],
-            'city'         => ['string'],
+            'name'         => ['string', 'nullable'],
+            'organization' => ['string', 'nullable'],
+            'country'      => ['string', 'nullable'],
+            'city'         => ['string', 'nullable'],
         ];
     }
 }

@@ -28,7 +28,7 @@ class ExecutantController extends Controller
     public function index(ListExecutantRequest $request)
     {
         $executants = $this->executantService->index($request);
-        $tab = $this->executantService->getActiveTab($request->get('hero', ''), $executants);
+        $tab = $this->executantService->getActiveTab($request->get('hero', null), $executants);
 
         return view('app.executant.index', compact(['executants', 'tab']));
     }

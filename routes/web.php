@@ -13,6 +13,7 @@ use App\Http\Controllers\App\LoginController as AppLoginController;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\App\PersonalController;
 use App\Http\Controllers\App\ExecutantController;
+use App\Http\Controllers\App\Personal\ChatController;
 use App\Http\Controllers\App\Personal\GarbController as PersonalGarbController;
 
 /*
@@ -32,6 +33,7 @@ Route::get('/', function () {
 
 Route::get('/main', [HomeController::class, 'index'])->name('main');
 Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
+Route::post('/chat', [ChatController::class, 'create'])->name('create_chat');
 
 Route::group(['prefix' => 'executant'], function () {
     Route::get('/', [ExecutantController::class, 'index'])->name('executant_index');
@@ -48,6 +50,12 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
     Route::get('/settings', [PersonalController::class, 'settingsForm'])->name('personal_settings');
     Route::post('/settings', [PersonalController::class, 'update'])->name('personal_settings_update');
+
+    Route::get('/chats', [ChatController::class, 'index'])->name('chat_index');
+    //Route::get('/chats', [ChatController::class, 'fetchChats']);
+    Route::get('/chat/messages', [ChatController::class, 'fetchMessages']);
+    Route::get('/chats-fetch', [ChatController::class, 'fetchChats']);
+    Route::post('/chat/messages', [ChatController::class, 'sendMessage']);
 
     Route::group(['namespace' => 'admin'], function () {
         Route::group(['prefix' => 'garb'], function () {

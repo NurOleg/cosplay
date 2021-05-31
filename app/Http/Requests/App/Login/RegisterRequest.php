@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'confirm_password' => ['required', 'string', 'min:8'],
             'agree_services'   => ['required'],
             'agree_data'       => ['required'],
-            'sex'              => ['required', 'in:male,female'],
+            //'sex'              => ['required', 'in:male,female'],
             'type'             => ['required', 'in:customer,executant'],
         ];
     }

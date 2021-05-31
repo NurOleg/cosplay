@@ -124,11 +124,15 @@
     </section>
     <section class="cosplayer-feedback section">
         <div class="container">
-            <div class="title"><h2 class="title__text">Связаться с Иваном Ивановым</h2></div>
-            <form class="cosplayer-feedback-form" action="#">
-                <div class="cosplayer-feedback-form__header"><input class="cosplayer-feedback-form__input" type="text"
-                                                                    placeholder="Напишите свой запрос"><span
-                        class="cosplayer-feedback-form__hint">Доступно только зарегистрированным пользователям</span>
+            <div class="title"><h2 class="title__text">Связаться с {{ $executant->fullname }}</h2></div>
+            <form class="cosplayer-feedback-form" action="{{ route('create_chat') }}" method="post">
+                @csrf
+                <input type="hidden" name="executant_id" value="{{ $executant->id }}">
+                <div class="cosplayer-feedback-form__header">
+                    <input class="cosplayer-feedback-form__input" type="text"
+                           name="message"
+                                                                    placeholder="Напишите свой запрос">
+                    <span class="cosplayer-feedback-form__hint">Доступно только зарегистрированным пользователям</span>
                 </div>
                 <div class="cosplayer-feedback-form__footer">
                     <button class="btn btn--red cosplayer-feedback-form__submit" type="submit">Отправить</button>

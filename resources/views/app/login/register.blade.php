@@ -179,7 +179,7 @@
                     </div>
                     <div class="sign__accepts">
                         <div class="sign-agree"><input class="sign-agree__input" id="agree__services2"
-                                                       type="checkbox" name="agree__services"><label
+                                                       type="checkbox" name="agree_services"><label
                                 class="sign-agree__body" for="agree__services2">
                                 <div class="sign-agree__checkbox"><img class="sign-agree__checked"
                                                                        src="{{ asset('images/checkbox.c6ab5b0a.svg') }}" alt="checkbox">

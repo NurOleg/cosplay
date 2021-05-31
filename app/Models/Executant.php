@@ -48,4 +48,12 @@ class Executant extends Authenticatable
     {
         return $this->hasMany(Garb::class);
     }
+
+    /**
+     * @return HasMany
+     */
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class);
+    }
 }

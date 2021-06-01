@@ -46,9 +46,9 @@ parcelRequire = function (e, r, t, n) {
     return f
 }({
     "iAAF": [function (require, module, exports) {
-        module.exports = "/slider-arrow.2c114611.svg";
+        module.exports = "/images/slider-arrow.2c114611.svg";
     }, {}], "PnOg": [function (require, module, exports) {
-        module.exports = "/slider-arrow-prev.3865e0a9.svg";
+        module.exports = "/images/slider-arrow-prev.3865e0a9.svg";
     }, {}], "h2VP": [function (require, module, exports) {
         module.exports = "/no-photo.0b72cc78.jpg";
     }, {}], "hQWJ": [function (require, module, exports) {

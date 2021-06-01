@@ -15,8 +15,10 @@
     />
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
+    <link href="{{ asset('css/style.d9cbfdb6.css') }}" rel="stylesheet"/>
     <link href="{{ asset('vendor/quill/quill.snow.css') }}" rel="stylesheet"/>
     <script src="{{ asset('vendor/jquery-3.4.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/style.d9cbfdb6.js') }}"></script>
     <script src="//cdn.tiny.cloud/1/bv9ryzf27qzwtpt39vfz8ko4bprmqjjarr0j7yo9nmel0dvx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
@@ -948,9 +950,9 @@
     </div>
 </div>
 
-<script src="{{ asset('vendor/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('vendor/lottie.js') }}"></script>
-
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/lottie.js') }}"></script>
+<script src="{{ asset('js/admin.js') }}"></script>
+@stack('js')
 </body>
 </html>

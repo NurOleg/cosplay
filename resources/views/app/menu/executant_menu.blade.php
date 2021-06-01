@@ -18,7 +18,7 @@
             <li class="header-menu__item"><a class="header-menu__link" href="{{ route('public_news_index') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/news.0daaa46d.svg') }}" alt="News"></span><span
                         class="header-menu__text">Новости</span></a></li>
-            <li class="header-menu__item"><a class="header-menu__link" href="#"><span
+            <li class="header-menu__item"><a class="header-menu__link" href="{{ route('public_event_index') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/timetable.2788910c.svg') }}" alt="timetable"></span><span
                         class="header-menu__text">Мероприятия </span></a></li>
             <li class="header-menu__item"><a class="header-menu__link" href="#"><span

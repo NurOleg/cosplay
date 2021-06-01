@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\FandomController;
 use App\Http\Controllers\Admin\ThematicController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\App\NewsController as AppNewsController;
+use App\Http\Controllers\App\EventController as AppEventController;
 use App\Http\Controllers\App\LoginController as AppLoginController;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\App\PersonalController;
@@ -75,6 +77,11 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('/{news}', [AppNewsController::class, 'detail'])->name('public_news_detail');
 });
 
+Route::group(['prefix' => 'event'], function () {
+    Route::get('/', [AppEventController::class, 'index'])->name('public_event_index');
+    Route::get('/{event}', [AppEventController::class, 'detail'])->name('public_event_detail');
+});
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [LoginController::class, 'loginForm'])->name('login_form');
@@ -118,6 +125,16 @@ Route::prefix('admin')->group(function () {
             Route::post('/update/{news}', [NewsController::class, 'update'])->name('news_update');
             Route::get('/delete/{news}', [NewsController::class, 'delete'])->name('news_delete');
             Route::post('/image/store', [NewsController::class, 'storeImage'])->name('news_image_store');
+        });
+
+        Route::group(['prefix' => 'event'], function () {
+            Route::get('/', [EventController::class, 'index'])->name('event_index');
+            Route::get('/create', [EventController::class, 'create'])->name('event_create');
+            Route::post('/store', [EventController::class, 'store'])->name('event_store');
+            Route::get('/update/{event}', [EventController::class, 'detail'])->name('event_detail');
+            Route::post('/update/{event}', [EventController::class, 'update'])->name('event_update');
+            Route::get('/delete/{event}', [EventController::class, 'delete'])->name('event_delete');
+            //Route::post('/image/store', [NewsController::class, 'storeImage'])->name('news_image_store');
         });
     });
 

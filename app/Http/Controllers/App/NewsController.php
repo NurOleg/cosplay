@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\News\StoreNewsRequest;
-use App\Http\Requests\Admin\News\UpdateNewsRequest;
 use App\Models\News;
 use App\Services\Admin\NewsService;
 use Illuminate\Contracts\View\View;

@@ -21,8 +21,8 @@ class CreateEventsTable extends Migration
             $table->longText('body');
             $table->string('image_src');
             $table->boolean('active')->default(1);
-            $table->timestamp('start');
-            $table->timestamp('end');
+            $table->timestamp('start')->nullable();
+            $table->timestamp('end')->nullable();
             $table->point('point');
             $table->json('programm');
             $table->unsignedBigInteger('city_id');

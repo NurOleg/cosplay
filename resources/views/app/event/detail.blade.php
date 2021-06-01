@@ -77,7 +77,7 @@
                                     @php
                                         $i = $i + 1;
                                     @endphp
-                                    @if($i === 3)
+                                    @if($i === 3 || count($extra) === $i)
                                         @php
                                             $i = 0;
                                         @endphp

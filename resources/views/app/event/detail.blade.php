@@ -51,13 +51,13 @@
                 <div class="title">
                     <div class="title__text">Программа мероприятия</div>
                 </div>
-                @foreach(json_decode($event->programm) as $programm)
+                @foreach(json_decode($event->programm, true) as $programm)
                     <div class="eventmap-article__header eventmap-article-header row wrap">
                         <div class="eventmap-article__column">
                             <div class="eventmap-info"><img class="eventmap-info__icon" src="{{ asset('images/clock.71798613.svg') }}"
                                                             alt="pointer" aria-hidden="true">
                                 <div class="eventmap-info__title">
-                                    {{ \Carbon\Carbon::parse($programm->date)->format('d.m.Y')}}
+                                    {{ \Carbon\Carbon::parse($programm['date'])->format('d.m.Y')}}
                                 </div>
                             </div>
                         </div>
@@ -71,8 +71,8 @@
                                 <div class="eventmap-event__column">
                             @endif
                                         <div class="eventmap-event-date">
-                                            <div class="eventmap-event-date__time">{{ \Carbon\Carbon::parse($extra->time)->format('H:i')}}</div>
-                                            <div class="eventmap-event-date__name">{{ $extra->name }}</div>
+                                            <div class="eventmap-event-date__time">{{ \Carbon\Carbon::parse($extra['time'])->format('H:i')}}</div>
+                                            <div class="eventmap-event-date__name">{{ $extra['name'] }}</div>
                                         </div>
                                     @php
                                         $i = $i + 1;

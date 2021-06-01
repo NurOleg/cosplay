@@ -4,9 +4,11 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\App\Event\ListEventRequest;
+use App\Models\City;
 use App\Models\Event;
 use App\Models\News;
 use App\Services\App\EventService;
+use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -36,7 +38,13 @@ class EventController extends Controller
     {
         $events = $this->eventService->index($request);
 
-        return view('app.event.index', compact('events'));
+        $cities = City::all();
+
+        $months = Event::MONTHS_FOR_FILTER;
+
+        $years = range(2018, Carbon::now()->year + 1);
+
+        return view('app.event.index', compact('events', 'cities', 'months', 'years'));
 
     }
 

@@ -9,48 +9,47 @@
                                                   aria-hidden="true">
                 <div class="title__text">Мероприятия</div>
             </div>
-            <form class="events-form" action="#">
+            <form class="events-form" action="" method="get">
                 <div class="events-form__row row wrap">
                     <div class="events-form__column">
                         <div class="events-form__field select-field">
                             <select class="select-field__select" id="city" name="city">
                                 <option value="" selected="" disabled="">Город</option>
-                                <option value="Sochi">Сочи</option>
-                                <option value="var2">Вар2</option>
-                                <option value="var3">Вар3</option>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}"
+                                            @if(request()->filled('city') && $city->id == request()->get('city'))
+                                            selected="selected"
+                                        @endif
+                                    >{{ $city->name }}</option>
+                                @endforeach
                             </select></div>
                     </div>
                     <div class="events-form__column">
                         <div class="events-form__field select-field">
-                            <select class="select-field__select" id="city"
-                                    name="city">
+                            <select class="select-field__select" id="year"
+                                    name="year">
                                 <option value="" selected="" disabled="">Год</option>
-                                <option value="2000">2000</option>
-                                <option value="2001">2001</option>
-                                <option value="2002">2002</option>
-                                <option value="2003">2003</option>
-                                <option value="2004">2004</option>
-                                <option value="2005">2005</option>
-                                <option value="2006">2006</option>
-                                <option value="2007">2007</option>
-                            </select></div>
+                                @foreach($years as $year)
+                                    <option value="{{ $year }}"
+                                            @if(request()->filled('year') && $year == request()->get('year'))
+                                            selected="selected"
+                                        @endif
+                                    >{{ $year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="events-form__column">
                         <div class="events-form__field select-field"><select class="select-field__select" id="city"
-                                                                             name="city">
+                                                                             name="month">
                                 <option value="" selected="" disabled="">Месяц</option>
-                                <option value="Sochi">Декабрь</option>
-                                <option value="January">Январь</option>
-                                <option value="February">Февраль</option>
-                                <option value="March">Март</option>
-                                <option value="April">Апрель</option>
-                                <option value="May">Май</option>
-                                <option value="June">Июнь</option>
-                                <option value="July">Июль</option>
-                                <option value="August">Август</option>
-                                <option value="September">Сентябрь</option>
-                                <option value="October">Октябрь</option>
-                                <option value="November">Ноябрь</option>
+                                @foreach($months as $monthIndex => $month)
+                                    <option value="{{ $monthIndex }}"
+                                            @if(request()->filled('month') && $monthIndex == request()->get('month'))
+                                            selected="selected"
+                                        @endif
+                                    >{{ $month }}</option>
+                                @endforeach
                             </select></div>
                     </div>
                 </div>
@@ -72,14 +71,16 @@
                                     </div>
                                 </div>
                                 <div class="event-cosplay-card__body">
-                                    <a class="event-cosplay-card__title" href="{{ route('public_event_detail', ['event' => $event->id]) }}">
+                                    <a class="event-cosplay-card__title"
+                                       href="{{ route('public_event_detail', ['event' => $event->id]) }}">
                                         {{ $event->name }}
                                     </a>
                                     <ul class="event-cosplay-card-list">
                                         <li class="event-cosplay-card-list__item"><a
                                                 class="event-cosplay-card-list__link"
                                                 href="{{ route('public_event_detail', ['event' => $event->id]) }}"> <img
-                                                    class="event-cosplay-card-list__img" src="{{ asset('images/calendar.8bbfb300.svg') }}"
+                                                    class="event-cosplay-card-list__img"
+                                                    src="{{ asset('images/calendar.8bbfb300.svg') }}"
                                                     alt="calendar">
                                                 <span
                                                     class="event-cosplay-card-list__content">
@@ -90,7 +91,8 @@
                                         <li class="event-cosplay-card-list__item"><a
                                                 class="event-cosplay-card-list__link"
                                                 href="{{ route('public_event_detail', ['event' => $event->id]) }}"> <img
-                                                    class="event-cosplay-card-list__img" src="{{ asset('images/pointer.0b286a1b.svg') }}"
+                                                    class="event-cosplay-card-list__img"
+                                                    src="{{ asset('images/pointer.0b286a1b.svg') }}"
                                                     alt="pointer">
                                                 <span class="event-cosplay-card-list__content">
                                                     <span>

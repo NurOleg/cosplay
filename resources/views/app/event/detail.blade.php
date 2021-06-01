@@ -66,7 +66,7 @@
                         @php
                             $i = 0;
                         @endphp
-                        @foreach($programm->extra as $k => $extra)
+                        @foreach($programm['extra'] as $k => $extra)
                             @if($i === 0)
                                 <div class="eventmap-event__column">
                             @endif

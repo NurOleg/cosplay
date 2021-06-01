@@ -26,7 +26,7 @@
                 <div class="eventmap-article__body">
                     <div class="eventmap-article__image ibg">
                         <img src="{{ Storage::url($event->image_src) }}" alt="{{ $event->name }}" aria-hidden="true">
-                    </div>{{ $event->body }}</div>
+                    </div>{!! $event->body !!}</div>
             </div>
         </div>
     </section>

@@ -73,41 +73,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="" for="slider_images">Изображения в слайдер</label>
-                                <input
-                                    required
-                                    class="form-control"
-                                    id="slider_images"
-                                    name="slider_images[]"
-                                    placeholder="Изображение мероприятия"
-                                    type="file"
-                                />
-
-                                <input
-                                    required
-                                    class="form-control"
-                                    id="slider_images"
-                                    name="slider_images[]"
-                                    placeholder="Изображение мероприятия"
-                                    type="file"
-                                />
-                                <input
-                                    required
-                                    class="form-control"
-                                    id="slider_images"
-                                    name="slider_images[]"
-                                    placeholder="Изображение мероприятия"
-                                    type="file"
-                                />
-
-                                <input
-                                    required
-                                    class="form-control"
-                                    id="slider_images"
-                                    name="slider_images[]"
-                                    placeholder="Изображение мероприятия"
-                                    type="file"
-                                />
+                                <section class="section">
+                                    <div class="container"><h2 class="title">Загрузка фото</h2>
+                                        <div class="form-images">
+                                            <div class="form-images__add">
+                                                <button class="form-images__add-button btn btn-primary" id="form-img-add">Добавить фото</button>
+                                            </div>
+                                            <div class="form-images__images"></div>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
 
                             <div class="form-group">

@@ -67,7 +67,7 @@
                             <li class="footer-item__item"><a class="footer-item__link" href="#">Условия
                                     использования</a></li>
                             <li class="footer-item__item"><a class="footer-item__link" href="#">Служба поддержки</a>
-                            <li class="footer-item__item"><a class="footer-item__link" href="{{ asset('docs/cosplay_oferta.pdf') }}">Публичная оферта</a>
+                            <li class="footer-item__item"><a class="footer-item__link" target="_blank" href="{{ asset('docs/cosplay_oferta.pdf') }}">Публичная оферта</a>
                             </li>
                         </ul>
                     </div>

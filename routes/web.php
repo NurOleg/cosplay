@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ThematicController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\App\NewsController as AppNewsController;
 use App\Http\Controllers\App\EventController as AppEventController;
 use App\Http\Controllers\App\LoginController as AppLoginController;
@@ -134,7 +135,15 @@ Route::prefix('admin')->group(function () {
             Route::get('/update/{event}', [EventController::class, 'detail'])->name('event_detail');
             Route::post('/update/{event}', [EventController::class, 'update'])->name('event_update');
             Route::get('/delete/{event}', [EventController::class, 'delete'])->name('event_delete');
-            //Route::post('/image/store', [NewsController::class, 'storeImage'])->name('news_image_store');
+        });
+
+        Route::group(['prefix' => 'city'], function () {
+            Route::get('/', [CityController::class, 'index'])->name('city_index');
+            Route::get('/create', [CityController::class, 'create'])->name('city_create');
+            Route::post('/store', [CityController::class, 'store'])->name('city_store');
+            Route::get('/update/{city}', [CityController::class, 'detail'])->name('city_detail');
+            Route::post('/update/{city}', [CityController::class, 'update'])->name('city_update');
+            Route::get('/delete/{city}', [CityController::class, 'delete'])->name('city_delete');
         });
     });
 

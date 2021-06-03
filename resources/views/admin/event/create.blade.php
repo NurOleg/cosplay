@@ -77,7 +77,8 @@
                                     <div class="container"><h2 class="title">Загрузка фото</h2>
                                         <div class="form-images">
                                             <div class="form-images__add">
-                                                <button class="form-images__add-button btn btn-primary" id="form-img-add">Добавить фото</button>
+                                                <input type="file" class="form-images__add-button btn btn-primary"
+                                                       id="form-img-add" placeholder="Добавить файл" />
                                             </div>
                                             <div class="form-images__images"></div>
                                         </div>

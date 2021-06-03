@@ -532,6 +532,50 @@
                             </a>
                         </li>
                     </div>
+
+                    <div class="sidebar-item">
+                        <li class="nav-item
+                            @if(strpos(request()->route()->getPrefix(), 'event') !== false)
+                            active
+@endif
+                            ">
+                            <a
+                                class="nav-link d-flex align-items-center nav-link"
+                                href="{{ route('event_index') }}"
+                            >
+                    <span class="animated-icon">
+                      <div
+                          style="width:18px;height:18px"
+                          data-animation-path="vendor/animated-icons/shopping-bag/shopping-bag.json"
+                          data-anim-loop="false"
+                      ></div>
+                    </span>
+                                <span class="mr-auto menu-name">Мероприятия</span>
+                            </a>
+                        </li>
+                    </div>
+
+                    <div class="sidebar-item">
+                        <li class="nav-item
+                            @if(strpos(request()->route()->getPrefix(), 'city') !== false)
+                            active
+@endif
+                            ">
+                            <a
+                                class="nav-link d-flex align-items-center nav-link"
+                                href="{{ route('city_index') }}"
+                            >
+                    <span class="animated-icon">
+                      <div
+                          style="width:18px;height:18px"
+                          data-animation-path="vendor/animated-icons/shopping-bag/shopping-bag.json"
+                          data-anim-loop="false"
+                      ></div>
+                    </span>
+                                <span class="mr-auto menu-name">Города</span>
+                            </a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>

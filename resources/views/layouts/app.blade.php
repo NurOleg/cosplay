@@ -76,11 +76,17 @@
                     <div class="footer-item">
                         <div class="footer-item__title">КОНТАКТЫ И РЕКВИЗИТЫ</div>
                         <ul class="footer-item__list">
-                            <li class="footer-item__item"><a class="footer-item__link" href="#">ООО “Человек-паук”</a>
+                            <li class="footer-item__item">
+                                <a class="footer-item__link" href="#">ИП Айрапетян Григорий Левонович</a>
                             </li>
-                            <li class="footer-item__item"><a class="footer-item__link" href="#">БИНН: 79 99 99 9 9
-                                    99</a></li>
-                            <li class="footer-item__item"><a class="footer-item__link" href="#">+7 045 544 33 22Блог</a>
+                            <li class="footer-item__item"><a class="footer-item__link" href="#">
+                                    ИНН: 782618432511
+                                    </a></li>
+                            <li class="footer-item__item"><a class="footer-item__link" href="#">
+                                    ОГРНИП: 316784700063066
+                                </a></li>
+                            <li class="footer-item__item">
+                                <a class="footer-item__link" href="#">+7 045 544 33 22Блог</a>
                             </li>
                             <li class="footer-item__item"><a class="footer-item__link" href="#">info@cosplay.promo</a>
                             </li>

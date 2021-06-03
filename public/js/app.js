@@ -1958,11 +1958,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['uuid', 'user'],
   data: function data() {
     return {
       chatUuid: undefined,
+      chat: undefined,
       newMessage: ''
     };
   },
@@ -1984,11 +1988,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
               });
 
-              if (_this.chatUuid !== undefined) {
-                _this.fetchMessages();
+              if (!(_this.chatUuid !== undefined)) {
+                _context.next = 7;
+                break;
               }
 
-            case 3:
+              _this.fetchMessages();
+
+              _context.next = 6;
+              return _this.getChatInfo(_this.chatUuid);
+
+            case 6:
+              _this.chat = _context.sent;
+
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -2014,6 +2027,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         chat: this.chatUuid
       });
       this.newMessage = '';
+    },
+    fetchChats: function fetchChats() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var _yield$axios$get, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.get('/personal/chats-fetch');
+
+              case 2:
+                _yield$axios$get = _context2.sent;
+                data = _yield$axios$get.data;
+                return _context2.abrupt("return", data);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    getChatInfo: function getChatInfo(uuid) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var _yield$axios$get2, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.get('/personal/chats/' + uuid);
+
+              case 2:
+                _yield$axios$get2 = _context3.sent;
+                data = _yield$axios$get2.data;
+                console.log(data);
+                return _context3.abrupt("return", data);
+
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
     }
   }
 });
@@ -2157,14 +2219,15 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.get('/personal/chats');
+                return axios.get('/personal/chats-fetch');
 
               case 2:
                 _yield$axios$get = _context2.sent;
                 data = _yield$axios$get.data;
+                console.log(data);
                 return _context2.abrupt("return", data);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -2175,9 +2238,23 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
     fetchMessages: function fetchMessages() {
       var _this2 = this;
 
-      axios.get('/personal/chat/messages').then(function (response) {
-        _this2.messages = response.data;
-      });
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.get('/personal/chat/messages').then(function (response) {
+                  _this2.messages = response.data;
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
     },
     addMessage: function addMessage(message) {
       this.messages.push(message);
@@ -26832,9 +26909,51 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     this.chatUuid === undefined
-      ? _c("div", [_vm._v("\n        Выберите чат для общения.\n    ")])
+      ? _c("div", [_vm._v("\n            Выберите чат для общения.\n        ")])
       : _c("div", [
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass: "chat-messager-header",
+              attrs: { id: "chat-header" }
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "align-center row" }, [
+                _c("div", { staticClass: "chat-messager-header__image ibg" }, [
+                  _c("img", {
+                    attrs: {
+                      id: "chat-img",
+                      src: "/storage" + this.chat.user.image.path,
+                      alt: "cosplayer"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "chat-messager-header__info" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "chat-messager-header__title",
+                      attrs: { id: "chat-title" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(
+                            this.chat.user.fullname !== undefined
+                              ? this.chat.user.fullname
+                              : this.chat.user.name
+                          ) +
+                          "\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -26870,13 +26989,13 @@ var render = function() {
                         { staticClass: "message__name", attrs: { href: "#" } },
                         [
                           _vm._v(
-                            "\n                        " +
+                            "\n                            " +
                               _vm._s(
                                 message.user.fullname !== undefined
                                   ? message.user.fullname
                                   : message.user.name
                               ) +
-                              "\n                    "
+                              "\n                        "
                           )
                         ]
                       ),
@@ -26945,57 +27064,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "chat-messager-header", attrs: { id: "chat-header" } },
+      {
+        staticClass: "chat-messager-header__menu",
+        attrs: { id: "btn-sidebar" }
+      },
       [
-        _c(
-          "div",
-          {
-            staticClass: "chat-messager-header__menu",
-            attrs: { id: "btn-sidebar" }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/right-arrow.edc5ce1a.svg", alt: "open menu" }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "align-center row" }, [
-          _c("div", { staticClass: "chat-messager-header__image ibg" }, [
-            _c("img", {
-              attrs: {
-                id: "chat-img",
-                src:
-                  "https://i.pinimg.com/736x/e7/7d/9c/e77d9cac7c1f915ba67bcb6534563630.jpg",
-                alt: "cosplayer"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "chat-messager-header__info" }, [
-            _c(
-              "div",
-              {
-                staticClass: "chat-messager-header__title",
-                attrs: { id: "chat-title" }
-              },
-              [_vm._v("Илья Алпатов")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "chat-messager-header__status chat-messager-header__status--write"
-              },
-              [
-                _vm._v(
-                  "\n                        Не\n                        в\n                        сети\n                    "
-                )
-              ]
-            )
-          ])
-        ])
+        _c("img", {
+          attrs: { src: "/images/right-arrow.edc5ce1a.svg", alt: "open menu" }
+        })
       ]
     )
   },
@@ -27009,7 +27085,11 @@ var staticRenderFns = [
         staticClass: "chat-messager-form__submit",
         attrs: { id: "chat-submit", type: "submit" }
       },
-      [_c("img", { attrs: { src: "/submit.aae925b9.svg", alt: "submit" } })]
+      [
+        _c("img", {
+          attrs: { src: "/images/submit.aae925b9.svg", alt: "submit" }
+        })
+      ]
     )
   }
 ]

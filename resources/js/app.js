@@ -52,11 +52,12 @@ const app = new Vue({
     methods: {
         async fetchChats() {
             const {data} = await axios.get('/personal/chats-fetch');
+            console.log(data)
             return data
         },
 
-        fetchMessages() {
-            axios.get('/personal/chat/messages').then(response => {
+        async fetchMessages() {
+            await axios.get('/personal/chat/messages').then(response => {
                 this.messages = response.data;
             });
         },

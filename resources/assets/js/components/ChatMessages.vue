@@ -6,19 +6,22 @@
         <div v-else>
             <div class="chat-messager-header" id="chat-header">
                 <div class="chat-messager-header__menu" id="btn-sidebar"><img
-                    src="/right-arrow.edc5ce1a.svg" alt="open menu"></div>
+                    src="/images/right-arrow.edc5ce1a.svg" alt="open menu"></div>
                 <div class="align-center row">
-                    <div class="chat-messager-header__image ibg"><img id="chat-img"
-                                                                      src="https://i.pinimg.com/736x/e7/7d/9c/e77d9cac7c1f915ba67bcb6534563630.jpg"
-                                                                      alt="cosplayer"></div>
+                    <div class="chat-messager-header__image ibg">
+                        <img id="chat-img"
+                             :src="'/storage' + this.chat.user.image.path"
+                             alt="cosplayer"></div>
                     <div class="chat-messager-header__info">
-                        <div class="chat-messager-header__title" id="chat-title">Илья Алпатов</div>
-                        <div
-                            class="chat-messager-header__status chat-messager-header__status--write">
-                            Не
-                            в
-                            сети
+                        <div class="chat-messager-header__title" id="chat-title">
+                            {{ this.chat.user.fullname !== undefined ? this.chat.user.fullname : this.chat.user.name }}
                         </div>
+<!--                        <div-->
+<!--                            class="chat-messager-header__status chat-messager-header__status&#45;&#45;write">-->
+<!--                            Не-->
+<!--                            в-->
+<!--                            сети-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -39,7 +42,7 @@
                 <input class="chat-messager-form__input" id="chat-input" type="text" placeholder="Введите сообщение"
                        v-model="newMessage" autocomplete="off">
                 <button class="chat-messager-form__submit" id="chat-submit" type="submit"><img
-                    src="/submit.aae925b9.svg" alt="submit"></button>
+                    src="/images/submit.aae925b9.svg" alt="submit"></button>
             </form>
         </div>
     </div>
@@ -52,6 +55,7 @@ export default {
     data: function () {
         return {
             chatUuid: undefined,
+            chat: undefined,
             newMessage: ''
         }
     },
@@ -69,6 +73,7 @@ export default {
 
         if (this.chatUuid !== undefined) {
             this.fetchMessages();
+            this.chat = await this.getChatInfo(this.chatUuid);
         }
     },
 
@@ -91,6 +96,17 @@ export default {
             });
 
             this.newMessage = ''
+        },
+
+        async fetchChats() {
+            const {data} = await axios.get('/personal/chats-fetch');
+            return data
+        },
+
+        async getChatInfo(uuid) {
+            const {data} = await axios.get('/personal/chats/' + uuid);
+            console.log(data);
+            return data
         },
     }
 };

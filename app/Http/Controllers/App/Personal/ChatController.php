@@ -11,6 +11,7 @@ use App\Models\Executant;
 use App\Models\Message;
 use App\Services\App\PersonalService;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
@@ -33,13 +34,38 @@ class ChatController extends Controller
     }
 
     /**
+     * @param string|null $uuid
      * @return View
      */
-    public function index()
+    public function index(?string $uuid = null): View
     {
         $user = $this->personalService->getAuthenticatedUser();
 
         return view('app.personal.chat.index', compact('user'));
+    }
+
+    /**
+     * @param string $uuid
+     * @return Chat
+     */
+    public function getChatInfo(string $uuid): Chat
+    {
+        $user = $this->personalService->getAuthenticatedUser();
+
+        if ($user instanceof Executant) {
+            $relatedUser = 'customer';;
+
+        } elseif ($user instanceof Customer) {
+            $relatedUser = 'executant';;
+        } else {
+            abort(404);
+        }
+
+        $chat = Chat::with($relatedUser . '.image')->find($uuid);
+
+        $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
+
+        return $chat;
     }
 
     public function fetchChats()
@@ -127,13 +153,13 @@ class ChatController extends Controller
 
         $chat = Chat::create([
             'executant_id' => $request->get('executant_id'),
-            'customer_id' => auth()->guard('customer')->user()->id
+            'customer_id'  => auth()->guard('customer')->user()->id
         ]);
 
         $message = new Message([
             'executant_id' => null,
-            'customer_id' => auth()->guard('customer')->user()->id,
-            'message'     => $request->get('message')
+            'customer_id'  => auth()->guard('customer')->user()->id,
+            'message'      => $request->get('message')
         ]);
 
         $chat->messages()->save($message);

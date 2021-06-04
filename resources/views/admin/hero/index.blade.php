@@ -30,7 +30,7 @@
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <th scope="row">
-                                    @if($fandom->is_new == 1)
+                                    @if($thematic->is_new == 1)
                                         Да
                                     @else
                                         Нет

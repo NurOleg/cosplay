@@ -5,13 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Event\StoreEventRequest;
 use App\Http\Requests\Admin\Event\UpdateEventRequest;
-use App\Http\Requests\Admin\News\StoreNewsRequest;
-use App\Http\Requests\Admin\News\UpdateNewsRequest;
 use App\Models\City;
 use App\Models\Event;
-use App\Models\News;
 use App\Services\Admin\EventService;
-use App\Services\Admin\NewsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -62,10 +58,10 @@ class EventController extends Controller
     {
         //dd($request->all());
         if ($event = $this->eventService->store($request)) {
-            return redirect()->route('event_index')->with('success', 'Новость успешно создана!');
+            return redirect()->route('event_index')->with('success', 'Мероприятие успешно создана!');
         }
 
-        return redirect()->back()->withErrors('Что-то пошло не так. Не удалось создать новость.');
+        return redirect()->back()->withErrors('Что-то пошло не так. Не удалось создать мероприятие.');
     }
 
     /**
@@ -85,10 +81,10 @@ class EventController extends Controller
     public function update(UpdateEventRequest $request, Event $event): RedirectResponse
     {
         if ($updatedGarb = $this->eventService->update($request, $event)) {
-            return redirect()->route('event_index')->with('success', 'Новость успешно обновлена!');
+            return redirect()->route('event_index')->with('success', 'Мероприятие успешно обновлено!');
         }
 
-        return redirect()->back()->withErrors('Что-то пошло не так. Не удалось обновить новость.');
+        return redirect()->back()->withErrors('Что-то пошло не так. Не удалось обновить мероприятие.');
     }
 
     /**
@@ -98,10 +94,10 @@ class EventController extends Controller
     public function delete(Event $event): RedirectResponse
     {
         if ($this->eventService->delete($event)) {
-            return redirect()->route('event_index')->with('success', 'Новость успешно удалена!');
+            return redirect()->route('event_index')->with('success', 'Мероприятие успешно удалено!');
         }
 
-        return redirect()->back()->withErrors('Что-то пошло не так. Не удалось удалить новость.');
+        return redirect()->back()->withErrors('Что-то пошло не так. Не удалось удалить мероприятие.');
     }
 
     /**

@@ -30,7 +30,6 @@ final class EventService
     public function store(StoreEventRequest $request): Event
     {
         $d = [];
-        $json = [];
 
         foreach ($request->get('programm_dates') as $k => $item) {
             $dt = Carbon::parse($item);
@@ -52,10 +51,12 @@ final class EventService
         $images = [];
         /** @var UploadedFile $file */
         $file = $request->file('image');
-        $sliderImages = $request->file('slider_images');
+
         $path = '/event/' . $request->get('name') . '/' . $file->getClientOriginalName();
         Storage::disk('public')->put($path, $file->getContent());
+
         $active = $request->get('active') === 'on';
+
         $data = array_merge($request->all(), [
             'image_src' => $path,
             'active'    => $active,
@@ -70,6 +71,8 @@ final class EventService
             'order' => 1,
             'path'  => $path
         ]);
+
+        $sliderImages = $request->file('images');
 
         if (!empty($sliderImages)) {
             $k = 1;

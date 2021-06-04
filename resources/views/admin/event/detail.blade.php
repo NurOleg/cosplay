@@ -5,15 +5,15 @@
             <div class="col-xs-12 col-sm-12">
                 <div class="mb-4 card">
                     <div class="card-header">
-                        <b>Редактирование новости - {{ $news->name }}</b>
-                        <a href="{{ route('news_delete', ['news' => $news->slug]) }}" class="btn btn-danger"
+                        <b>Редактирование мероприятия - {{ $event->name }}</b>
+                        <a href="{{ route('event_delete', ['event' => $event->id]) }}" class="btn btn-danger"
                            style="float: right">Удалить</a>
                         @if($errors->any())
                             {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>')) !!}
                         @endif
                     </div>
                     <div class="card-body">
-                        <form class="" method="post" action="{{ route('news_update', ['news' => $news->slug]) }}"
+                        <form class="" method="post" action="{{ route('event_update', ['news' => $event->id]) }}"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
@@ -23,7 +23,7 @@
                                     id="active"
                                     name="active"
                                     type="checkbox"
-                                    @if($news->active)
+                                    @if($event->active)
                                         checked="checked"
                                     @endif
                                 />

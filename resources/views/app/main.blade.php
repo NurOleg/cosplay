@@ -21,7 +21,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -37,7 +38,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -53,7 +55,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -69,7 +72,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -85,7 +89,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -101,7 +106,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -117,7 +123,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -133,7 +140,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -149,7 +157,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -165,7 +174,8 @@
                     <div class="pro-account__item">
                         <div class="pro-cosplay-card">
                             <div class="pro-cosplay-card__header"><a href="#"><img
-                                        class="pro-cosplay-card__header-img" src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
+                                        class="pro-cosplay-card__header-img"
+                                        src="{{ asset('images/main-cosplay.4c35c863.jpg') }}"
                                         alt="Caspley img" aria-hidden="true"></a></div>
                             <div class="pro-cosplay-card__body"><a class="pro-cosplay-card__social"
                                                                    href="https://www.instagram.com/p/CMl0WgZsvTn/"
@@ -221,66 +231,30 @@
             </div>
             <div class="timeline__row-wrapper">
                 <div class="timeline__row">
-                    <div class="timeline__item">
-                        <div class="timeline-item">
-                            <div class="timeline-item__date">29.03</div>
-                            <div class="timeline-item__header"><img class="timeline-item__img"
-                                                                    src="/timeline.d241b21c.jpg"
-                                                                    alt="timeline image" aria-hidden="true"></div>
-                            <div class="timeline-item__body">
-                                <div class="timeline-item__title">Фестиваль косплееров “Название”</div>
-                                <div class="timeline-item__text">Текст описание мероприятия Текст описание
-                                    мероприятия Текст описание мероприятия Текст описание мероприятия
+                    @foreach($events as $event)
+                        <div class="timeline__item">
+                            <div class="timeline-item">
+                                <div class="timeline-item__date">{{ $event->date_interval }}</div>
+                                <div class="timeline-item__header">
+                                    <img class="timeline-item__img"
+                                         src="{{ Storage::url($event->image_src) }}"
+                                         alt="timeline image" aria-hidden="true">
+                                </div>
+                                <div class="timeline-item__body">
+                                    <div class="timeline-item__title">{{ $event->name }}</div>
+                                    <div class="timeline-item__text">
+                                        {{ $event->preview_body }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="timeline__item">
-                        <div class="timeline-item">
-                            <div class="timeline-item__date">29.03</div>
-                            <div class="timeline-item__header"><img class="timeline-item__img"
-                                                                    src="/timeline.d241b21c.jpg"
-                                                                    alt="timeline image" aria-hidden="true"></div>
-                            <div class="active timeline-item__body">
-                                <div class="timeline-item__title">Фестиваль косплееров “Название”</div>
-                                <div class="timeline-item__text">Текст описание мероприятия Текст описание
-                                    мероприятия Текст описание мероприятия Текст описание мероприятия
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline__item">
-                        <div class="timeline-item timeline-item--right">
-                            <div class="timeline-item__date">29.03</div>
-                            <div class="timeline-item__header"><img class="timeline-item__img"
-                                                                    src="/timeline.d241b21c.jpg"
-                                                                    alt="timeline image" aria-hidden="true"></div>
-                            <div class="timeline-item__body">
-                                <div class="timeline-item__title">Фестиваль косплееров “Название”</div>
-                                <div class="timeline-item__text">Текст описание мероприятия Текст описание
-                                    мероприятия Текст описание мероприятия Текст описание мероприятия
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline__item">
-                        <div class="timeline-item timeline-item--right">
-                            <div class="timeline-item__date">29.03</div>
-                            <div class="timeline-item__header"><img class="timeline-item__img"
-                                                                    src="/timeline.d241b21c.jpg"
-                                                                    alt="timeline image" aria-hidden="true"></div>
-                            <div class="timeline-item__body">
-                                <div class="timeline-item__title">Фестиваль косплееров “Название”</div>
-                                <div class="timeline-item__text">Текст описание мероприятия Текст описание
-                                    мероприятия Текст описание мероприятия Текст описание мероприятия
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="timeline__footer"><a class="btn btn--red timeline__btn" href="btn">Смореть все
-                    мероприятия</a></div>
+            <div class="timeline__footer">
+                <a class="btn btn--red timeline__btn" href="{{ route('public_event_index') }}">Смореть все
+                    мероприятия</a>
+            </div>
         </div>
     </section>
     <section class="articles">

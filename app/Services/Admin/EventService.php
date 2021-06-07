@@ -106,22 +106,30 @@ final class EventService
         /** @var UploadedFile $file */
         $file = $request->file('image');
         $images = [];
-        $path = '/event/' . $event->name . '/' . $file->getClientOriginalName();
+        $extra = [];
 
-        if (!Storage::disk('public')->exists($path)) {
-            $mainImage = $event->images()->whereOrder(1)->first();
-            Storage::disk('public')->delete($mainImage->path);
-            $mainImage->delete();
+        if (!empty($file)) {
+            $path = '/event/' . $event->name . '/' . $file->getClientOriginalName();
 
-            Storage::disk('public')->put($path, $file->getContent());
-            $images[] = new Image([
-                'order' => 1,
-                'path'  => $path
-            ]);
+            if (!Storage::disk('public')->exists($path)) {
+                $mainImage = $event->images()->whereOrder(1)->first();
+                Storage::disk('public')->delete($mainImage->path);
+                $mainImage->delete();
+
+                Storage::disk('public')->put($path, $file->getContent());
+                $images[] = new Image([
+                    'order' => 1,
+                    'path'  => $path
+                ]);
+            }
+
+            $extra['path'] = $path;
         }
 
         $active = $request->get('active') === 'on';
-        $data = array_merge($request->all(), ['image_src' => $path, 'active' => $active]);
+        $extra['active'] = $active;
+
+        $data = array_merge($request->all(), $extra);
 
         $event->update($data);
         $event->images()->saveMany($images);

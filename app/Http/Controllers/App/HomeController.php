@@ -4,6 +4,7 @@ namespace App\Http\Controllers\App;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\Executant;
 use App\Models\Fandom;
 use App\Models\Hero;
@@ -19,7 +20,9 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        return view('app.main');
+        $events = Event::where('active', 1)->take(4)->get();
+
+        return view('app.main', compact(['events']));
     }
 
     /**

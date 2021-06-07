@@ -5,7 +5,7 @@
 @section('content')
     <section class="events">
         <div class="container">
-            <div class="title title--center"><img class="title__icon" src="/logo.5af45d3e.svg" alt="Лого"
+            <div class="title title--center"><img class="title__icon" src="{{asset('/images/logo.5af45d3e.svg')}}" alt="Лого"
                                                   aria-hidden="true">
                 <div class="title__text">Мероприятия</div>
             </div>

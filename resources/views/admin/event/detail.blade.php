@@ -41,7 +41,6 @@
                             <div class="form-group">
                                 <label class="" for="image">Изображение мероприятия</label>
                                 <input
-                                    required
                                     class="form-control"
                                     id="image"
                                     name="image"
@@ -61,6 +60,19 @@
                                         >{{ $city['name'] }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="" for="image">Текст превью</label>
+                                <input
+                                    required
+                                    class="form-control"
+                                    id="preview_body"
+                                    name="preview_body"
+                                    placeholder="Текст превью"
+                                    type="text"
+                                    value="{{ $event->preview_body }}"
+                                />
                             </div>
 
                             <div class="form-group">

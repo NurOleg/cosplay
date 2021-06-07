@@ -17,6 +17,7 @@ class Event extends Model
         'name',
         'place_title',
         'address',
+        'preview_body',
         'body',
         'image_src',
         'active',
@@ -84,7 +85,8 @@ class Event extends Model
         $endDate = Carbon::parse($this->end);
 
         if ($startDate->month === $endDate->month) {
-            $resString = $startDate->day . '-' . $endDate->day . ' ' . self::MONTHS[$startDate->month];
+            $daysInterval = $startDate->day === $endDate->day ? $startDate->day : $startDate->day . '-' . $endDate->day;
+            $resString = $daysInterval . ' ' . self::MONTHS[$startDate->month];
         } else {
             $resString = $startDate->day . ' ' . self::MONTHS[$startDate->month] . '-' . $endDate->day . ' ' . self::MONTHS[$endDate->month];
         }

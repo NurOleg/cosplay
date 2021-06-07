@@ -21,8 +21,10 @@
                                                             alt="blog image" aria-hidden="true"></div>
                         <div class="blog-item__body">
                             <div class="blog-item__title">
-                                <a href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}"></a>
-                                {{ $newsOne->name }}
+                                <a href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}">
+                                    {{ $newsOne->name }}
+                                </a>
+
                             </div>
                             <div class="blog-item__text">{{ $newsOne->preview_body }} <span>{{ $newsOne->created_at->format('d.m.Y') }}</span>
                             </div>

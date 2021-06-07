@@ -21,8 +21,9 @@ class HomeController extends Controller
     public function index(): View
     {
         $events = Event::where('active', 1)->take(4)->get();
+        $news = Event::where('active', 1)->take(3)->get();
 
-        return view('app.main', compact(['events']));
+        return view('app.main', compact(['events', 'news']));
     }
 
     /**

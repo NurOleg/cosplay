@@ -70,7 +70,10 @@ class EventController extends Controller
      */
     public function detail(Event $event): View
     {
-        return view('admin.event.detail', ['event' => $event]);
+        $event->load(['city', 'images']);
+        $cities = City::all();
+
+        return view('admin.event.detail', compact(['event', 'cities']));
     }
 
     /**
@@ -80,7 +83,7 @@ class EventController extends Controller
      */
     public function update(UpdateEventRequest $request, Event $event): RedirectResponse
     {
-        if ($updatedGarb = $this->eventService->update($request, $event)) {
+        if ($this->eventService->update($request, $event)) {
             return redirect()->route('event_index')->with('success', 'Мероприятие успешно обновлено!');
         }
 

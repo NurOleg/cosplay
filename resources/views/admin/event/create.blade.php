@@ -56,18 +56,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="" for="preview_body">Текст превью</label>
-                                <input
-                                    required
-                                    class="form-control"
-                                    id="preview_body"
-                                    name="preview_body"
-                                    placeholder="Текст превью"
-                                    type="text"
-                                />
-                            </div>
-
-                            <div class="form-group">
                                 <label class="" for="code">Текст основной</label>
                                 <textarea name="body" id="body" cols="30" rows="10"></textarea>
                             </div>

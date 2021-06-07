@@ -16,6 +16,10 @@
         @include('app.menu.customer_menu')
     @endif
 
+    @if(!auth()->guard('executant')->check() && !auth()->guard('customer')->check())
+            @include('app.menu.main_menu')
+    @endif
+
     <div class="content">
 
         @yield('content')
@@ -78,7 +82,8 @@
                     <div class="footer-item">
                         <div class="footer-item__title">КОНТАКТЫ И ДОКУМЕНТЫ</div>
                         <ul class="footer-item__list">
-                            <li class="footer-item__item"><a class="footer-item__link" href="#">ИП Айрапетян Григорий Левонович</a>
+                            <li class="footer-item__item"><a class="footer-item__link" href="#">ИП Айрапетян Григорий
+                                    Левонович</a>
                             </li>
                             <li class="footer-item__item"><a class="footer-item__link"
                                                              href="https://docs.google.com/document/d/11KTr474CrDW_CTSA1wnqGgKDvTq-IYuUxneyE1MGfzc/edit?usp=sharing">Договор

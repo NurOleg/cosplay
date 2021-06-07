@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!this.isFetching">
         <div v-if="this.chatUuid === undefined">
             Выберите чат для общения.
         </div>
@@ -8,32 +8,50 @@
                 <div class="chat-messager-header__menu" id="btn-sidebar"><img
                     src="/images/right-arrow.edc5ce1a.svg" alt="open menu"></div>
                 <div class="align-center row">
-                    <div class="chat-messager-header__image ibg">
+                    <div v-if="this.chat.user.image !== undefined && this.chat.user.image !== null"
+                         class="chat-messager-header__image ibg">
                         <img id="chat-img"
                              :src="'/storage' + this.chat.user.image.path"
-                             alt="cosplayer"></div>
+                             alt="cosplayer">
+                    </div>
+                    <div v-else class="chat-messager-header__image ibg">
+                        <img id="chat-img"
+                             :src="'/images/no-photo.0b72cc78.jpg'"
+                             alt="cosplayer">
+                    </div>
                     <div class="chat-messager-header__info">
                         <div class="chat-messager-header__title" id="chat-title">
                             {{ this.chat.user.fullname !== undefined ? this.chat.user.fullname : this.chat.user.name }}
                         </div>
-<!--                        <div-->
-<!--                            class="chat-messager-header__status chat-messager-header__status&#45;&#45;write">-->
-<!--                            Не-->
-<!--                            в-->
-<!--                            сети-->
-<!--                        </div>-->
+                        <!--                        <div-->
+                        <!--                            class="chat-messager-header__status chat-messager-header__status&#45;&#45;write">-->
+                        <!--                            Не-->
+                        <!--                            в-->
+                        <!--                            сети-->
+                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
-            <div class="chat-messager__content chat-messager-content" id="chat-body">
-                <div class="chat-body__list" id="chat-body__list">
-                    <div class="message" v-for="message in this.$root.messages">
-                        <a class="message__img ibg" href="#"> <img
-                            v-bind:src="'/storage'+ message.user.image.path" alt="cosplayer"></a>
-                        <div class="message__content"><a class="message__name" href="#">
-                            {{ message.user.fullname !== undefined ? message.user.fullname : message.user.name }}
-                        </a>
-                            <div class="message__text">{{ message.message }}</div>
+            <div v-for="chat in this.$root.chats">
+                <div v-if="chat.id === $route.params.uuid" class="chat-messager__content chat-messager-content" id="chat-body">
+                    <div class="chat-body__list" id="chat-body__list">
+                        <div class="message" v-for="message in chat.messages">
+
+                            <a v-if="message.user.image !== undefined && message.user.image !== null"
+                               class="message__img ibg" href="#">
+                                <img
+                                    :src="'/storage'+ message.user.image.path" alt="cosplayer">
+                            </a>
+
+                            <a v-else class="message__img ibg" href="#"> <img
+                                :src="'/images/no-photo.0b72cc78.jpg'" alt="cosplayer">
+                            </a>
+
+                            <div class="message__content"><a class="message__name" href="#">
+                                {{ message.user.fullname !== undefined ? message.user.fullname : message.user.name }}
+                            </a>
+                                <div class="message__text">{{ message.message }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,7 +74,9 @@ export default {
         return {
             chatUuid: undefined,
             chat: undefined,
-            newMessage: ''
+            newMessage: '',
+            isFetching: true,
+            messages: []
         }
     },
 
@@ -64,16 +84,19 @@ export default {
         this.chatUuid = this.chatExists();
 
         this.$on('messagesent', message => {
-            this.$root.messages.push(message);
 
+            console.log(message)
             axios.post('/personal/chat/messages', message).then(response => {
                 console.log(response.data);
             });
+
+            this.fetchMessages(message.chat)
         });
 
         if (this.chatUuid !== undefined) {
-            this.fetchMessages();
+            this.fetchMessages(this.chatUuid);
             this.chat = await this.getChatInfo(this.chatUuid);
+            this.isFetching = false;
         }
     },
 
@@ -82,9 +105,13 @@ export default {
             return this.$route.params.uuid;
         },
 
-        fetchMessages() {
-            axios.get('/personal/chat/messages').then(response => {
-                this.listMessages = response.data;
+        fetchMessages(uuid) {
+            axios.get('/personal/chat/' + uuid + '/messages').then(response => {
+                Array.from(this.$root.chats).forEach(chat => {
+                    if (chat.id === uuid) {
+                        chat.messages = response.data
+                    }
+                });
             });
         },
 
@@ -100,14 +127,14 @@ export default {
 
         async fetchChats() {
             const {data} = await axios.get('/personal/chats-fetch');
+            console.log(data)
             return data
         },
 
         async getChatInfo(uuid) {
-            const {data} = await axios.get('/personal/chats/' + uuid);
-            console.log(data);
+            const {data} = await axios.get('/personal/chats/info/' + uuid);
             return data
         },
-    }
+    },
 };
 </script>

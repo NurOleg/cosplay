@@ -14,7 +14,9 @@ class Chat extends Model
 
     protected $fillable = [
         'executant_id',
-        'customer_id'
+        'customer_id',
+        'executant_unreaded_messages_count',
+        'customer_unreaded_messages_count',
     ];
 
     /**

@@ -32,19 +32,25 @@ const app = new Vue({
     },
 
     async created() {
-        this.fetchMessages();
+        //this.fetchMessages();
         this.chats = await this.fetchChats();
 
         Array.from(this.chats).forEach(chat => {
             let uuid = chat.id.toString();
             Echo.private(uuid)
                 .listen('MessageSent', (e) => {
-                    console.log('qqqqq');
-                    console.log(e);
-                    this.messages.push({
-                        message: e.message.message,
-                        user: e.user
-                    });
+                    if (uuid === e.chat) {
+                        chat.messages.push({
+                            message: e.message.message,
+                            user: e.user
+                        });
+
+                        if (e.user.name !== undefined) {
+                            chat.executant_unreaded_messages_count = chat.executant_unreaded_messages_count + 1;
+                        } else {
+                            chat.customer_unreaded_messages_count = chat.customer_unreaded_messages_count + 1;
+                        }
+                    }
                 });
         })
     },
@@ -56,11 +62,11 @@ const app = new Vue({
             return data
         },
 
-        async fetchMessages() {
-            await axios.get('/personal/chat/messages').then(response => {
-                this.messages = response.data;
-            });
-        },
+        //async fetchMessages() {
+        //    await axios.get('/personal/chat/messages').then(response => {
+        //        this.messages = response.data;
+        //    });
+        //},
 
         addMessage(message) {
             this.messages.push(message);

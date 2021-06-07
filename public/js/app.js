@@ -1961,13 +1961,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['uuid', 'user'],
   data: function data() {
     return {
       chatUuid: undefined,
       chat: undefined,
-      newMessage: ''
+      newMessage: '',
+      isFetching: true,
+      messages: []
     };
   },
   mounted: function mounted() {
@@ -1981,27 +2001,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _this.chatUuid = _this.chatExists();
 
               _this.$on('messagesent', function (message) {
-                _this.$root.messages.push(message);
-
+                console.log(message);
                 axios.post('/personal/chat/messages', message).then(function (response) {
                   console.log(response.data);
                 });
+
+                _this.fetchMessages(message.chat);
               });
 
               if (!(_this.chatUuid !== undefined)) {
-                _context.next = 7;
+                _context.next = 9;
                 break;
               }
 
-              _this.fetchMessages();
+              _this.fetchMessages(_this.chatUuid);
 
               _context.next = 6;
               return _this.getChatInfo(_this.chatUuid);
 
             case 6:
               _this.chat = _context.sent;
+              console.log(_this.chat);
+              _this.isFetching = false;
 
-            case 7:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -2013,11 +2036,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     chatExists: function chatExists() {
       return this.$route.params.uuid;
     },
-    fetchMessages: function fetchMessages() {
+    fetchMessages: function fetchMessages(uuid) {
       var _this2 = this;
 
-      axios.get('/personal/chat/messages').then(function (response) {
-        _this2.listMessages = response.data;
+      axios.get('/personal/chat/' + uuid + '/messages').then(function (response) {
+        Array.from(_this2.$root.chats).forEach(function (chat) {
+          if (chat.id === uuid) {
+            chat.messages = response.data;
+          }
+        });
       });
     },
     sendMessage: function sendMessage() {
@@ -2042,9 +2069,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 _yield$axios$get = _context2.sent;
                 data = _yield$axios$get.data;
+                console.log(data);
                 return _context2.abrupt("return", data);
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -2061,15 +2089,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios.get('/personal/chats/' + uuid);
+                return axios.get('/personal/chats/info/' + uuid);
 
               case 2:
                 _yield$axios$get2 = _context3.sent;
                 data = _yield$axios$get2.data;
-                console.log(data);
                 return _context3.abrupt("return", data);
 
-              case 6:
+              case 5:
               case "end":
                 return _context3.stop();
             }
@@ -2115,13 +2142,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['chats'],
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log('qqqqq');
   },
   methods: {
     setChat: function setChat(chatId) {
+      Array.from(this.$root.chats).forEach(function (chat) {
+        if (chat.id === chatId) {
+          chat.executant_unreaded_messages_count = 0;
+          chat.customer_unreaded_messages_count = 0;
+        }
+      });
       localStorage.setItem('chat', chatId);
     }
   }
@@ -2181,27 +2228,30 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.fetchMessages();
-
-              _context.next = 3;
+              _context.next = 2;
               return _this.fetchChats();
 
-            case 3:
+            case 2:
               _this.chats = _context.sent;
               Array.from(_this.chats).forEach(function (chat) {
                 var uuid = chat.id.toString();
                 Echo["private"](uuid).listen('MessageSent', function (e) {
-                  console.log('qqqqq');
-                  console.log(e);
+                  if (uuid === e.chat) {
+                    chat.messages.push({
+                      message: e.message.message,
+                      user: e.user
+                    });
 
-                  _this.messages.push({
-                    message: e.message.message,
-                    user: e.user
-                  });
+                    if (e.user.name !== undefined) {
+                      chat.executant_unreaded_messages_count = chat.executant_unreaded_messages_count + 1;
+                    } else {
+                      chat.customer_unreaded_messages_count = chat.customer_unreaded_messages_count + 1;
+                    }
+                  }
                 });
               });
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -2235,27 +2285,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
         }, _callee2);
       }))();
     },
-    fetchMessages: function fetchMessages() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return axios.get('/personal/chat/messages').then(function (response) {
-                  _this2.messages = response.data;
-                });
-
-              case 2:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3);
-      }))();
-    },
+    //async fetchMessages() {
+    //    await axios.get('/personal/chat/messages').then(response => {
+    //        this.messages = response.data;
+    //    });
+    //},
     addMessage: function addMessage(message) {
       this.messages.push(message);
       axios.post('/personal/chat/messages', message).then(function (response) {
@@ -26907,155 +26941,220 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    this.chatUuid === undefined
-      ? _c("div", [_vm._v("\n            Выберите чат для общения.\n        ")])
-      : _c("div", [
-          _c(
-            "div",
-            {
-              staticClass: "chat-messager-header",
-              attrs: { id: "chat-header" }
-            },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "align-center row" }, [
-                _c("div", { staticClass: "chat-messager-header__image ibg" }, [
-                  _c("img", {
-                    attrs: {
-                      id: "chat-img",
-                      src: "/storage" + this.chat.user.image.path,
-                      alt: "cosplayer"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "chat-messager-header__info" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "chat-messager-header__title",
-                      attrs: { id: "chat-title" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(
-                            this.chat.user.fullname !== undefined
-                              ? this.chat.user.fullname
-                              : this.chat.user.name
-                          ) +
-                          "\n                        "
-                      )
-                    ]
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "chat-messager__content chat-messager-content",
-              attrs: { id: "chat-body" }
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "chat-body__list",
-                  attrs: { id: "chat-body__list" }
-                },
-                _vm._l(this.$root.messages, function(message) {
-                  return _c("div", { staticClass: "message" }, [
-                    _c(
-                      "a",
-                      { staticClass: "message__img ibg", attrs: { href: "#" } },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: "/storage" + message.user.image.path,
-                            alt: "cosplayer"
-                          }
-                        })
-                      ]
-                    ),
+  return !this.isFetching
+    ? _c("div", [
+        this.chatUuid === undefined
+          ? _c("div", [_vm._v("\n        Выберите чат для общения.\n    ")])
+          : _c(
+              "div",
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "chat-messager-header",
+                    attrs: { id: "chat-header" }
+                  },
+                  [
+                    _vm._m(0),
                     _vm._v(" "),
-                    _c("div", { staticClass: "message__content" }, [
-                      _c(
-                        "a",
-                        { staticClass: "message__name", attrs: { href: "#" } },
-                        [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(
-                                message.user.fullname !== undefined
-                                  ? message.user.fullname
-                                  : message.user.name
-                              ) +
-                              "\n                        "
+                    _c("div", { staticClass: "align-center row" }, [
+                      this.chat.user.image !== undefined &&
+                      this.chat.user.image !== null
+                        ? _c(
+                            "div",
+                            { staticClass: "chat-messager-header__image ibg" },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  id: "chat-img",
+                                  src: "/storage" + this.chat.user.image.path,
+                                  alt: "cosplayer"
+                                }
+                              })
+                            ]
                           )
-                        ]
-                      ),
+                        : _c(
+                            "div",
+                            { staticClass: "chat-messager-header__image ibg" },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  id: "chat-img",
+                                  src: "/images/no-photo.0b72cc78.jpg",
+                                  alt: "cosplayer"
+                                }
+                              })
+                            ]
+                          ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "message__text" }, [
-                        _vm._v(_vm._s(message.message))
+                      _c("div", { staticClass: "chat-messager-header__info" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "chat-messager-header__title",
+                            attrs: { id: "chat-title" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(
+                                  this.chat.user.fullname !== undefined
+                                    ? this.chat.user.fullname
+                                    : this.chat.user.name
+                                ) +
+                                "\n                    "
+                            )
+                          ]
+                        )
                       ])
                     ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._l(this.$root.chats, function(chat) {
+                  return _c("div", [
+                    chat.id === _vm.$route.params.uuid
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "chat-messager__content chat-messager-content",
+                            attrs: { id: "chat-body" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "chat-body__list",
+                                attrs: { id: "chat-body__list" }
+                              },
+                              _vm._l(chat.messages, function(message) {
+                                return _c("div", { staticClass: "message" }, [
+                                  message.user.image !== undefined &&
+                                  message.user.image !== null
+                                    ? _c(
+                                        "a",
+                                        {
+                                          staticClass: "message__img ibg",
+                                          attrs: { href: "#" }
+                                        },
+                                        [
+                                          _c("img", {
+                                            attrs: {
+                                              src:
+                                                "/storage" +
+                                                message.user.image.path,
+                                              alt: "cosplayer"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    : _c(
+                                        "a",
+                                        {
+                                          staticClass: "message__img ibg",
+                                          attrs: { href: "#" }
+                                        },
+                                        [
+                                          _c("img", {
+                                            attrs: {
+                                              src:
+                                                "/images/no-photo.0b72cc78.jpg",
+                                              alt: "cosplayer"
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "message__content" },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "message__name",
+                                          attrs: { href: "#" }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                            " +
+                                              _vm._s(
+                                                message.user.fullname !==
+                                                  undefined
+                                                  ? message.user.fullname
+                                                  : message.user.name
+                                              ) +
+                                              "\n                        "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "message__text" },
+                                        [_vm._v(_vm._s(message.message))]
+                                      )
+                                    ]
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          ]
+                        )
+                      : _vm._e()
                   ])
                 }),
-                0
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              staticClass: "chat-messager-form",
-              attrs: { id: "chat-form", action: "#" },
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.sendMessage($event)
-                }
-              }
-            },
-            [
-              _c("input", {
-                directives: [
+                _vm._v(" "),
+                _c(
+                  "form",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.newMessage,
-                    expression: "newMessage"
-                  }
-                ],
-                staticClass: "chat-messager-form__input",
-                attrs: {
-                  id: "chat-input",
-                  type: "text",
-                  placeholder: "Введите сообщение",
-                  autocomplete: "off"
-                },
-                domProps: { value: _vm.newMessage },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    staticClass: "chat-messager-form",
+                    attrs: { id: "chat-form", action: "#" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.sendMessage($event)
+                      }
                     }
-                    _vm.newMessage = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _vm._m(1)
-            ]
-          )
-        ])
-  ])
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newMessage,
+                          expression: "newMessage"
+                        }
+                      ],
+                      staticClass: "chat-messager-form__input",
+                      attrs: {
+                        id: "chat-input",
+                        type: "text",
+                        placeholder: "Введите сообщение",
+                        autocomplete: "off"
+                      },
+                      domProps: { value: _vm.newMessage },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.newMessage = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                )
+              ],
+              2
+            )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -27135,14 +27234,23 @@ var render = function() {
         },
         [
           _c("router-link", { attrs: { to: "/personal/chats/" + chat.id } }, [
-            _c("div", { staticClass: "chat-item__image ibg" }, [
-              _c("img", {
-                attrs: {
-                  src: "/storage" + chat.user.image.path,
-                  alt: "cosplayer"
-                }
-              })
-            ]),
+            chat.user.image !== undefined && chat.user.image !== null
+              ? _c("div", { staticClass: "chat-item__image ibg" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/storage" + chat.user.image.path,
+                      alt: "cosplayer"
+                    }
+                  })
+                ])
+              : _c("div", { staticClass: "chat-item__image ibg" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/images/no-photo.0b72cc78.jpg",
+                      alt: "cosplayer"
+                    }
+                  })
+                ]),
             _vm._v(" "),
             _c("div", { staticClass: "chat-item__body" }, [
               _c("div", { staticClass: "chat-item__title" }, [
@@ -27169,14 +27277,25 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "chat-item__message-count",
-                  staticStyle: { display: "none" }
-                },
-                [_vm._v("3")]
-              )
+              chat.user.fullname !== undefined &&
+              chat.customer_unreaded_messages_count > 0
+                ? _c("div", { staticClass: "chat-item__message-count" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(chat.customer_unreaded_messages_count) +
+                        "\n                "
+                    )
+                  ])
+                : chat.user.name !== undefined &&
+                  chat.executant_unreaded_messages_count > 0
+                ? _c("div", { staticClass: "chat-item__message-count" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(chat.executant_unreaded_messages_count) +
+                        "\n                "
+                    )
+                  ])
+                : _vm._e()
             ])
           ])
         ],

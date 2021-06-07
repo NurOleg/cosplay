@@ -53,15 +53,23 @@ class ChatController extends Controller
         $user = $this->personalService->getAuthenticatedUser();
 
         if ($user instanceof Executant) {
-            $relatedUser = 'customer';;
+            $relatedUser = 'customer';
 
         } elseif ($user instanceof Customer) {
-            $relatedUser = 'executant';;
+            $relatedUser = 'executant';
         } else {
             abort(404);
         }
 
         $chat = Chat::with($relatedUser . '.image')->find($uuid);
+
+        if ($relatedUser === 'executant') {
+            $chat->customer_unreaded_messages_count = 0;
+            $chat->save();
+        } else {
+            $chat->executant_unreaded_messages_count = 0;
+            $chat->save();
+        }
 
         $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
 
@@ -103,9 +111,11 @@ class ChatController extends Controller
     /**
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function fetchMessages()
+    public function fetchMessages(string $uuid)
     {
-        $messages = Message::with(['customer.image', 'executant.image'])->get();
+        $messages = Message::with(['customer.image', 'executant.image'])
+            ->where('chat_id', $uuid)
+            ->get();
 
         foreach ($messages as $message) {
             $message->user = $message->customer_id === null ? $message->executant : $message->customer;
@@ -127,9 +137,13 @@ class ChatController extends Controller
         if ($user instanceof Executant) {
             $data['executant_id'] = $user->id;
             $data['customer_id'] = null;
+            $chat->customer_unreaded_messages_count = $chat->customer_unreaded_messages_count + 1;
+            $chat->save();
         } elseif ($user instanceof Customer) {
             $data['customer_id'] = $user->id;
             $data['executant_id'] = null;
+            $chat->executant_unreaded_messages_count = $chat->executant_unreaded_messages_count + 1;
+            $chat->save();
         } else {
             abort(404);
         }
@@ -153,7 +167,8 @@ class ChatController extends Controller
 
         $chat = Chat::create([
             'executant_id' => $request->get('executant_id'),
-            'customer_id'  => auth()->guard('customer')->user()->id
+            'customer_id'  => auth()->guard('customer')->user()->id,
+            'executant_unreaded_messages_count' => 1
         ]);
 
         $message = new Message([
@@ -166,6 +181,6 @@ class ChatController extends Controller
 
         broadcast(new MessageSent($customer, $message, $chat->id))->toOthers();
 
-        //return redirect()->route('chat_index', ['chat' => $chat->id]);
+        return redirect()->route('chat_index', ['chat' => $chat->id]);
     }
 }

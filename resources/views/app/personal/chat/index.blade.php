@@ -9,7 +9,14 @@
                             <chats :chats="chats"></chats>
                             <div class="chat-content__column chat-content__messager chat-messager">
                                 <router-view
-                                    :messages="messages"
+                                    v-if="$route.params.uuid !== undefined"
+                                    :chats="chats"
+                                    :key="$route.fullPath"
+                                    :user="{{ $user }}"
+                                ></router-view>
+                                <router-view
+                                    v-else
+                                    :key="$route.fullPath"
                                     :user="{{ $user }}"
                                 ></router-view>
                             </div>

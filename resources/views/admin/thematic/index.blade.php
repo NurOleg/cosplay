@@ -36,7 +36,6 @@
                                         Нет
                                     @endif</th>
                                 <td>
-                                <td>
                                     <a href="{{ route('thematic_detail', ['thematic' => $thematic->id]) }}">{{$thematic->name_ru}}</a>
                                 </td>
                                 <td>

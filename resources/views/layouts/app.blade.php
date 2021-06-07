@@ -67,40 +67,39 @@
                             <li class="footer-item__item"><a class="footer-item__link" href="#">Условия
                                     использования</a></li>
                             <li class="footer-item__item"><a class="footer-item__link" href="#">Служба поддержки</a>
-                            <li class="footer-item__item"><a class="footer-item__link" target="_blank" href="{{ asset('docs/cosplay_oferta.pdf') }}">Публичная оферта</a>
+                            <li class="footer-item__item"><a class="footer-item__link" target="_blank"
+                                                             href="{{ asset('docs/cosplay_oferta.pdf') }}">Публичная
+                                    оферта</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer__item">
                     <div class="footer-item">
-                        <div class="footer-item__title">КОНТАКТЫ И РЕКВИЗИТЫ</div>
+                        <div class="footer-item__title">КОНТАКТЫ И ДОКУМЕНТЫ</div>
                         <ul class="footer-item__list">
-                            <li class="footer-item__item">
-                                <a class="footer-item__link" href="#">ИП Айрапетян Григорий Левонович</a>
+                            <li class="footer-item__item"><a class="footer-item__link" href="#">ИП Айрапетян Григорий Левонович</a>
                             </li>
-                            <li class="footer-item__item"><a class="footer-item__link" href="#">
-                                    ИНН: 782618432511
-                                    </a></li>
-                            <li class="footer-item__item"><a class="footer-item__link" href="#">
-                                    ОГРНИП: 316784700063066
-                                </a></li>
-                            <li class="footer-item__item">
-                                <a class="footer-item__link" href="#">+7 045 544 33 22Блог</a>
-                            </li>
-                            <li class="footer-item__item"><a class="footer-item__link" href="#">info@cosplay.promo</a>
-                            </li>
+                            <li class="footer-item__item"><a class="footer-item__link"
+                                                             href="https://docs.google.com/document/d/11KTr474CrDW_CTSA1wnqGgKDvTq-IYuUxneyE1MGfzc/edit?usp=sharing">Договор
+                                    оказания услуг (Оферта)</a></li>
+                            <li class="footer-item__item"><a class="footer-item__link"
+                                                             href="https://docs.google.com/document/d/1H0dkKNY3Ch0RT9DuYxNTxMg7TcipBx4tY3Y4l5V0gvo/edit?usp=sharing">Публичная
+                                    оферта о заключении соглашения</a></li>
+                            <li class="footer-item__item"><a class="footer-item__link"
+                                                             href="https://docs.google.com/document/d/1ImUUbUmtveQKtgQAY35gsRNvCid9qyNs-vuja2itLmY/edit?usp=sharing">Политика
+                                    в отношении обработки персональных данных cosplay.promo</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-        <script src="{{ asset('js/script.5a81296d.js') }}"></script>
-        <script src="{{ asset('js/customers.21fc3e2b.js') }}"></script>
-        @stack('script')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="{{ asset('js/script.5a81296d.js') }}"></script>
+    <script src="{{ asset('js/customers.21fc3e2b.js') }}"></script>
+    @stack('script')
 </div>
 </body>
 </html>

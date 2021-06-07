@@ -203,96 +203,102 @@
                 <div class="how-work__item">
                     <div class="how-item">
                         <div class="how-item__title">Вы косплеер?</div>
-                        <div class="how-item__text">Текст описание Текст описание Текст описание Текст описание
+                        <div class="how-item__text">
+                            Регистрируйтесь и добавляйте все свои косплей образы, чтобы дать возможность потенциальным
+                            заказчикам найти Вас.
                         </div>
                         <a class="how-item__link" href="#">Подробнее &rarr;</a></div>
                 </div>
                 <div class="how-work__item">
                     <div class="how-item">
-                        <div class="how-item__title">Вы крафтер,швея, гример, вигмейкер?</div>
-                        <div class="how-item__text">Текст описание Текст описание Текст описание Текст описание
+                        <div class="how-item__title">Вы Косплеймейкер?</div>
+                        <div class="how-item__text">
+                            Сотни косплеер хотят найти мастеров в своём городе. Регистрируйтесь, опишите ваши навыки и
+                            ждите заказов.
                         </div>
                         <a class="how-item__link" href="#">Подробнее &rarr;</a></div>
                 </div>
                 <div class="how-work__item">
                     <div class="how-item">
                         <div class="how-item__title">Вы заказчик?</div>
-                        <div class="how-item__text">Текст описание Текст описание Текст описание Текст описание
+                        <div class="how-item__text">
+                            Еще никогда найти профессионального косплеера не было так просто.
+                            Зарегистрируйтесь, введите в фильте необходимые данные и общайтесь с косплеером на деловые
+                            темы прямо внутри сайта.
                         </div>
                         <a class="how-item__link" href="#">Подробнее &rarr;</a></div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section-line timeline">
-        <div class="container">
-            <div class="timeline__title title title--center">
-                <div class="title__text">ТАЙМЛАЙН МЕРОПРИЯТИЙ</div>
-            </div>
-            <div class="timeline__row-wrapper">
-                <div class="timeline__row">
-                    @foreach($events as $event)
-                        <div class="timeline__item">
-                            <div class="timeline-item">
-                                <div class="timeline-item__date">{{ $event->date_interval }}</div>
-                                <div class="timeline-item__header">
-                                    <img class="timeline-item__img"
-                                         src="{{ Storage::url($event->image_src) }}"
-                                         alt="timeline image" aria-hidden="true">
-                                </div>
-                                <div class="timeline-item__body">
-                                    <div class="timeline-item__title">{{ $event->name }}</div>
-                                    <div class="timeline-item__text">
-                                        {{ $event->preview_body }}
+    @if($events->count() > 0)
+        <section class="section-line timeline">
+            <div class="container">
+                <div class="timeline__title title title--center">
+                    <div class="title__text">ТАЙМЛАЙН МЕРОПРИЯТИЙ</div>
+                </div>
+                <div class="timeline__row-wrapper">
+                    <div class="timeline__row">
+                        @foreach($events as $event)
+                            <div class="timeline__item">
+                                <div class="timeline-item">
+                                    <div class="timeline-item__date">{{ $event->date_interval }}</div>
+                                    <div class="timeline-item__header">
+                                        <img class="timeline-item__img"
+                                             src="{{ Storage::url($event->image_src) }}"
+                                             alt="timeline image" aria-hidden="true">
                                     </div>
+                                    <div class="timeline-item__body">
+                                        <div class="timeline-item__title">{{ $event->name }}</div>
+                                        <div class="timeline-item__text">
+                                            {{ $event->preview_body }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="timeline__footer">
+                    <a class="btn btn--red timeline__btn" href="{{ route('public_event_index') }}">Смореть все
+                        мероприятия</a>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if($news->count() > 0)
+        <section class="articles">
+            <div class="container">
+                <h2 class="articles__title title">
+                    <div class="title__text">СТАТЬИ И НОВОСТИ</div>
+                </h2>
+                <div class="articles__row">
+                    @foreach($news as $newsOne)
+                        <div class="articles__item">
+                            <div class="articles-item">
+                                <div class="articles-item__body">
+                                    <a class="articles-item__title"
+                                       href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}"
+                                    >
+                                        {{ $newsOne->name }}
+                                    </a>
+                                    <a class="articles-item__text"
+                                       href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}">
+                                        {{ $newsOne->preview_body }}
+                                    </a></div>
+                                <div class="articles-item__bg">
+                                    <img
+                                        class="articles-item__img"
+                                        src="{{ Storage::url($newsOne->preview_img_src) }}"
+                                        alt="Картинка статьи" aria-hidden="true">
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
-            </div>
-            <div class="timeline__footer">
-                <a class="btn btn--red timeline__btn" href="{{ route('public_event_index') }}">Смореть все
-                    мероприятия</a>
-            </div>
-        </div>
-    </section>
-    <section class="articles">
-        <div class="container">
-            <h2 class="articles__title title">
-                <div class="title__text">СТАТЬИ</div>
-            </h2>
-            <div class="articles__row">
-                <div class="articles__item">
-                    <div class="articles-item">
-                        <div class="articles-item__body"><a class="articles-item__title" href="#"> Как начинающему
-                                косплееру попасть на крупный фестиваль</a><a class="articles-item__text" href="#">Текст
-                                описание Текст описание Текст описание</a></div>
-                        <div class="articles-item__bg"><img class="articles-item__img" src="/articles.26004d81.jpg"
-                                                            alt="Картинка статьи" aria-hidden="true"></div>
-                    </div>
-                </div>
-                <div class="articles__item">
-                    <div class="articles-item">
-                        <div class="articles-item__body"><a class="articles-item__title" href="#"> Как начинающему
-                                косплееру попасть на крупный фестиваль</a><a class="articles-item__text" href="#">Текст
-                                описание Текст описание Текст описание</a></div>
-                        <div class="articles-item__bg"><img class="articles-item__img" src="/articles.26004d81.jpg"
-                                                            alt="Картинка статьи" aria-hidden="true"></div>
-                    </div>
-                </div>
-                <div class="articles__item">
-                    <div class="articles-item">
-                        <div class="articles-item__body"><a class="articles-item__title" href="#"> Как начинающему
-                                косплееру попасть на крупный фестиваль</a><a class="articles-item__text" href="#">Текст
-                                описание Текст описание Текст описание</a></div>
-                        <div class="articles-item__bg"><img class="articles-item__img" src="/articles.26004d81.jpg"
-                                                            alt="Картинка статьи" aria-hidden="true"></div>
-                    </div>
+                <div class="articles__footer"><a class="articles__link btn btn--red" href="{{ route('public_news_index') }}"> Читать все статьи</a>
                 </div>
             </div>
-            <div class="articles__footer"><a class="articles__link btn btn--red" href="#"> Читать все статьи</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection

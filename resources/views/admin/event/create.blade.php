@@ -246,7 +246,7 @@
         });
     </script>
     @push('js')
-        <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+        <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=2afcb74f-8a66-4096-a142-2cfef86b291a"></script>
         <script src="{{ asset('js/main.d8ebb8d6.js') }}"></script>
     @endpush
 @endsection

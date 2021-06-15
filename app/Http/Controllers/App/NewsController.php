@@ -31,7 +31,7 @@ class NewsController extends Controller
      */
     public function index(): View
     {
-        $news = News::whereActive(1)->paginate(16);
+        $news = News::whereActive(1)->orderBy('updated_at', 'desc')->paginate(16);
 
         return view('app.news.index', ['news' => $news]);
 

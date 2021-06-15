@@ -35,7 +35,10 @@
                 @foreach($executant->garbs as $garb)
                     <a
                         class="
-{{--                        active --}}
+                        @if($loop->first)
+                            active
+                        @endif
+                        {{--                        active --}}
                             cosplayer-shape-tab cosplayer-shape-tabs__tab"
                         href="#{{ $garb->code }}"><span
                             class="cosplayer-shape-tab__title">{{ $garb->hero->name_ru }}</span><span
@@ -43,7 +46,11 @@
                 @endforeach
             </div>
             @foreach($executant->garbs as $garb)
-                <div class="cosplayer-shape-item open" id="{{ $garb->code }}">
+                <div class="cosplayer-shape-item
+                @if($loop->first)
+                    open
+                @endif
+                    " id="{{ $garb->code }}">
                     <div class="cosplayer-shape__row">
                         <div class="cosplayer-shape__column">
                             <div class="cosplayer-shape__slider cosplayer-shape-slider__wrapper">

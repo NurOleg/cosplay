@@ -160,16 +160,29 @@ class ChatController extends Controller
 
     /**
      * @param Request $request
+     * @return RedirectResponse
      */
     public function create(Request $request)
     {
         $customer = auth()->guard('customer')->user();
 
-        $chat = Chat::create([
+        $chatQuery = Chat::where([
             'executant_id' => $request->get('executant_id'),
             'customer_id'  => auth()->guard('customer')->user()->id,
-            'executant_unreaded_messages_count' => 1
         ]);
+
+        if ($chatQuery->exists()) {
+            $chat = $chatQuery->first();
+            $chat->executant_unreaded_messages_count = $chat->executant_unreaded_messages_count + 1;
+            $chat->save();
+        } else {
+            $chat = Chat::create([
+                'executant_id'                      => $request->get('executant_id'),
+                'customer_id'                       => auth()->guard('customer')->user()->id,
+                'executant_unreaded_messages_count' => 1
+            ]);
+        }
+
 
         $message = new Message([
             'executant_id' => null,

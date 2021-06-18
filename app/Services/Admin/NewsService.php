@@ -29,7 +29,7 @@ final class NewsService
     {
         /** @var UploadedFile $file */
         $file = $request->file('preview_img_src');
-        $path = Storage::disk('public')->put('/news/' . $request->get('slug') , $file);
+        $path = Storage::disk('public')->put('/news/' . $request->get('slug'), $file);
         $active = $request->get('active') === 'on';
         $data = array_merge($request->all(), ['preview_img_src' => $path, 'active' => $active]);
 
@@ -43,11 +43,17 @@ final class NewsService
      */
     public function update(UpdateNewsRequest $request, News $news): News
     {
-        /** @var UploadedFile $file */
-        $file = $request->file('preview_img_src');
-        $path = Storage::disk('public')->put('/news/' . $request->get('slug') , $file);
-        $active = $request->get('active') === 'on';
-        $data = array_merge($request->all(), ['preview_img_src' => $path, 'active' => $active]);
+        if (!empty($request->file('preview_img_src'))) {
+
+            Storage::disk('public')->delete($news->preview_img_src);
+
+            $file = $request->file('preview_img_src');
+            $path = Storage::disk('public')->put('/news/' . $request->get('slug'), $file);
+            $extraData['preview_img_src'] = $path;
+        }
+
+        $extraData['active'] = $request->get('active') === 'on';
+        $data = array_merge($request->all(), $extraData);
 
         $news->update($data);
 

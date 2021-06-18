@@ -44,9 +44,11 @@ final class PersonalService
             /** @var UploadedFile $file */
             $file = $request->file('image');
             $storagePath = '/' . $type . '/' . $authUser->id . '/' . $file->getClientOriginalName();
+
             if (!Storage::disk('public')->put($storagePath, $file->getContent())) {
                 throw new \Exception('Не удалось загрузить фото.');
             }
+
             $user
                 ->image()
                 ->save(

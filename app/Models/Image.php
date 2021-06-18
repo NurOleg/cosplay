@@ -13,7 +13,9 @@ class Image extends Model
     protected $fillable = ['path', 'order', 'imageable_type', 'imageable_id'];
 
     protected static function boot() {
+
         parent::boot();
+
         static::deleting(function(Image $image) {
             Storage::disk('public')->delete($image->path);
       });

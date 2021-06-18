@@ -55,14 +55,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="" for="preview_img_src">Изображение новости</label>
+                                <label class="" for="img">Изображение</label>
+                                <img src="{{ $news->preview_img_src }}" alt="" id="img">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="" for="preview_img_src">Заменить изображение новости</label>
                                 <input
                                     class="form-control"
                                     id="preview_img_src"
                                     name="preview_img_src"
                                     placeholder="Изображение новости"
                                     type="file"
-                                    value="{{ $news->preview_img_src }}"
+                                    value=""
                                 />
                             </div>
 

@@ -56,7 +56,7 @@
 
                             <div class="form-group">
                                 <label class="" for="img">Изображение</label>
-                                <img src="{{ $news->preview_img_src }}" alt="" id="img">
+                                <img src="{{Storage::disk('public')->url($news->preview_img_src) }}" alt="" id="img">
                             </div>
 
                             <div class="form-group">

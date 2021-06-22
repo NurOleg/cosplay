@@ -41,6 +41,8 @@ final class PersonalService
 
         if ($request->files->count() > 0) {
 
+            $user->image()->delete();
+
             /** @var UploadedFile $file */
             $file = $request->file('image');
             $storagePath = '/' . $type . '/' . $authUser->id . '/' . $file->getClientOriginalName();

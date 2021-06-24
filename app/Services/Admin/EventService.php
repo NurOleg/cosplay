@@ -61,7 +61,6 @@ final class EventService
             'image_src' => $path,
             'active'    => $active,
             'programm'  => json_encode($json),
-            'city_id'   => 1,
             'point'     => $point
         ]);
 

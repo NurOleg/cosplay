@@ -58,7 +58,7 @@ class EventController extends Controller
     {
         //dd($request->all());
         if ($event = $this->eventService->store($request)) {
-            return redirect()->route('event_index')->with('success', 'Мероприятие успешно создана!');
+            return redirect()->route('event_index')->with('success', 'Мероприятие успешно создано!');
         }
 
         return redirect()->back()->withErrors('Что-то пошло не так. Не удалось создать мероприятие.');

@@ -14,7 +14,7 @@
                 <input type="hidden" value="{{ $user->type }}" name="type">
                 <div class="setting-form__img-wrapper">
                     <div class="setting-form__img setting-form-img"><input class="setting-form-img__input" type="file"
-                                                                           name="photo" accept="image/x-png,image/jpeg"
+                                                                           name="image" accept="image/x-png,image/jpeg"
                                                                            id="setting-form-img"><label
                             class="setting-form-img__body" for="setting-form-img">
                             <div class="ibg setting-form-img__img-wrapper">

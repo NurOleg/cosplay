@@ -140,7 +140,7 @@
                     <div class="cosplayer-feedback-form__header">
                         <input class="cosplayer-feedback-form__input" type="text"
                                name="message"
-                               placeholder="Напишите свой запрос">
+                               placeholder="Напишите свой запрос" minlength="1" pattern="[a-zA-Z0-9]+" required>
                         <span
                             class="cosplayer-feedback-form__hint">Доступно только зарегистрированным пользователям</span>
                     </div>

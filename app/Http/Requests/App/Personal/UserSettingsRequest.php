@@ -45,6 +45,11 @@ class UserSettingsRequest extends FormRequest
             'nickname_eng' => ['string', 'nullable'],
             'country'      => ['string', 'nullable'],
             'city'         => ['string', 'nullable'],
+            'twitter'      => ['string', 'nullable'],
+            'instagram'    => ['string', 'nullable'],
+            'facebook'     => ['string', 'nullable'],
+            'youtube'      => ['string', 'nullable'],
+            'vk'           => ['string', 'nullable'],
         ];
     }
 

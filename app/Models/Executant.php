@@ -23,6 +23,11 @@ class Executant extends Authenticatable
         'country',
         'city',
         'description',
+        'twitter',
+        'instagram',
+        'facebook',
+        'youtube',
+        'vk',
     ];
 
     /**

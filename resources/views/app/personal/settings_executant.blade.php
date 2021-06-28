@@ -214,49 +214,66 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
 {{--                    </div>--}}
-{{--                    <div class="setting-form__column">--}}
-{{--                        <div class="input-field__header"><span--}}
-{{--                                class="input-field__title">Ссылки на социальные сети</span>--}}
-{{--                        </div>--}}
-{{--                        <div class="setting-form__social setting-form-social">--}}
-{{--                            <div class="setting-form-social__input social-input">--}}
-{{--                                <div class="social-input__icon"><img src="/youtube-social.5e1aefaa.svg" alt="youtube">--}}
-{{--                                </div>--}}
-{{--                                <div class="social-input__wrapper"><input class="social-input__input" name="youtube"--}}
-{{--                                                                          type="text" placeholder="Text"><span--}}
-{{--                                        class="social-input__text">Добавить</span></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="setting-form-social__input social-input">--}}
-{{--                                <div class="social-input__icon"><img src="/social-vk.e1dadef2.svg" alt="vk"></div>--}}
-{{--                                <div class="social-input__wrapper"><input class="social-input__input" name="vk"--}}
-{{--                                                                          type="text"--}}
-{{--                                                                          placeholder="Text"><span--}}
-{{--                                        class="social-input__text">Добавить</span></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="setting-form-social__input social-input">--}}
-{{--                                <div class="social-input__icon"><img src="/social-twitter.5757a209.svg" alt="twitter">--}}
-{{--                                </div>--}}
-{{--                                <div class="social-input__wrapper"><input class="social-input__input" name="twitter"--}}
-{{--                                                                          type="text" placeholder="Text"><span--}}
-{{--                                        class="social-input__text">Добавить</span></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="setting-form-social__input social-input">--}}
-{{--                                <div class="social-input__icon"><img src="/social-Instagram.0fe232e6.svg"--}}
-{{--                                                                     alt="Instagram">--}}
-{{--                                </div>--}}
-{{--                                <div class="social-input__wrapper"><input class="social-input__input" name="instagram"--}}
-{{--                                                                          type="text" placeholder="Text"><span--}}
-{{--                                        class="social-input__text">Добавить</span></div>--}}
-{{--                            </div>--}}
-{{--                            <div class="setting-form-social__input social-input">--}}
-{{--                                <div class="social-input__icon"><img src="/scoail-facebook.6c0c36fd.svg" alt="facebook">--}}
-{{--                                </div>--}}
-{{--                                <div class="social-input__wrapper"><input class="social-input__input" name="facebook"--}}
-{{--                                                                          type="text" placeholder="Text"><span--}}
-{{--                                        class="social-input__text">Добавить</span></div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="setting-form__column">
+                        <div class="input-field__header"><span
+                                class="input-field__title">Ссылки на социальные сети</span>
+                        </div>
+                        <div class="setting-form__social setting-form-social">
+                            <div class="setting-form-social__input social-input">
+                                <div class="social-input__icon">
+                                    <img src="{{ asset('images/social-youtube.4436d954.svg') }}" alt="youtube">
+                                </div>
+                                <div class="social-input__wrapper"><input class="social-input__input" name="youtube"
+                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          value="{{ $user->youtube }}"
+                                                                          type="url" placeholder="Text"><span
+                                        class="social-input__text">Добавить</span></div>
+                            </div>
+                            <div class="setting-form-social__input social-input">
+                                <div class="social-input__icon">
+                                    <img src="{{ asset('images/social-vk.e1dadef2.svg') }}" alt="vk">
+                                </div>
+                                <div class="social-input__wrapper"><input class="social-input__input" name="vk"
+                                                                          type="url"
+                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          value="{{ $user->vk }}"
+                                                                          placeholder="vk"><span
+                                        class="social-input__text">Добавить</span>
+                                </div>
+                            </div>
+                            <div class="setting-form-social__input social-input">
+                                <div class="social-input__icon">
+                                    <img src="{{ asset('images/social-twitter.5757a209.svg') }}" alt="twitter">
+                                </div>
+                                <div class="social-input__wrapper"><input class="social-input__input" name="twitter"
+                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          value="{{ $user->twitter }}"
+                                                                          type="url" placeholder="twitter"><span
+                                        class="social-input__text">Добавить</span></div>
+                            </div>
+                            <div class="setting-form-social__input social-input">
+                                <div class="social-input__icon">
+                                    <img src="{{ asset('images/social-instagram.0fe232e6.svg') }}"
+                                                                     alt="Instagram">
+                                </div>
+                                <div class="social-input__wrapper"><input class="social-input__input" name="instagram"
+                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          value="{{ $user->instagram }}"
+                                                                          type="url" placeholder="instagram"><span
+                                        class="social-input__text">Добавить</span></div>
+                            </div>
+                            <div class="setting-form-social__input social-input">
+                                <div class="social-input__icon">
+                                    <img src="{{ asset('images/scoail-facebook.6c0c36fd.svg') }}" alt="facebook">
+                                </div>
+                                <div class="social-input__wrapper"><input class="social-input__input" name="facebook"
+                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          value="{{ $user->facebook }}"
+                                                                          type="url" placeholder="facebook"><span
+                                        class="social-input__text">Добавить</span></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="setting-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><span
@@ -275,4 +292,14 @@
             </form>
         </div>
     </div>
+    @push('script')
+        <script src="//rawgit.com/RobinHerbots/Inputmask/5.x/dist/jquery.inputmask.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.social-input__input').each(function( index ) {
+                    $(this).inputmask();
+                });
+            });
+        </script>
+    @endpush
 @endsection

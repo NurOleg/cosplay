@@ -15,8 +15,8 @@
                 <div class="setting-form__img-wrapper">
                     <div class="setting-form__img setting-form-img">
                         <input class="setting-form-img__input" type="file"
-                                                                           name="image" accept="image/x-png,image/jpeg"
-                                                                           id="setting-form-img"><label
+                               name="image" accept="image/x-png,image/jpeg"
+                               id="setting-form-img"><label
                             class="setting-form-img__body" for="setting-form-img">
                             <div class="ibg setting-form-img__img-wrapper">
                                 <img src="{{ $user->image && $user->image->count() > 0 ? Storage::url($user->image->path) : asset('images/photo.6edb12fe.jpg') }}"
@@ -69,7 +69,12 @@
                     <div class="setting-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="password">
-                                    Пароль*</label></div>
+                                    Пароль*</label>
+                                <div class="tip" data-text="заполнять в случае изменения пароля">
+                                    <img class="tip__icon"
+                                         src="{{ asset('images/tip.1645b35d.svg') }}"
+                                         alt="tip"></div>
+                            </div>
                             <div class="input-field__input-wrapper">
                                 <input class="input-field__input"
                                        id="password"
@@ -90,14 +95,19 @@
                             </div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="nicknameEn"
                                                                            type="text" name="nickname_eng"
-                                value="{{ $user->nickname_eng }}"></div>
+                                                                           value="{{ $user->nickname_eng }}"></div>
                         </div>
                     </div>
                     <div class="setting-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="doublePassword">
                                     Пароль
-                                    еще раз*</label></div>
+                                    еще раз*</label>
+                                <div class="tip" data-text="заполнять в случае изменения пароля">
+                                    <img class="tip__icon"
+                                         src="{{ asset('images/tip.1645b35d.svg') }}"
+                                         alt="tip"></div>
+                            </div>
                             <div class="input-field__input-wrapper">
                                 <input class="input-field__input"
                                        id="doublePassword"
@@ -276,13 +286,9 @@
                     </div>
                     <div class="setting-form__column">
                         <div class="input-field">
-                            <div class="input-field__header"><span
-                                    class="input-field__title">О себе в свободной форме</span></div>
-                            <div class="input-field__input-wrapper"><textarea maxlength="1000"
-                                    class="input-field__textarea setting-form__about-textarea" name="description">
-                                    {{ $user->description }}
-                                </textarea>
+                            <div class="input-field__header"><span class="input-field__title">О себе в свободной форме</span>
                             </div>
+                            <div class="input-field__input-wrapper"><textarea maxlength="1000"  class="input-field__textarea setting-form__about-textarea"  name="description">{{ $user->description }}</textarea></div>
                         </div>
                     </div>
                 </div>

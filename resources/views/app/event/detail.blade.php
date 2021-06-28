@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="eventmap-map__map ibg">
-                    <div id="eventmap"></div>
+                    <div id="eventmap" data-x="55.76" data-y="37.64"></div>
                 </div>
             </div>
         </div>

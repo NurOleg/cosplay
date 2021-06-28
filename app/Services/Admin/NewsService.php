@@ -18,7 +18,7 @@ final class NewsService
      */
     public function index(): Collection
     {
-        return News::all();
+        return News::orderBy('created_at', 'desc')->get();
     }
 
     /**

@@ -33,6 +33,8 @@ final class EventService
             $query->whereMonth('start', $request->get('month'));
         }
 
+        $query->orderBy('created_at', 'desc');
+
         return $query->with('city')->get();
     }
 

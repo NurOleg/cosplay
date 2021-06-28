@@ -32,6 +32,11 @@ final class EventService
         $d = [];
 
         foreach ($request->get('programm_dates') as $k => $item) {
+
+            if (empty($request->get('programm_names')[$k])) {
+                continue;
+            }
+
             $dt = Carbon::parse($item);
             $dts = $dt->day . '.' . $dt->month . '.' . $dt->year;
 
@@ -42,11 +47,17 @@ final class EventService
 
         $json = array_values($d);
 
-        foreach ($json as $k => $v) {
-            $json[$k]['extra'] = array_values($json[$k]['extra']);
+        if (!empty($json)) {
+            foreach ($json as $k => $v) {
+                $json[$k]['extra'] = array_values($json[$k]['extra']);
+            }
         }
 
-        $point = DB::raw("ST_GeomFromText('POINT({$request->get('point')})')");
+        $requestPoint = str_contains($request->get('point'), ',')
+            ? str_replace(',', ' ', $request->get('point'))
+            : $request->get('point');
+
+        $point = DB::raw("ST_GeomFromText('POINT({$requestPoint})')");
 
         $images = [];
         /** @var UploadedFile $file */

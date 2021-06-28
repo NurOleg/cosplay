@@ -108,22 +108,22 @@
                                 <div class="col-xs-6">
                                     <label class="" for="programm_dates">Программа мероприятия</label>
                                     <input
-                                        required
                                         class="form-control"
                                         id="programm"
                                         name="programm_dates[]"
                                         placeholder="Программа мероприятия"
                                         type="datetime-local"
+                                        value=""
                                     /></div>
                                 <div class="col-xs-6">
                                     <label class="" for="programm_names">Программа мероприятия (название)</label>
                                     <input
-                                        required
                                         class="form-control"
                                         id="programm"
                                         name="programm_names[]"
                                         placeholder="Программа мероприятия (название)"
                                         type="text"
+                                        value=""
                                     />
                                 </div>
                             </div>
@@ -131,7 +131,6 @@
                                 <div class="col-xs-6">
                                     <label class="" for="programm_dates">Программа мероприятия</label>
                                     <input
-                                        required
                                         class="form-control"
                                         id="programm"
                                         name="programm_dates[]"
@@ -141,7 +140,6 @@
                                 <div class="col-xs-6">
                                     <label class="" for="programm_names">Программа мероприятия (название)</label>
                                     <input
-                                        required
                                         class="form-control"
                                         id="programm"
                                         name="programm_names[]"
@@ -228,14 +226,14 @@
                 $('<div class="form-group row">' +
                     '<div class="col-xs-6">' +
                     '<label class="" for="programm_dates">Программа мероприятия</label>' +
-                    '<input required class="form-control" id="programm"' +
+                    '<input class="form-control" id="programm"' +
                     ' name="programm_dates[]"' +
                     ' placeholder="Программа мероприятия"' +
                     ' type="datetime-local"' +
                     ' /></div>' +
                     '<div class="col-xs-6">' +
                     ' <label class="" for="programm_names">Программа мероприятия (название)</label>' +
-                    '<input required class="form-control" id="programm"' +
+                    '<input class="form-control" id="programm"' +
                     ' name="programm_names[]"' +
                     ' placeholder="Программа мероприятия (название)"' +
                     ' type="text"' +

@@ -58,6 +58,11 @@ class EventController extends Controller
             abort(404);
         }
 
+        $coordinates = unpack('x/x/x/x/corder/Ltype/dlat/dlon', $event->point);
+
+        $event->longitude = $coordinates['lon'];
+        $event->latitude = $coordinates['lat'];
+
         $event->load(['city', 'images']);
 
         return view('app.event.detail', ['event' => $event]);

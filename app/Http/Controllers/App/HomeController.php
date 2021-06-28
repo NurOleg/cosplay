@@ -22,7 +22,7 @@ class HomeController extends Controller
     public function index(): View
     {
         $events = Event::where('active', 1)->take(4)->get();
-        $news = News::where('active', 1)->orderBy('updated_at', 'desc')->take(3)->get();
+        $news = News::where('active', 1)->orderBy('created_at', 'desc')->take(3)->get();
 
         return view('app.main', compact(['events', 'news']));
     }

@@ -275,24 +275,22 @@
                 <div class="articles__row">
                     @foreach($news as $newsOne)
                         <div class="articles__item">
-                            <div class="articles-item">
-                                <div class="articles-item__body">
-                                    <a class="articles-item__title"
-                                       href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}"
-                                    >
+                            <a class="articles-item" href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}">
+                                <span class="articles-item__body">
+                                    <span class="articles-item__title">
                                         {{ $newsOne->name }}
-                                    </a>
-                                    <a class="articles-item__text"
-                                       href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}">
+                                    </span>
+                                    <span class="articles-item__text">
                                         {{ $newsOne->preview_body }}
-                                    </a></div>
-                                <div class="articles-item__bg">
+                                    </span>
+                                </span>
+                                <span class="articles-item__bg">
                                     <img
                                         class="articles-item__img"
                                         src="{{ Storage::url($newsOne->preview_img_src) }}"
                                         alt="Картинка статьи" aria-hidden="true">
-                                </div>
-                            </div>
+                                </span>
+                            </a>
                         </div>
                     @endforeach
                 </div>

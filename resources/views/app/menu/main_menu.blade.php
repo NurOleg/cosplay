@@ -19,7 +19,8 @@
             </li>
             <li class="c-header-list__item">
                 <div class="c-header-list__link" href="#"> Кто мы?</div>
-                <div class="c-header-list-dropdawn"><a class="c-header-list-dropdawn__item" href="#">Фестивалям</a><a
+                <div class="c-header-list-dropdawn"><a class="c-header-list-dropdawn__item" href="#">Фестивалям</a>
+                    <a
                         class="c-header-list-dropdawn__item" href="#">О проекте</a><a
                         class="c-header-list-dropdawn__item" href="#">Исполнителям</a><a
                         class="c-header-list-dropdawn__item" href="#">Заказчикам</a></div>

@@ -33,10 +33,10 @@
                                                 href="{{ route('personal_garb_detail', ['garb' => $garb->id]) }}">Редактировать</a>
                                         </div>
                                         <div class="customer-card-events__item">
-                                            <button class="customer-card-events__event customer-delete"
+                                            <a href="{{ route('personal_garb_delete', ['garb' => $garb->id]) }}" class="customer-card-events__event customer-delete"
                                                     data-id-customer="{{ $loop->iteration }}">
                                                 Удалить
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

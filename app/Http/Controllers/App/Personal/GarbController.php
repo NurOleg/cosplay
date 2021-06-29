@@ -97,7 +97,7 @@ class GarbController extends Controller
     public function delete(Garb $garb): RedirectResponse
     {
         if ($this->garbService->delete($garb)) {
-            return redirect()->route('garb_index')->with('success', 'Костюм успешно удалён!');
+            return redirect()->route('personal_garb_index')->with('success', 'Костюм успешно удалён!');
         }
 
         return redirect()->back()->withErrors('Что-то пошло не так. Не удалось удалить костюм.');

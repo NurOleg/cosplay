@@ -72,7 +72,7 @@ Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
             Route::post('/store', [PersonalGarbController::class, 'store'])->name('personal_garb_store');
             Route::get('/update/{garb}', [PersonalGarbController::class, 'detail'])->name('personal_garb_detail');
             Route::post('/update/{garb}', [PersonalGarbController::class, 'update'])->name('personal_garb_update');
-            Route::delete('/delete/{garb}', [PersonalGarbController::class, 'delete'])->name('personal_garb_delete');
+            Route::get('/delete/{garb}', [PersonalGarbController::class, 'delete'])->name('personal_garb_delete');
         });
     });
 });

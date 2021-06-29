@@ -88,7 +88,7 @@
                     <div class="customers-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="concretization">
-                                    Конкетизация персонажа</label></div>
+                                    Конкетизация</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="concretization"
                                                                            type="text" name="concretization"
                                                                            data-name="character"
@@ -101,7 +101,7 @@
                     <div class="customers-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="concterization_eng">
-                                    Character concretization</label></div>
+                                    Сoncretization</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="concterization_eng"
                                                                            type="text" name="concterization_eng"
                                                                            data-name="characterEn"

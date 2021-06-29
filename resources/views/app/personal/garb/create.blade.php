@@ -130,24 +130,24 @@
                     <div class="customers-form__column">
                         <div class="input-field" data-selection="">
                             <div class="input-field__header"><label class="input-field__title"
-                                                                    for="world">Вселенная</label></div>
-                            <div class="input-field__input-wrapper"><input class="input-field__input" id="world"
-                                                                           type="text" name="world"
-                                                                           list="world-datalist" data-name="world"
+                                                                    for="fandom">Вселенная</label></div>
+                            <div class="input-field__input-wrapper"><input class="input-field__input" id="fandom"
+                                                                           type="text" name="fandom"
+                                                                           list="fandom-datalist" data-name="fandom"
                                                                            autocomplete="off">
-                                <datalist id="world-datalist"></datalist>
+                                <datalist id="fandom-datalist"></datalist>
                             </div>
                         </div>
                     </div>
                     <div class="customers-form__column">
                         <div class="input-field" data-selection="">
-                            <div class="input-field__header"><label class="input-field__title" for="worldEn">
+                            <div class="input-field__header"><label class="input-field__title" for="fandomEn">
                                     World</label></div>
-                            <div class="input-field__input-wrapper"><input class="input-field__input" id="worldEn"
-                                                                           type="text" name="worldEn"
-                                                                           list="worldEn-datalist" data-name="worldEn"
+                            <div class="input-field__input-wrapper"><input class="input-field__input" id="fandomEn"
+                                                                           type="text" name="fandomEn"
+                                                                           list="fandomEn-datalist" data-name="fandomEn"
                                                                            autocomplete="off">
-                                <datalist id="worldEn-datalist"></datalist>
+                                <datalist id="fandomEn-datalist"></datalist>
                             </div>
                         </div>
                     </div>

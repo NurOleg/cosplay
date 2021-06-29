@@ -57,7 +57,7 @@
                                                                            type="text" name="hero" list="hero-datalist"
                                                                            data-name="hero" data-associated="#heroEn"
                                                                            data-leng="ru" autocomplete="off"
-                                                                           data-secret="#hero-id">
+                                                                           data-secret="#hero_id">
                                 <datalist id="hero-datalist"></datalist>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                                                            type="text" name="heroEn"
                                                                            list="heroEn-datalist" data-name="hero"
                                                                            data-associated="#hero" data-leng="en"
-                                                                           autocomplete="off" data-secret="#hero-id">
+                                                                           autocomplete="off" data-secret="#hero_id">
                                 <datalist id="heroEn-datalist"></datalist>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                                                            type="text" name="thematic"
                                                                            list="thematic-datalist" data-name="thematic"
                                                                            data-associated="#thematicEn" data-leng="ru"
-                                                                           data-secret="#thematic-id"
+                                                                           data-secret="#thematic_id"
                                                                            autocomplete="off">
                                 <datalist id="thematic-datalist"></datalist>
                             </div>
@@ -121,7 +121,7 @@
                                                                            type="text" name="thematicEn"
                                                                            list="thematicEn-datalist"
                                                                            data-name="thematic"
-                                                                           data-secret="#thematic-id"
+                                                                           data-secret="#thematic_id"
                                                                            autocomplete="off">
                                 <datalist id="thematicEn-datalist"></datalist>
                             </div>
@@ -135,7 +135,7 @@
                                                                            type="text" name="fandom"
                                                                            list="fandom-datalist" data-name="fandom"
                                                                            data-associated="#fandomEn" data-leng="ru"
-                                                                           data-secret="#fandom-id"
+                                                                           data-secret="#fandom_id"
                                                                            autocomplete="off">
                                 <datalist id="fandom-datalist"></datalist>
                             </div>
@@ -149,7 +149,7 @@
                                                                            type="text" name="fandomEn"
                                                                            list="fandomEn-datalist"
                                                                            data-name="fandom"
-                                                                           data-secret="#fandom-id"
+                                                                           data-secret="#fandom_id"
                                                                            autocomplete="off">
                                 <datalist id="fandomEn-datalist"></datalist>
                             </div>

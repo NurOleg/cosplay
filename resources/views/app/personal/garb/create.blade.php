@@ -128,13 +128,14 @@
                         </div>
                     </div>
                     <div class="customers-form__column">
-                        <div class="input-field" data-selection="">
-                            <div class="input-field__header"><label class="input-field__title"
-                                                                    for="fandom">Вселенная</label></div>
+                        <div class="input-field">
+                            <div class="input-field__header"><label class="input-field__title" for="subject">
+                                    Фандом</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="fandom"
                                                                            type="text" name="fandom"
-                                                                           data-associated="#fandomEn"
                                                                            list="fandom-datalist" data-name="fandom"
+                                                                           data-associated="#fandomEn" data-leng="ru"
+                                                                           data-secret="#fandom-id"
                                                                            autocomplete="off">
                                 <datalist id="fandom-datalist"></datalist>
                             </div>
@@ -143,11 +144,12 @@
                     <div class="customers-form__column">
                         <div class="input-field" data-selection="">
                             <div class="input-field__header"><label class="input-field__title" for="fandomEn">
-                                    World</label></div>
+                                    Fandom</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="fandomEn"
                                                                            type="text" name="fandomEn"
-                                                                           data-associated="#fandom"
-                                                                           list="fandomEn-datalist" data-name="fandom"
+                                                                           list="fandomEn-datalist"
+                                                                           data-name="fandom"
+                                                                           data-secret="#fandom-id"
                                                                            autocomplete="off">
                                 <datalist id="fandomEn-datalist"></datalist>
                             </div>

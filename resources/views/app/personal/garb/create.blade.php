@@ -145,7 +145,7 @@
                                     World</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="fandomEn"
                                                                            type="text" name="fandomEn"
-                                                                           list="fandomEn-datalist" data-name="fandomEn"
+                                                                           list="fandomEn-datalist" data-name="fandom"
                                                                            autocomplete="off">
                                 <datalist id="fandomEn-datalist"></datalist>
                             </div>

@@ -56,6 +56,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('/register', [AppLoginController::class, 'registerForm'])->name('public_register_form');
     Route::post('/login', [AppLoginController::class, 'login'])->name('public_login');
     Route::post('/register', [AppLoginController::class, 'register'])->name('public_register');
+    Route::post('/logout', [AppLoginController::class, 'logout'])->name('logout');
 });
 
 Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {

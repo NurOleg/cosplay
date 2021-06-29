@@ -36,6 +36,9 @@
             <li class="header-menu__item"><a class="header-menu__link" href="{{ route('chat_index') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/contacts.ecfb84b5.svg') }}" alt="contactsu"></span><span
                         class="header-menu__text">Чаты</span></a></li>
+            <li class="header-menu__item"><a class="header-menu__link" href="{{ route('logout') }}"><span
+                        class="header-menu__icon"> <img src="{{ asset('images/logout.svg') }}" alt="contactsu"></span><span
+                        class="header-menu__text">Выйти</span></a></li>
         </ul>
     </div>
 </header>

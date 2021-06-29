@@ -133,6 +133,7 @@
                                                                     for="fandom">Вселенная</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="fandom"
                                                                            type="text" name="fandom"
+                                                                           data-associated="#fandomEn"
                                                                            list="fandom-datalist" data-name="fandom"
                                                                            autocomplete="off">
                                 <datalist id="fandom-datalist"></datalist>
@@ -145,6 +146,7 @@
                                     World</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="fandomEn"
                                                                            type="text" name="fandomEn"
+                                                                           data-associated="#fandom"
                                                                            list="fandomEn-datalist" data-name="fandom"
                                                                            autocomplete="off">
                                 <datalist id="fandomEn-datalist"></datalist>

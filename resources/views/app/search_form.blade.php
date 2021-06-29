@@ -5,8 +5,8 @@
                 <div class="input-field__title">Специализация</div>
                 <div class="input-field__input-wrapper">
                     <input class="input-field__input" type="text"
-                                                               name="concretization" list="concretization"
-                                                               data-name="concretization">
+                           name="concretization" list="concretization"
+                           data-name="concretization">
                     <datalist id="concretization"></datalist>
                 </div>
             </div>
@@ -14,9 +14,13 @@
         <div class="cosplay-block-form__item">
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Город</div>
-                <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
+                <div class="input-field__input-wrapper">
+                    <input class="input-field__input" type="text"  autocomplete="off"
                                                                name="city" list="city" data-name="city">
                     <datalist id="city">
+                        @foreach($cities as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>
+                        @endforeach
                     </datalist>
                 </div>
             </div>
@@ -77,7 +81,11 @@
                 <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
                                                                name="thematic" list="thematic"
                                                                data-name="thematic">
-                    <datalist id="thematic"></datalist>
+                    <datalist id="thematic">
+                        @foreach($thematics as $thematic)
+                            <option value="{{$thematic->name_eng}}">{{$thematic->name_ru}}</option>
+                        @endforeach
+                    </datalist>
                 </div>
             </div>
         </div>

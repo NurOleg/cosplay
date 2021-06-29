@@ -36,6 +36,7 @@ class PersonalController extends Controller
         }
 
         $user->type = $user instanceof Executant ? 'executant' : 'customer';
+        $user->load(['city']);
 
         return view('app.personal.settings_' . $user->type, ['user' => $user]);
     }

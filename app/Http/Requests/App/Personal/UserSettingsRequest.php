@@ -44,7 +44,7 @@ class UserSettingsRequest extends FormRequest
             'nickname'     => ['string', 'nullable'],
             'nickname_eng' => ['string', 'nullable'],
             'country'      => ['string', 'nullable'],
-            'city'         => ['string', 'nullable'],
+            'city_id'      => ['string'],
             'twitter'      => ['string', 'nullable'],
             'instagram'    => ['string', 'nullable'],
             'facebook'     => ['string', 'nullable'],
@@ -59,7 +59,7 @@ class UserSettingsRequest extends FormRequest
             'name'         => ['string', 'nullable'],
             'organization' => ['string', 'nullable'],
             'country'      => ['string', 'nullable'],
-            'city'         => ['string', 'nullable'],
+            'city_id'      => ['string'],
         ];
     }
 }

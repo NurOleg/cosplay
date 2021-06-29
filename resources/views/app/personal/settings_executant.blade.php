@@ -150,7 +150,7 @@
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="city"
                                                                            type="text"
                                                                            name="city"
-                                                                           value="{{ $user->city }}"></div>
+                                                                           value="{{ $user->city->name }}"></div>
                         </div>
                     </div>
                     <div class="setting-form__column">

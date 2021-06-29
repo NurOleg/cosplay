@@ -64,7 +64,7 @@ final class ExecutantService
         }
 
         if ($request->filled('city')) {
-            $executantQuery->whereCity($request->get('city'));
+            $executantQuery->whereCityId($request->get('city'));
         }
 
         if ($request->filled('name')) {

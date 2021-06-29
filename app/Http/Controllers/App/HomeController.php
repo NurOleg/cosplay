@@ -4,6 +4,7 @@ namespace App\Http\Controllers\App;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Event;
 use App\Models\Executant;
 use App\Models\Fandom;
@@ -23,8 +24,11 @@ class HomeController extends Controller
     {
         $events = Event::where('active', 1)->take(4)->get();
         $news = News::where('active', 1)->orderBy('created_at', 'desc')->take(3)->get();
+        $genders = ['male' => 'Мужской', 'female' => 'Женский'];
+        $cities = City::all();
+        $thematics = Thematic::where('active', 1)->get();
 
-        return view('app.main', compact(['events', 'news']));
+        return view('app.main', compact(['events', 'news', 'genders', 'cities', 'thematics']));
     }
 
     /**

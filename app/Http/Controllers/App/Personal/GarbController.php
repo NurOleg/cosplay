@@ -71,6 +71,8 @@ class GarbController extends Controller
      */
     public function detail(Garb $garb): View
     {
+        $garb->load(['fandom', 'thematic', 'hero']);
+
         return view('app.personal.garb.detail', ['garb' => $garb]);
     }
 

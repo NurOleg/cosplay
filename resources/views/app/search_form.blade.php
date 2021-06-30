@@ -15,13 +15,23 @@
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Город</div>
                 <div class="input-field__input-wrapper">
-                    <input class="input-field__input" type="text"  autocomplete="off"
-                                                               name="city" list="city" data-name="city">
-                    <datalist id="city">
+
+                    <select class="input-field__input"
+                            name="city">
+                        <option value="0" disabled
+                                @if(!request()->filled('city'))
+                                selected
+                            @endif
+                        >--Не выбран
+                        </option>
                         @foreach($cities as $city)
-                            <option value="{{$city->id}}">{{$city->name}}</option>
+                            <option value="{{$city->id}}"
+                                    @if(request()->filled('city') && request()->get('city') == $city->id)
+                                     selected
+                                    @endif
+                            >{{$city->name}}</option>
                         @endforeach
-                    </datalist>
+                    </select>
                 </div>
             </div>
         </div>
@@ -55,13 +65,22 @@
         <div class="cosplay-block-form__item">
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Пол</div>
-                <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
-                                                               name="gender" list="gender"
-                                                               data-name="gender">
-                    <datalist id="gender">
-                        <option value="male">Мужской</option>
-                        <option value="female">Женский</option>
-                    </datalist>
+                <div class="input-field__input-wrapper"><select class="input-field__input"
+                                                                name="thematic">
+                        <option value="0" disabled
+                                @if(!request()->filled('sex'))
+                                selected
+                            @endif
+                        >--Не выбрана
+                        </option>
+                        @foreach(['male' => 'Мужской', 'female' => 'Женский'] as $code => $gender)
+                            <option value="{{$code}}"
+                                    @if(request()->filled('sex') && request()->get('sex') == $code)
+                                    selected
+                                @endif
+                            >{{$gender}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>
@@ -78,14 +97,23 @@
         <div class="cosplay-block-form__item">
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Тематика</div>
-                <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
-                                                               name="thematic" list="thematic"
-                                                               data-name="thematic">
-                    <datalist id="thematic">
-                        @foreach($thematics as $thematic)
-                            <option value="{{$thematic->name_eng}}">{{$thematic->name_ru}}</option>
-                        @endforeach
-                    </datalist>
+                <div class="input-field__input-wrapper">
+                    <select class="input-field__input"
+                            name="thematic">
+                    <option value="0" disabled
+                                                                @if(!request()->filled('city'))
+                                                                selected
+                        @endif
+                    >--Не выбрана
+                    </option>
+                    @foreach($thematics as $thematic)
+                        <option value="{{$thematic->name_ru}}"
+                                @if(request()->filled('thematic') && request()->get('thematic') == $thematic->name_ru)
+                                selected
+                            @endif
+                        >{{$thematic->name_ru}}</option>
+                    @endforeach
+                    </select>
                 </div>
             </div>
         </div>

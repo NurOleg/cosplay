@@ -19,7 +19,7 @@
                     <select class="input-field__input"
                             name="city">
                         <option value="0" disabled
-                                @if(!request()->filled('city'))
+                                @if(!request()->filled('city') || empty(request()->get('city')))
                                 selected
                             @endif
                         >--Не выбран
@@ -66,12 +66,12 @@
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Пол</div>
                 <div class="input-field__input-wrapper"><select class="input-field__input"
-                                                                name="thematic">
+                                                                name="sex">
                         <option value="0" disabled
-                                @if(!request()->filled('sex'))
+                                @if(!request()->filled('sex') || empty(request()->get('sex')))
                                 selected
                             @endif
-                        >--Не выбрана
+                        >--Не выбран
                         </option>
                         @foreach(['male' => 'Мужской', 'female' => 'Женский'] as $code => $gender)
                             <option value="{{$code}}"
@@ -101,7 +101,7 @@
                     <select class="input-field__input"
                             name="thematic">
                     <option value="0" disabled
-                                                                @if(!request()->filled('city'))
+                                                                @if(!request()->filled('thematic') || empty(request()->get('thematic')))
                                                                 selected
                         @endif
                     >--Не выбрана

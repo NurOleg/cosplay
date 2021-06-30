@@ -5,7 +5,9 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\App\Executant\ListExecutantRequest;
+use App\Models\City;
 use App\Models\Executant;
+use App\Models\Thematic;
 use App\Services\App\ExecutantService;
 use Illuminate\Contracts\View\View;
 
@@ -30,7 +32,10 @@ class ExecutantController extends Controller
         $executants = $this->executantService->index($request);
         $tab = $this->executantService->getActiveTab($request->get('hero', null), $executants);
 
-        return view('app.executant.index', compact(['executants', 'tab']));
+        $cities = City::all();
+        $thematics = Thematic::where('active', 1)->get();
+
+        return view('app.executant.index', compact(['executants', 'tab', 'cities', 'thematics']));
     }
 
     /**

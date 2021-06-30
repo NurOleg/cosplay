@@ -10,7 +10,7 @@
                                                                    src="{{ asset('images/logo.5af45d3e.svg') }}"
                                                                    alt="Лого" aria-hidden="true">
                 <h2 class="title__text">ПЕРВАЯ БАЗА КОСПЛЕЕРОВ И КРАФТЕРОВ С САМЫМ УДОБНЫМ ПОИСКОМ</h2></div>
-            @include('app.search_form')
+            @include('app.search_form', [$cities, $thematics])
 
             <section class="search-result">
                 <div class="container">

@@ -234,7 +234,7 @@
                                     <img src="{{ asset('images/social-youtube.4436d954.svg') }}" alt="youtube">
                                 </div>
                                 <div class="social-input__wrapper"><input class="social-input__input" name="youtube"
-                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          data-inputmask-regex="(https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
                                                                           value="{{ $user->youtube }}"
                                                                           type="url" placeholder="Text"><span
                                         class="social-input__text">Добавить</span></div>
@@ -245,7 +245,7 @@
                                 </div>
                                 <div class="social-input__wrapper"><input class="social-input__input" name="vk"
                                                                           type="url"
-                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          data-inputmask-regex="(https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
                                                                           value="{{ $user->vk }}"
                                                                           placeholder="vk"><span
                                         class="social-input__text">Добавить</span>
@@ -256,7 +256,7 @@
                                     <img src="{{ asset('images/social-twitter.5757a209.svg') }}" alt="twitter">
                                 </div>
                                 <div class="social-input__wrapper"><input class="social-input__input" name="twitter"
-                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          data-inputmask-regex="(https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
                                                                           value="{{ $user->twitter }}"
                                                                           type="url" placeholder="twitter"><span
                                         class="social-input__text">Добавить</span></div>
@@ -267,7 +267,7 @@
                                                                      alt="Instagram">
                                 </div>
                                 <div class="social-input__wrapper"><input class="social-input__input" name="instagram"
-                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          data-inputmask-regex="(https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
                                                                           value="{{ $user->instagram }}"
                                                                           type="url" placeholder="instagram"><span
                                         class="social-input__text">Добавить</span></div>
@@ -277,7 +277,7 @@
                                     <img src="{{ asset('images/scoail-facebook.6c0c36fd.svg') }}" alt="facebook">
                                 </div>
                                 <div class="social-input__wrapper"><input class="social-input__input" name="facebook"
-                                                                          data-inputmask-regex="(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
+                                                                          data-inputmask-regex="(https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"
                                                                           value="{{ $user->facebook }}"
                                                                           type="url" placeholder="facebook"><span
                                         class="social-input__text">Добавить</span></div>

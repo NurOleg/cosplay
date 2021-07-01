@@ -28,23 +28,22 @@ class UserSettingsRequest extends FormRequest
             : self::customerRules();
 
         return array_merge($extraRules, [
-            'email'       => ['string', 'email', 'max:255', 'nullable'],
+            'email'       => ['string', 'email', 'max:255', 'required'],
             'phone'       => ['string', 'min:8', 'nullable'],
-            'city'        => ['string', 'nullable'],
-            'description' => ['string', 'nullable'],
-            'image'       => ['max:500', 'image', 'nullable'],
+            'city_id'     => ['string', 'required'],
+            'description' => ['string', 'required'],
+            'image'       => ['max:500', 'image', 'required'],
         ]);
     }
 
     private static function executantRules(): array
     {
         return [
-            'fullname'     => ['string', 'nullable'],
-            'sex'          => ['string', 'in:male,female', 'nullable'],
-            'nickname'     => ['string', 'nullable'],
-            'nickname_eng' => ['string', 'nullable'],
-            'country'      => ['string', 'nullable'],
-            'city_id'      => ['string'],
+            'fullname'     => ['string', 'required'],
+            'sex'          => ['string', 'in:male,female', 'required'],
+            'nickname'     => ['string', 'required'],
+            'nickname_eng' => ['string', 'required'],
+            'country'      => ['string', 'required'],
             'twitter'      => ['string', 'nullable'],
             'instagram'    => ['string', 'nullable'],
             'facebook'     => ['string', 'nullable'],
@@ -56,10 +55,9 @@ class UserSettingsRequest extends FormRequest
     private static function customerRules(): array
     {
         return [
-            'name'         => ['string', 'nullable'],
-            'organization' => ['string', 'nullable'],
-            'country'      => ['string', 'nullable'],
-            'city_id'      => ['string'],
+            'name'         => ['string', 'required'],
+            'organization' => ['string', 'required'],
+            'country'      => ['string', 'required'],
         ];
     }
 }

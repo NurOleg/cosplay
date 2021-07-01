@@ -123,10 +123,19 @@
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="city"> Город</label>
                             </div>
-                            <div class="input-field__input-wrapper"><input class="input-field__input" id="city"
-                                                                           type="text"
-                                                                           name="city"
-                                                                           value="{{ $user->city->name }}"></div>
+                            <div class="input-field__input-wrapper">
+                                <select class="input-field__select" id="gender"
+                                        name="city_id">
+                                    @foreach($cities as $city)
+                                        <option
+                                            @if($user->city_id == $city->id)
+                                            selected
+                                            @endif
+                                            value="{{$city->id}}">{{$city->name}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="setting-form__column">

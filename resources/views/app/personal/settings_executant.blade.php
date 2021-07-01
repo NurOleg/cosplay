@@ -172,7 +172,7 @@
                             <div class="input-field__header"><label class="input-field__title" for="city"> Город</label>
                             </div>
                             <div class="input-field__input-wrapper">
-                                <select class="input-field__select" id="gender"
+                                <select class="input-field__select" id="city"
                                         name="city_id">
                                     @foreach($cities as $city)
                                         <option

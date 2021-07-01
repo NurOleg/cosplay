@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\App\Executant\ListExecutantRequest;
 use App\Models\City;
 use App\Models\Executant;
+use App\Models\Speciality;
 use App\Models\Thematic;
 use App\Services\App\ExecutantService;
 use Illuminate\Contracts\View\View;
@@ -34,8 +35,9 @@ class ExecutantController extends Controller
 
         $cities = City::all();
         $thematics = Thematic::where('active', 1)->get();
+        $specialities = Speciality::all();
 
-        return view('app.executant.index', compact(['executants', 'tab', 'cities', 'thematics']));
+        return view('app.executant.index', compact(['executants', 'tab', 'cities', 'thematics', 'specialities']));
     }
 
     /**

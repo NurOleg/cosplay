@@ -10,6 +10,7 @@ use App\Models\Executant;
 use App\Models\Fandom;
 use App\Models\Hero;
 use App\Models\News;
+use App\Models\Speciality;
 use App\Models\Thematic;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -27,8 +28,9 @@ class HomeController extends Controller
         $genders = ['male' => 'Мужской', 'female' => 'Женский'];
         $cities = City::all();
         $thematics = Thematic::where('active', 1)->get();
+        $specialities = Speciality::all();
 
-        return view('app.main', compact(['events', 'news', 'genders', 'cities', 'thematics']));
+        return view('app.main', compact(['events', 'news', 'genders', 'cities', 'thematics', 'specialities']));
     }
 
     /**

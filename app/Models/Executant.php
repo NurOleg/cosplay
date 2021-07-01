@@ -70,4 +70,12 @@ class Executant extends Authenticatable
     {
         return $this->belongsTo(City::class);
     }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function specialities(): BelongsToMany
+    {
+        return $this->belongsToMany(Speciality::class);
+    }
 }

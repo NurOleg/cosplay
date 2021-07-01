@@ -4,10 +4,22 @@
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Специализация</div>
                 <div class="input-field__input-wrapper">
-                    <input class="input-field__input" type="text"
-                           name="concretization" list="concretization"
-                           data-name="concretization">
-                    <datalist id="concretization"></datalist>
+                    <select class="input-field__input"
+                            name="speciality">
+                        <option value="0" disabled
+                                @if(!request()->filled('speciality') || empty(request()->get('speciality')))
+                                selected
+                            @endif
+                        >--Не выбран
+                        </option>
+                        @foreach($specialities as $speciality)
+                            <option value="{{$speciality->id}}"
+                                    @if(request()->filled('speciality') && request()->get('speciality') == $speciality->id)
+                                    selected
+                                @endif
+                            >{{$speciality->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>

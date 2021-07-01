@@ -30,9 +30,9 @@ class UserSettingsRequest extends FormRequest
         return array_merge($extraRules, [
             'email'       => ['string', 'email', 'max:255', 'required'],
             'phone'       => ['string', 'min:8', 'nullable'],
-            'city_id'     => ['string', 'required'],
+            'city_id'     => ['string'],
             'description' => ['string', 'required'],
-            'image'       => ['max:500', 'image', 'required'],
+            'image'       => ['max:500', 'image'],
         ]);
     }
 
@@ -44,6 +44,7 @@ class UserSettingsRequest extends FormRequest
             'nickname'     => ['string', 'required'],
             'nickname_eng' => ['string', 'required'],
             'country'      => ['string', 'required'],
+            'specialities' => ['array'],
             'twitter'      => ['string', 'nullable'],
             'instagram'    => ['string', 'nullable'],
             'facebook'     => ['string', 'nullable'],

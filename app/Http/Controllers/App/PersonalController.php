@@ -4,7 +4,9 @@ namespace App\Http\Controllers\App;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\App\Personal\UserSettingsRequest;
+use App\Models\City;
 use App\Models\Executant;
+use App\Models\Speciality;
 use App\Services\App\PersonalService;
 use Illuminate\Contracts\View\View;
 
@@ -30,6 +32,7 @@ class PersonalController extends Controller
     public function settingsForm(): View
     {
         $user = $this->personalService->getAuthenticatedUser();
+        $specialities = [];
 
         if ($user === null) {
             abort(403);
@@ -38,7 +41,14 @@ class PersonalController extends Controller
         $user->type = $user instanceof Executant ? 'executant' : 'customer';
         $user->load(['city']);
 
-        return view('app.personal.settings_' . $user->type, ['user' => $user]);
+        if ($user instanceof Executant) {
+            $user->load('specialities');
+        }
+
+        $specialities = Speciality::all();
+        $cities = City::all();
+
+        return view('app.personal.settings_' . $user->type, compact(['user', 'specialities', 'cities']));
     }
 
 

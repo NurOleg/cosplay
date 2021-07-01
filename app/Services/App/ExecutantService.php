@@ -71,6 +71,13 @@ final class ExecutantService
             $executantQuery->whereName($request->get('name'));
         }
 
+        if ($request->filled('speciality')) {
+            $executantQuery->whereHas('specialities', function ($builder) use ($request) {
+                $builder
+                    ->where('specialities.id', $request->get('speciality'));
+            });
+        }
+
         return $executantQuery->with(['image', 'garbs.hero'])->get();
     }
 

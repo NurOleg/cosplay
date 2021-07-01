@@ -64,6 +64,10 @@ final class PersonalService
         $user->fill($request->validated());
         $user->save();
 
+        if ($type === 'executant') {
+            $user->specialities()->sync($request->get('specialities'));
+        }
+
         return $user;
     }
 }

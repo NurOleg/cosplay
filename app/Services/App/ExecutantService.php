@@ -127,9 +127,9 @@ final class ExecutantService
             'garbs.fandom',
             'garbs.thematic',
             'garbs.hero',
+            'garbs.services',
             'specialities',
-            'city',
-            'services'
+            'city'
         ]);
         $this->getActiveGarb($executantData);
 

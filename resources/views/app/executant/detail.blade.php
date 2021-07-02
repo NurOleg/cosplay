@@ -88,45 +88,19 @@
     <section class="cosplayer-services section">
         <div class="container">
             <div class="title"><h2 class="title__text">Услуги</h2></div>
-            <div class="cosplayer-services__row">
-                <div class="cosplayer-services__column">
-                    <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
-                                                              aria-hidden="true"><span
-                            class="cosplayer-services-item__title">Участие в промоакциях</span></div>
-                </div>
-                <div class="cosplayer-services__column">
-                    <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
-                                                              aria-hidden="true"><span
-                            class="cosplayer-services-item__title">Участие в совместных проектах/фотосессиях</span>
+            @foreach($executant->garbs as $garb)
+                @foreach($garb->services as $service)
+                    <div class="cosplayer-services__row open" data-name="#{{ $garb->code }}">
+                        <div class="cosplayer-services__column">
+                            <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
+                                                                      src="{{ asset('images/check.73f159ab.svg') }}"
+                                                                      alt="check icon"
+                                                                      aria-hidden="true"><span
+                                    class="cosplayer-services-item__title">{{ $service->name }}</span></div>
+                        </div>
                     </div>
-                </div>
-                <div class="cosplayer-services__column">
-                    <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
-                                                              aria-hidden="true"><span
-                            class="cosplayer-services-item__title"> Аренда костюма</span></div>
-                </div>
-                <div class="cosplayer-services__column">
-                    <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
-                                                              aria-hidden="true"><span
-                            class="cosplayer-services-item__title">Продажа костюма</span></div>
-                </div>
-                <div class="cosplayer-services__column">
-                    <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
-                                                              aria-hidden="true"><span
-                            class="cosplayer-services-item__title">Участие в съёмках фильмов/сериалов</span></div>
-                </div>
-                <div class="cosplayer-services__column">
-                    <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
-                                                              aria-hidden="true"><span
-                            class="cosplayer-services-item__title">Участие в рекламных проектах</span></div>
-                </div>
-            </div>
+                @endforeach
+            @endforeach
         </div>
     </section>
 

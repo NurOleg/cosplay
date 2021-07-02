@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\App\Personal;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Garb\StoreNewsRequest;
-use App\Http\Requests\Admin\Garb\UpdateNewsRequest;
 use App\Http\Requests\App\Personal\Garb\StoreGarbRequest;
 use App\Http\Requests\App\Personal\Garb\UpdateGarbRequest;
 use App\Models\Garb;
+use App\Models\Service;
 use App\Services\App\Personal\GarbService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 
 class GarbController extends Controller
 {
@@ -45,7 +43,9 @@ class GarbController extends Controller
      */
     public function create(): View
     {
-        return view('app.personal.garb.create');
+        $services = Service::all();
+
+        return view('app.personal.garb.create', compact(['services']));
     }
 
     /**
@@ -71,9 +71,12 @@ class GarbController extends Controller
      */
     public function detail(Garb $garb): View
     {
-        $garb->load(['fandom', 'thematic', 'hero']);
+        $garb->load(['fandom', 'thematic', 'hero', 'services']);
 
-        return view('app.personal.garb.detail', ['garb' => $garb]);
+        $garb->service_ids = $garb->services->pluck('id')->toArray();
+        $services = Service::all();
+
+        return view('app.personal.garb.detail', compact(['garb', 'services']));
     }
 
     /**

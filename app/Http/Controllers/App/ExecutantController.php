@@ -31,13 +31,22 @@ class ExecutantController extends Controller
     public function index(ListExecutantRequest $request)
     {
         $executants = $this->executantService->index($request);
-        $tab = $this->executantService->getActiveTab($request->get('hero', null), $executants);
+
+        $garbFilterData = [
+            'hero'     => $request->get('hero', null),
+            'fandom'   => $request->get('fandom', null),
+            'thematic' => $request->get('thematic', null),
+        ];
+
+        session()->put('garb_filter_data', $garbFilterData);
+
+        //$tab = $this->executantService->getActiveTab($request->get('hero', null), $executants);
 
         $cities = City::all();
         $thematics = Thematic::where('active', 1)->get();
         $specialities = Speciality::all();
 
-        return view('app.executant.index', compact(['executants', 'tab', 'cities', 'thematics', 'specialities']));
+        return view('app.executant.index', compact(['executants', 'cities', 'thematics', 'specialities']));
     }
 
     /**

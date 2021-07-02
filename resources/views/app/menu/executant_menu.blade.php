@@ -2,7 +2,7 @@
     <div class="header__overlay" data-close="true"></div>
     <div class="header-menu-mobile">
         <div class="header-menu-mobile">
-            <button class="header-menu-mobile__btn menu-open-btn"><span> </span><span> </span><span> </span>
+            <button class="header-menu-mobile__btn menu-open-btn" id='menu-open-btn'><span> </span><span> </span><span> </span>
             </button>
         </div>
     </div>
@@ -31,13 +31,13 @@
                         class="header-menu__icon"> <img src="{{ asset('images/contacts.ecfb84b5.svg') }}" alt="contactsu"></span><span
                         class="header-menu__text">Контакты</span></a></li>
             <li class="header-menu__item"><a class="header-menu__link" href="{{ route('personal_garb_index') }}"><span
-                        class="header-menu__icon"> <img src="{{ asset('images/contacts.ecfb84b5.svg') }}" alt="contactsu"></span><span
+                        class="header-menu__icon"> <img src="{{ asset('images/customers2.svg') }}" alt="contactsu"></span><span
                         class="header-menu__text">Мои костюмы</span></a></li>
             <li class="header-menu__item"><a class="header-menu__link" href="{{ route('personal_settings') }}"><span
-                        class="header-menu__icon"> <img src="{{ asset('images/contacts.ecfb84b5.svg') }}" alt="contactsu"></span><span
+                        class="header-menu__icon"> <img src="{{ asset('images/settings2.svg') }}" alt="contactsu"></span><span
                         class="header-menu__text">Настройки</span></a></li>
             <li class="header-menu__item"><a class="header-menu__link" href="{{ route('chat_index') }}"><span
-                        class="header-menu__icon"> <img src="{{ asset('images/contacts.ecfb84b5.svg') }}" alt="contactsu"></span><span
+                        class="header-menu__icon"> <img src="{{ asset('images/settings.svg') }}" alt="contactsu"></span><span
                         class="header-menu__text">Чаты</span></a></li>
             <li class="header-menu__item"><a class="header-menu__link" href="{{ route('logout') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/logout.svg') }}" alt="contactsu"></span><span

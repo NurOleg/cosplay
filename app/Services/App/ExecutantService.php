@@ -82,25 +82,37 @@ final class ExecutantService
     }
 
     /**
-     * @param ?string $heroName
-     * @param Collection $executants
-     * @return string
+     * @param Executant $executant
      */
-    public function getActiveTab(?string $heroName, Collection $executants): string
+    private function getActiveGarb(Executant $executant): void
     {
-        if ($heroName === null) {
-            return '';
+        $garbFilterData = session()->get('garb_filter_data');
+
+        // Если в сессии нет фильтров по свойствам костюма, делаем активным первый костюм у исполнителя
+        if (empty($garbFilterData)
+            ||
+            (empty($garbFilterData['hero']) && empty($garbFilterData['fandom']) && empty($garbFilterData['thematic']))
+        ) {
+            $executant->garbs[0]->is_active = true;
+            return;
         }
 
-        foreach ($executants as $executant) {
-            foreach ($executant->garbs as $garb) {
-                if ($garb->hero->name_ru === $heroName || $garb->hero->name_eng === $heroName) {
-                    return $garb->code;
+        // убираем пустые свойствам костюма из сессии
+        $garbData = array_filter($garbFilterData);
+
+        foreach ($executant->garbs as $garb) {
+            $entires = 0;
+            foreach ($garbData as $garbProperty => $propertyValue) {
+                if ($garb->$garbProperty->name_ru === $propertyValue || $garb->$garbProperty->name_eng === $propertyValue) {
+                    $entires++;
+
+                    if ($entires === count($garbData)) {
+                        $garb->is_active = true;
+                        return;
+                    }
                 }
             }
         }
-
-        return '';
     }
 
     /**
@@ -109,6 +121,18 @@ final class ExecutantService
      */
     public function detail(Executant $executant): Executant
     {
-        return $executant->load(['garbs', 'garbs.images', 'garbs.fandom', 'garbs.thematic', 'garbs.hero']);
+        $executantData = $executant->load([
+            'garbs',
+            'garbs.images',
+            'garbs.fandom',
+            'garbs.thematic',
+            'garbs.hero',
+            'specialities',
+            'city',
+            'services'
+        ]);
+        $this->getActiveGarb($executantData);
+
+        return $executantData;
     }
 }

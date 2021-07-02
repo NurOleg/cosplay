@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Garb extends Model
@@ -25,6 +26,15 @@ class Garb extends Model
         'hero_id',
         'active'
     ];
+
+    protected static function boot() {
+
+        parent::boot();
+
+        static::creating(function(self $garb) {
+            $garb->code = uniqid();
+        });
+    }
 
     /**
      * @return BelongsTo
@@ -66,5 +76,13 @@ class Garb extends Model
         return $this
             ->morphMany(Image::class, 'imageable')
             ->orderBy('order');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class);
     }
 }

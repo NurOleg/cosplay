@@ -45,9 +45,9 @@ final class GarbService
 
         if ($request->get('fandom_id') === null) {
             $fandom = Fandom::create([
-                'name_ru'  => $request->get('world'),
-                'name_eng' => $request->get('worldEn'),
-                'code'     => self::slugify($request->get('worldEn'), '_'),
+                'name_ru'  => $request->get('fandom'),
+                'name_eng' => $request->get('fandomEn'),
+                'code'     => self::slugify($request->get('fandomEn'), '_'),
                 'is_new'   => true
             ]);
 
@@ -85,8 +85,9 @@ final class GarbService
             foreach ($files as $k => $file) {
                 /** @var UploadedFile $file */
                 $storagePath = '/garb/' . $authUser->id . '/' . $file->getClientOriginalName();
+
                 if (!Storage::disk('public')->put($storagePath, $file->getContent())) {
-                    continue;
+                    throw new \Exception('Не удалось загрузить фото.');
                 }
 
                 $images[] = new Image([
@@ -97,7 +98,9 @@ final class GarbService
             $garb->images()->saveMany($images);
         }
 
-        $createdGarb = Garb::with(['fandom', 'images', 'thematic', 'hero'])->find($garb->id);
+        $garb->services()->sync($request->get('services'));
+
+        $createdGarb = Garb::with(['fandom', 'images', 'thematic', 'hero', 'services'])->find($garb->id);
 
         return $createdGarb;
     }
@@ -109,7 +112,10 @@ final class GarbService
      */
     public function update(UpdateGarbRequest $request, Garb $garb): Garb
     {
-        $updatedFiles = explode(',', $request->get('changed_files'));
+        $updatedFiles = $request->get('changed_files') !== null
+            ? explode(',', $request->get('changed_files'))
+            : null;
+
         $authUser = auth()->guard('executant')->user();
         $files = $request->files->get('photo');
 
@@ -144,6 +150,8 @@ final class GarbService
             }
             $garb->images()->saveMany($images);
         }
+
+        $garb->services()->sync($request->get('services'));
 
         $garb->update($request->validated());
 

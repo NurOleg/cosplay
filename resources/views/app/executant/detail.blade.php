@@ -12,13 +12,13 @@
                         <div class="cosplayer-about-item__img ibg"><img
                                 src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
                                 alt="cosplayer.img"></div>
-                        <div class="cosplayer-about-item__city cosplayer-city">Москва</div>
+                        <div class="cosplayer-about-item__city cosplayer-city">{{ $executant->city->name }}</div>
                         <div class="cosplayer-about-item__name">{{ $executant->fullname }}</div>
                         <div class="cosplayer-about-item__person">Косплеер</div>
                     </div>
                     <div class="cosplayer-about-item__column">
                         <div class="cosplayer-about-item__about">
-                            <div class="cosplayer-about-item__title">О косплеере</div>
+                            <div class="cosplayer-about-item__title">Об исполнителе</div>
                             <div class="cosplayer-about-item__text">
                                 {{ $executant->description }}
                             </div>
@@ -35,7 +35,7 @@
                 @foreach($executant->garbs as $garb)
                     <a
                         class="
-                        @if($loop->first)
+                        @if($garb->is_active == true)
                             active
                         @endif
                         {{--                        active --}}
@@ -47,7 +47,7 @@
             </div>
             @foreach($executant->garbs as $garb)
                 <div class="cosplayer-shape-item
-                @if($loop->first)
+                @if($garb->is_active == true)
                     open
                 @endif
                     " id="{{ $garb->code }}">
@@ -91,38 +91,38 @@
             <div class="cosplayer-services__row">
                 <div class="cosplayer-services__column">
                     <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="/check.73f159ab.svg" alt="check icon"
+                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
                                                               aria-hidden="true"><span
                             class="cosplayer-services-item__title">Участие в промоакциях</span></div>
                 </div>
                 <div class="cosplayer-services__column">
                     <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="/check.73f159ab.svg" alt="check icon"
+                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
                                                               aria-hidden="true"><span
                             class="cosplayer-services-item__title">Участие в совместных проектах/фотосессиях</span>
                     </div>
                 </div>
                 <div class="cosplayer-services__column">
                     <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="/check.73f159ab.svg" alt="check icon"
+                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
                                                               aria-hidden="true"><span
                             class="cosplayer-services-item__title"> Аренда костюма</span></div>
                 </div>
                 <div class="cosplayer-services__column">
                     <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="/check.73f159ab.svg" alt="check icon"
+                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
                                                               aria-hidden="true"><span
                             class="cosplayer-services-item__title">Продажа костюма</span></div>
                 </div>
                 <div class="cosplayer-services__column">
                     <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="/check.73f159ab.svg" alt="check icon"
+                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
                                                               aria-hidden="true"><span
                             class="cosplayer-services-item__title">Участие в съёмках фильмов/сериалов</span></div>
                 </div>
                 <div class="cosplayer-services__column">
                     <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
-                                                              src="/check.73f159ab.svg" alt="check icon"
+                                                              src="{{asset('images/check.73f159ab.svg')}}" alt="check icon"
                                                               aria-hidden="true"><span
                             class="cosplayer-services-item__title">Участие в рекламных проектах</span></div>
                 </div>

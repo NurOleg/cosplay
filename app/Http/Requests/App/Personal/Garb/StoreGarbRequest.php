@@ -19,6 +19,7 @@ class StoreGarbRequest extends BaseGarbRequest
             'concretization_eng' => ['required'],
             'description'        => ['required'],
             'active'             => ['required'],
+            'services'           => ['required'],
         ]);
     }
 }

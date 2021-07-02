@@ -12,7 +12,7 @@ class UpdateGarbRequest extends BaseGarbRequest
     public function rules(): array
     {
         return array_merge(parent::rules(), [
-            'changed_files' => ['string'],
+            'changed_files' => ['string', 'nullable'],
         ]);
     }
 }

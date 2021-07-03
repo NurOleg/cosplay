@@ -15,15 +15,16 @@
                 <a class="c-header-list__link" href="{{ route('public_event_index') }}"> Мероприятия</a>
             </li>
             <li class="c-header-list__item">
-                <a class="c-header-list__link" href="#"> Контакты</a>
+                <a class="c-header-list__link" href="{{ route('contacts') }}"> Контакты</a>
             </li>
             <li class="c-header-list__item">
-                <div class="c-header-list__link" href="#"> Кто мы?</div>
-                <div class="c-header-list-dropdawn"><a class="c-header-list-dropdawn__item" href="#">Фестивалям</a>
+                <div class="c-header-list__link" href="{{ route('about') }}"> Кто мы?</div>
+                <div class="c-header-list-dropdawn">
+                    <a class="c-header-list-dropdawn__item" href="{{ route('organisation_info') }}">Фестивалям</a>
                     <a
-                        class="c-header-list-dropdawn__item" href="#">О проекте</a><a
-                        class="c-header-list-dropdawn__item" href="#">Исполнителям</a><a
-                        class="c-header-list-dropdawn__item" href="#">Заказчикам</a></div>
+                        class="c-header-list-dropdawn__item" href="{{ route('about') }}">О проекте</a><a
+                        class="c-header-list-dropdawn__item" href="{{ route('cosplayer_info') }}">Исполнителям</a><a
+                        class="c-header-list-dropdawn__item" href="{{ route('customers_info') }}">Заказчикам</a></div>
             </li>
         </ul>
     </div>

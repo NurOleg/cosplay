@@ -207,7 +207,7 @@
                             Регистрируйтесь и добавляйте все свои косплей образы, чтобы дать возможность потенциальным
                             заказчикам найти Вас.
                         </div>
-                        <a class="how-item__link" href="#">Подробнее &rarr;</a></div>
+                        <a class="how-item__link" href="{{ route('cosplayer_info') }}">Подробнее &rarr;</a></div>
                 </div>
                 <div class="how-work__item">
                     <div class="how-item">
@@ -226,7 +226,7 @@
                             Зарегистрируйтесь, введите в фильте необходимые данные и общайтесь с косплеером на деловые
                             темы прямо внутри сайта.
                         </div>
-                        <a class="how-item__link" href="#">Подробнее &rarr;</a></div>
+                        <a class="how-item__link" href="{{ route('customers_info') }}">Подробнее &rarr;</a></div>
                 </div>
             </div>
         </div>

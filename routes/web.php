@@ -34,6 +34,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/info/customers', function () {
+    return view('app.static.customers_info');
+})->name('customers_info');
+
+Route::get('/info/organisation', function () {
+    return view('app.static.organisation_info');
+})->name('organisation_info');
+
+Route::get('/info/cosplayer', function () {
+    return view('app.static.cosplayer_info');
+})->name('cosplayer_info');
+
+Route::get('/info/about', function () {
+    return view('app.static.about');
+})->name('about');
+
+Route::get('/contacts', function () {
+    return view('app.static.contacts');
+})->name('contacts');
+
+
 Route::get('/main', [HomeController::class, 'index'])->name('main');
 Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
 Route::post('/chat', [ChatController::class, 'create'])->name('create_chat');

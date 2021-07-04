@@ -82,7 +82,7 @@
                 <div class="input-field__title">Пол</div>
                 <div class="input-field__input-wrapper"><select class="input-field__input"
                                                                 name="sex">
-                        <option value="0" disabled
+                        <option value=""
                                 @if(!request()->filled('sex') || empty(request()->get('sex')))
                                 selected
                             @endif

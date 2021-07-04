@@ -72,7 +72,7 @@ final class ExecutantService
         }
 
         if ($request->filled('fullName')) {
-            $executantQuery->where('fullName', $request->get('fullName'));
+            $executantQuery->where('fullName', 'like', '%' . $request->get('fullName') . '%');
         }
 
         if ($request->filled('speciality')) {

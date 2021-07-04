@@ -5,6 +5,15 @@
 @section('content')
     <div class="settings-form">
         <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="settings-form__title title title--center"><img class="title__icon"
                                                                        src="{{ asset('images/logo.5af45d3e.svg') }}"
                                                                        alt="Лого" aria-hidden="true">

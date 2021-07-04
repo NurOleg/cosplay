@@ -89,8 +89,8 @@
         <div class="container">
             <div class="title"><h2 class="title__text">Услуги</h2></div>
             @foreach($executant->garbs as $garb)
-                @foreach($garb->services as $service)
-                    <div class="cosplayer-services__row open" data-name="#{{ $garb->code }}">
+                <div class="cosplayer-services__row open" data-name="#{{ $garb->code }}">
+                    @foreach($garb->services as $service)
                         <div class="cosplayer-services__column">
                             <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"
                                                                       src="{{ asset('images/check.73f159ab.svg') }}"
@@ -98,8 +98,8 @@
                                                                       aria-hidden="true"><span
                                     class="cosplayer-services-item__title">{{ $service->name }}</span></div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             @endforeach
         </div>
     </section>

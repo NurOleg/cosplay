@@ -21,13 +21,13 @@
             <li class="header-menu__item"><a class="header-menu__link" href="{{ route('public_event_index') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/timetable.2788910c.svg') }}" alt="timetable"></span><span
                         class="header-menu__text">Мероприятия </span></a></li>
-            <li class="header-menu__item"><a class="header-menu__link" href="#"><span
+            <li class="header-menu__item"><a class="header-menu__link" href="{{ route('executant_index') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/catalog.f2920177.svg') }}" alt="Catalog"></span><span
                         class="header-menu__text">Каталог</span></a></li>
-            <li class="header-menu__item"><a class="header-menu__link" href="#"><span
+            <li class="header-menu__item"><a class="header-menu__link" href="{{ route('organisation_info') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/festival.d724a2e1.svg') }}" alt="festival"></span><span
                         class="header-menu__text">Для фестивалей</span></a></li>
-            <li class="header-menu__item"><a class="header-menu__link" href="#"><span
+            <li class="header-menu__item"><a class="header-menu__link" href="{{ route('contacts') }}"><span
                         class="header-menu__icon"> <img src="{{ asset('images/contacts.svg') }}" alt="contactsu"></span><span
                         class="header-menu__text">Контакты</span></a>
             </li><li class="header-menu__item"><a class="header-menu__link" href="{{ route('personal_settings') }}"><span

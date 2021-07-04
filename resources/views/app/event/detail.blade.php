@@ -67,10 +67,10 @@
                             </div>
                         </div>
                         <div class="eventmap-event__date eventmap-event-date__wrapper row wrap">
-                            @php
-                                $i = 0;
-                            @endphp
                             @foreach($programm['extra'] as $k => $extra)
+                                @php
+                                    $i = 0;
+                                @endphp
                                 @if($i === 0)
                                     <div class="eventmap-event__column">
                                 @endif

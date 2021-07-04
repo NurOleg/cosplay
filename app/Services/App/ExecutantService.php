@@ -135,6 +135,8 @@ final class ExecutantService
         ]);
         $this->getActiveGarb($executantData);
 
+        $executantData->specialitiesRow = implode(', ', $executantData->specialities->pluck('name')->toArray());
+
         return $executantData;
     }
 }

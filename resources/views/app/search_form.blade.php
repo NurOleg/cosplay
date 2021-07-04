@@ -51,7 +51,8 @@
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Персонаж</div>
                 <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
-                                                               name="hero" list="hero" data-name="hero">
+                                                               name="hero" list="hero" data-name="hero"
+                                                               value="{{ request()->get('hero') }}">
                     <datalist id="hero"></datalist>
                 </div>
             </div>
@@ -60,7 +61,8 @@
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Вселенная</div>
                 <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
-                                                               name="fandom" list="fandom" data-name="fandom">
+                                                               name="fandom" list="fandom" data-name="fandom"
+                                                               value="{{ request()->get('fandom') }}">
                     <datalist id="fandom"></datalist>
                 </div>
             </div>
@@ -69,7 +71,8 @@
             <div class="input-field input-field--block" data-selection="">
                 <div class="input-field__title">Ник косплеера</div>
                 <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
-                                                               name="nick" list="nick" data-name="nick">
+                                                               name="nick" list="nick" data-name="nick"
+                    value="{{ request()->get('nick') }}">
                     <datalist id="nick"></datalist>
                 </div>
             </div>
@@ -101,7 +104,8 @@
                 <div class="input-field__title">Фамилия Имя</div>
                 <div class="input-field__input-wrapper"><input class="input-field__input" type="text"
                                                                name="fullName" list="fullName"
-                                                               data-name="fullName">
+                                                               data-name="fullName"
+                                                               value="{{ request()->get('fullName') }}">
                     <datalist id="fullName"></datalist>
                 </div>
             </div>

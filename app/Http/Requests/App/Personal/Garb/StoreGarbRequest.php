@@ -15,11 +15,11 @@ class StoreGarbRequest extends BaseGarbRequest
             //'thematic_id'        => ['required'],
             //'hero_id'            => ['required'],
             //'fandom_id'          => ['required'],
-            'concretization'     => ['required'],
-            'concretization_eng' => ['required'],
-            'description'        => ['required'],
+            //'concretization'     => ['required'],
+            //'concretization_eng' => ['required'],
+            //'description'        => ['required'],
             'active'             => ['required'],
-            'services'           => ['required'],
+            //'services'           => ['required'],
         ]);
     }
 }

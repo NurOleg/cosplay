@@ -58,10 +58,11 @@
                     <div class="customers-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="name"> Название
-                                    персонажа</label></div>
+                                    персонажа*</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="hero"
                                                                            type="text" name="hero" list="hero-datalist"
                                                                            data-name="hero" data-associated="#heroEn"
+                                                                           required
                                                                            data-leng="ru" autocomplete="off"
                                                                            data-secret="#hero-id">
                                 <datalist id="hero-datalist"></datalist>
@@ -71,9 +72,10 @@
                     <div class="customers-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="nameEn"> Character
-                                    name</label></div>
+                                    name*</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="heroEn"
                                                                            type="text" name="heroEn"
+                                                                           required
                                                                            list="heroEn-datalist" data-name="hero"
                                                                            data-associated="#hero" data-leng="en"
                                                                            autocomplete="off" data-secret="#hero-id">
@@ -108,11 +110,12 @@
                     <div class="customers-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="subject">
-                                    Тематика</label></div>
+                                    Тематика*</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="thematic"
                                                                            type="text" name="thematic"
                                                                            list="thematic-datalist" data-name="thematic"
                                                                            data-associated="#thematicEn" data-leng="ru"
+                                                                           required
                                                                            data-secret="#thematic-id"
                                                                            autocomplete="off">
                                 <datalist id="thematic-datalist"></datalist>
@@ -122,9 +125,10 @@
                     <div class="customers-form__column">
                         <div class="input-field" data-selection="">
                             <div class="input-field__header"><label class="input-field__title" for="subjectEn">
-                                    Subject</label></div>
+                                    Subject*</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="thematicEn"
                                                                            type="text" name="thematicEn"
+                                                                           required
                                                                            list="thematicEn-datalist"
                                                                            data-name="thematic"
                                                                            data-secret="#thematic-id"
@@ -136,9 +140,10 @@
                     <div class="customers-form__column">
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="subject">
-                                    Фандом</label></div>
+                                    Фандом*</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="fandom"
                                                                            type="text" name="fandom"
+                                                                           required
                                                                            list="fandom-datalist" data-name="fandom"
                                                                            data-associated="#fandomEn" data-leng="ru"
                                                                            data-secret="#fandom-id"
@@ -150,10 +155,11 @@
                     <div class="customers-form__column">
                         <div class="input-field" data-selection="">
                             <div class="input-field__header"><label class="input-field__title" for="fandomEn">
-                                    Fandom</label></div>
+                                    Fandom*</label></div>
                             <div class="input-field__input-wrapper"><input class="input-field__input" id="fandomEn"
                                                                            type="text" name="fandomEn"
                                                                            list="fandomEn-datalist"
+                                                                           required
                                                                            data-name="fandom"
                                                                            data-secret="#fandom-id"
                                                                            autocomplete="off">

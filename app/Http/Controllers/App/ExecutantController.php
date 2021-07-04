@@ -43,7 +43,7 @@ class ExecutantController extends Controller
         //$tab = $this->executantService->getActiveTab($request->get('hero', null), $executants);
 
         $cities = City::all();
-        $thematics = Thematic::where('active', 1)->get();
+        $thematics = Thematic::where('active', 1)->whereNotNull('name_ru')->get();
         $specialities = Speciality::all();
 
         return view('app.executant.index', compact(['executants', 'cities', 'thematics', 'specialities']));

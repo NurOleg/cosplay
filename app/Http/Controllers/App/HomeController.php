@@ -27,7 +27,7 @@ class HomeController extends Controller
         $news = News::where('active', 1)->orderBy('created_at', 'desc')->take(3)->get();
         $genders = ['male' => 'Мужской', 'female' => 'Женский'];
         $cities = City::all();
-        $thematics = Thematic::where('active', 1)->get();
+        $thematics = Thematic::where('active', 1)->whereNotNull('name_ru')->get();
         $specialities = Speciality::all();
 
         return view('app.main', compact(['events', 'news', 'genders', 'cities', 'thematics', 'specialities']));

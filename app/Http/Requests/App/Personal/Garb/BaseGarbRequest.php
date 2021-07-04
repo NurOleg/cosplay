@@ -24,9 +24,9 @@ class BaseGarbRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //'thematic_id'        => ['string'],
-            //'hero_id'            => ['string'],
-            //'fandom_id'          => ['string'],
+            'thematic_id'        => ['string', 'nullable'],
+            'hero_id'            => ['string', 'nullable'],
+            'fandom_id'          => ['string', 'nullable'],
             'concretization'     => ['string', 'nullable'],
             'concretization_eng' => ['string', 'nullable'],
             'description'        => ['string', 'nullable'],

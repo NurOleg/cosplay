@@ -73,7 +73,7 @@
                             @foreach($programm['extra'] as $k => $extra)
                                 @if($i === 0)
                                     <div class="eventmap-event__column">
-                                        @endif
+                                @endif
                                         <div class="eventmap-event-date">
                                             <div
                                                 class="eventmap-event-date__time">{{ \Carbon\Carbon::parse($extra['time'])->format('H:i')}}</div>
@@ -82,7 +82,7 @@
                                         @php
                                             $i = $i + 1;
                                         @endphp
-                                        @if($i === 3 || count($extra) === $i)
+                                @if($i === 3 || count($extra) === $i)
                                             @php
                                                 $i = 0;
                                             @endphp

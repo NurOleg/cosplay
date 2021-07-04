@@ -6,7 +6,7 @@
                 <div class="input-field__input-wrapper">
                     <select class="input-field__input"
                             name="speciality">
-                        <option value="0" disabled
+                        <option value=""
                                 @if(!request()->filled('speciality') || empty(request()->get('speciality')))
                                 selected
                             @endif
@@ -30,7 +30,7 @@
 
                     <select class="input-field__input"
                             name="city">
-                        <option value="0" disabled
+                        <option value=""
                                 @if(!request()->filled('city') || empty(request()->get('city')))
                                 selected
                             @endif
@@ -116,7 +116,7 @@
                 <div class="input-field__input-wrapper">
                     <select class="input-field__input"
                             name="thematic">
-                    <option value="0" disabled
+                    <option value=""
                                                                 @if(!request()->filled('thematic') || empty(request()->get('thematic')))
                                                                 selected
                         @endif

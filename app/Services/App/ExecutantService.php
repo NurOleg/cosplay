@@ -71,8 +71,8 @@ final class ExecutantService
             $executantQuery->whereCityId($request->get('city'));
         }
 
-        if ($request->filled('name')) {
-            $executantQuery->whereName($request->get('name'));
+        if ($request->filled('fullName')) {
+            $executantQuery->whereFullName($request->get('fullName'));
         }
 
         if ($request->filled('speciality')) {

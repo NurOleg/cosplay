@@ -105,7 +105,7 @@ class ChatController extends Controller
             $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
         }
 
-        return $chats;
+        return response()->json($chats, 200);
     }
 
     /**

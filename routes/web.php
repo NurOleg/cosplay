@@ -63,7 +63,7 @@ Route::post('/chat', [ChatController::class, 'create'])->name('create_chat');
 Route::get('/personal/chats/info/{uuid}', [ChatController::class, 'getChatInfo']);
 //Route::get('/chats', [ChatController::class, 'fetchChats']);
 Route::get('/personal/chat/{uuid}/messages', [ChatController::class, 'fetchMessages']);
-Route::get('/personal/chats-fetch', [ChatController::class, 'fetchChats']);
+Route::get('/personal/chats', [ChatController::class, 'fetchChats']);
 Route::post('/personal/chat/messages', [ChatController::class, 'sendMessage']);
 
 
@@ -84,7 +84,7 @@ Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
     Route::get('/settings', [PersonalController::class, 'settingsForm'])->name('personal_settings');
     Route::post('/settings', [PersonalController::class, 'update'])->name('personal_settings_update');
 
-    Route::get('/chats', [ChatController::class, 'index'])->name('chat_index');
+    Route::get('/chats', [ChatController::class, 'fetchChats'])->name('chat_index');
     Route::get('/chats/{uuid}', [ChatController::class, 'index']);
 
     Route::group(['namespace' => 'admin'], function () {

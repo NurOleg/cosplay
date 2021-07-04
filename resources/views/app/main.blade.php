@@ -272,30 +272,22 @@
                 <h2 class="articles__title title">
                     <div class="title__text">СТАТЬИ И НОВОСТИ</div>
                 </h2>
+
                 <div class="articles__row">
                     @foreach($news as $newsOne)
-                        <div class="articles__item">
-                            <a class="articles-item" href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}">
-                                <span class="articles-item__body">
-                                    <span class="articles-item__title">
-                                        {{ $newsOne->name }}
-                                    </span>
-                                    <span class="articles-item__text">
-                                        {{ $newsOne->preview_body }}
-                                    </span>
-                                </span>
-                                <span class="articles-item__bg">
-                                    <img
-                                        class="articles-item__img"
-                                        src="{{ Storage::url($newsOne->preview_img_src) }}"
-                                        alt="Картинка статьи" aria-hidden="true">
-                                </span>
-                            </a>
-                        </div>
+                        <div class="articles__item"><a class="articles-item"
+                                                       href="{{ route('public_news_detail', ['news' => $newsOne->slug]) }}"> <span
+                                    class="articles-item__body"> <span
+                                        class="articles-item__title">{{ $newsOne->name }}</span><span
+                                        class="articles-item__text">{{ $newsOne->preview_body }}</span></span><span
+                                    class="articles-item__bg"> <img class="articles-item__img"
+                                                                    src="{{ Storage::url($newsOne->preview_img_src) }}"
+                                                                    alt="{{ $newsOne->name }}"
+                                                                    aria-hidden="true"></span></a></div>
                     @endforeach
                 </div>
-                <div class="articles__footer"><a class="articles__link btn btn--red" href="{{ route('public_news_index') }}"> Читать все статьи</a>
-                </div>
+                <div class="articles__footer"><a class="articles__link btn btn--red"
+                                                 href="{{ route('public_news_index') }}"> Читать все статьи</a></div>
             </div>
         </section>
     @endif

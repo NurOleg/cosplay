@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="cosplay-card-search__body">
                                                         <a class="cosplay-card-search__name"
-                                                           href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">{{ $executant->fullname }}</a>
+                                                           href="{{ route('executant_detail', ['executant' => $executant->id]) }}#{{$garb->code}}">{{ $executant->fullname }}</a>
                                                         <div
                                                             class="cosplay-card-search__person">{{ $executant->nickname }}</div>
                                                     </div>

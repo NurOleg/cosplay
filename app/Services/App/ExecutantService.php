@@ -84,25 +84,37 @@ final class ExecutantService
 
         $executants = $executantQuery->with(['image', 'garbs.hero', 'garbs.images'])->get();
 
-        if ($request->filled('hero')) {
-            return $this->getShowhedGarbs($request->get('hero'), $executants);
+        $garbFilterData = session()->get('garb_filter_data');
+
+        if (!empty($garbFilterData)) {
+            // убираем пустые свойствам костюма из сессии
+            $garbData = array_filter($garbFilterData);
+
+            return $this->getShowhedGarbs($garbData, $executants);
         }
 
         return $executants;
     }
 
     /**
-     * @param string $hero
+     * @param array $garbData
      * @param $executants
      * @return mixed
      */
-    private function getShowhedGarbs(string $hero, $executants)
+    private function getShowhedGarbs(array $garbData, $executants)
     {
         foreach ($executants as $executant) {
             foreach ($executant->garbs as $garb) {
-                if (mb_strtolower($garb->hero->name_ru) === mb_strtolower($hero)
-                    || mb_strtolower($garb->hero->name_eng) === mb_strtolower($hero)) {
-                    $garb->show = true;
+                $entires = 0;
+                foreach ($garbData as $garbProperty => $propertyValue) {
+                    if (mb_strtolower($garb->$garbProperty->name_ru) === mb_strtolower($propertyValue)
+                        || mb_strtolower($garb->$garbProperty->name_eng) === mb_strtolower($propertyValue)) {
+                        $entires++;
+
+                        if ($entires === count($garbData)) {
+                            $garb->show = true;
+                        }
+                    }
                 }
             }
         }

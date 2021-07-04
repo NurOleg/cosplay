@@ -17,6 +17,8 @@ final class ExecutantService
     {
         $executantQuery = Executant::query();
 
+        $executantQuery->has('garbs');
+
         if ($request->filled('hero')) {
             $executantQuery->whereHas('garbs', function ($builder) use ($request) {
                 $builder->whereHas('hero', function ($b) use ($request) {

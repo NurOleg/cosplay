@@ -42,8 +42,8 @@
                                 </div>
                             </div>
                             <div class="customer-card__body">
-                                <div class="customer-card__title">{{ $garb->hero->name_ru . ' ' . $garb->hero->concretization }}</div>
-                                <div class="customer-card__subtitle">{{ $garb->description }}</div>
+                                <div class="customer-card__title">{{ $garb->hero->name_ru }}</div>
+                                <div class="customer-card__subtitle">{{ $garb->concretization }}</div>
                             </div>
                         </div>
                     @endforeach

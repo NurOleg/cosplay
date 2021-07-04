@@ -30,8 +30,6 @@ class ExecutantController extends Controller
      */
     public function index(ListExecutantRequest $request)
     {
-        $executants = $this->executantService->index($request);
-
         $garbFilterData = [
             'hero'     => $request->get('hero', null),
             'fandom'   => $request->get('fandom', null),
@@ -40,13 +38,16 @@ class ExecutantController extends Controller
 
         session()->put('garb_filter_data', $garbFilterData);
 
+        $executants = $this->executantService->index($request);
+
         //$tab = $this->executantService->getActiveTab($request->get('hero', null), $executants);
 
         $cities = City::all();
         $thematics = Thematic::where('active', 1)->whereNotNull('name_ru')->get();
         $specialities = Speciality::all();
+        $showGarbs = !empty($garbFilterData['hero']);
 
-        return view('app.executant.index', compact(['executants', 'cities', 'thematics', 'specialities']));
+        return view('app.executant.index', compact(['executants', 'cities', 'thematics', 'specialities', 'showGarbs']));
     }
 
     /**

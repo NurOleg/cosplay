@@ -61,7 +61,7 @@ final class ExecutantService
             $executantQuery->whereSex($request->get('sex'));
         }
 
-        if ($request->filled('nickname')) {
+        if ($request->filled('nick')) {
             $executantQuery->whereNickname($request->get('nickname'));
         }
 
@@ -80,7 +80,31 @@ final class ExecutantService
             });
         }
 
-        return $executantQuery->with(['image', 'garbs.hero'])->get();
+        $executants = $executantQuery->with(['image', 'garbs.hero', 'garbs.images'])->get();
+
+        if ($request->filled('hero')) {
+            return $this->getShowhedGarbs($request->get('hero'), $executants);
+        }
+
+        return $executants;
+    }
+
+    /**
+     * @param string $hero
+     * @param $executants
+     * @return mixed
+     */
+    private function getShowhedGarbs(string $hero, $executants)
+    {
+        foreach ($executants as $executant) {
+            foreach ($executant->garbs as $garb) {
+                if (mb_strtolower($garb->hero->name_ru) === mb_strtolower($hero)
+                    || mb_strtolower($garb->hero->name_eng) === mb_strtolower($hero)) {
+                    $garb->show = true;
+                }
+            }
+        }
+        return $executants;
     }
 
     /**

@@ -23,27 +23,59 @@
                     @else
 
                         <div class="mCustomScrollbar search-result__row" id="search-result">
-                            @foreach($executants as $executant)
-                                <div class="search-result__column">
-                                    <div class="cosplay-card-search search-result__item">
-                                        <div class="cosplay-card-search__header">
-                                            <div class="cosplay-card-search__status cosplay-card-search__status--pro">
-                                                PRO
+                            @if($showGarbs == false)
+                                @foreach($executants as $executant)
+                                    <div class="search-result__column">
+                                        <div class="cosplay-card-search search-result__item">
+                                            <div class="cosplay-card-search__header">
+                                                <div
+                                                    class="cosplay-card-search__status cosplay-card-search__status--pro">
+                                                    PRO
+                                                </div>
+                                                <a href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">
+                                                    <img class="cosplay-card-search__img"
+                                                         src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
+                                                         alt="cosplay photo">
+                                                </a>
                                             </div>
-                                            <a href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">
-                                                <img class="cosplay-card-search__img"
-                                                     src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
-                                                     alt="cosplay photo">
-                                            </a>
-                                        </div>
-                                        <div class="cosplay-card-search__body">
-                                            <a class="cosplay-card-search__name"
-                                               href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">{{ $executant->fullname }}</a>
-                                            <div class="cosplay-card-search__person">Косплеер</div>
+                                            <div class="cosplay-card-search__body">
+                                                <a class="cosplay-card-search__name"
+                                                   href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">{{ $executant->fullname }}</a>
+                                                <div
+                                                    class="cosplay-card-search__person">{{ $executant->nickname }}</div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                @foreach($executants as $executant)
+                                    @foreach($executant->garbs as $garb)
+                                        @if($garb->show == true)
+                                            <div class="search-result__column">
+                                                <div class="cosplay-card-search search-result__item">
+                                                    <div class="cosplay-card-search__header">
+                                                        <div
+                                                            class="cosplay-card-search__status cosplay-card-search__status--pro">
+                                                            PRO
+                                                        </div>
+                                                        <a href="{{ route('executant_detail', ['executant' => $executant->id]) }}">
+                                                            <img class="cosplay-card-search__img"
+                                                                 src="{{ isset($garb->images[0]) ? Storage::url($garb->images[0]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
+                                                                 alt="cosplay photo">
+                                                        </a>
+                                                    </div>
+                                                    <div class="cosplay-card-search__body">
+                                                        <a class="cosplay-card-search__name"
+                                                           href="{{ route('executant_detail', ['executant' => $executant->id]) }}@if(!empty($tab))#{{$tab}}@endif">{{ $executant->fullname }}</a>
+                                                        <div
+                                                            class="cosplay-card-search__person">{{ $executant->nickname }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            @endif
                         </div>
                     @endif
                 </div>

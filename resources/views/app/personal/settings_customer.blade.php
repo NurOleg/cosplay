@@ -272,9 +272,7 @@
                                 class="input-field__title">О себе в свободной форме</span></div>
                         <div class="input-field__input-wrapper"><textarea maxlength="1000"
                                                                           class="input-field__textarea setting-form__about-textarea"
-                                                                          name="description">
-                                    {{ $user->description }}
-                                </textarea>
+                                                                          name="description">{{ $user->description }}</textarea>
                         </div>
                     </div>
                 </div>

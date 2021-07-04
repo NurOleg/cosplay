@@ -94,7 +94,6 @@
                             <div class="input-field__input-wrapper">
                                 <input class="input-field__input"
                                        id="password"
-                                       required
                                        type="password"
                                        name="password"
                                 >

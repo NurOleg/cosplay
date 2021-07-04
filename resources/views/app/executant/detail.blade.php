@@ -89,7 +89,11 @@
         <div class="container">
             <div class="title"><h2 class="title__text">Услуги</h2></div>
             @foreach($executant->garbs as $garb)
-                <div class="cosplayer-services__row open" data-name="#{{ $garb->code }}">
+                <div class="cosplayer-services__row
+                    @if($garb->is_active == true)
+                        open
+                    @endif
+                    " data-name="#{{ $garb->code }}">
                     @foreach($garb->services as $service)
                         <div class="cosplayer-services__column">
                             <div class="cosplayer-services-item"><img class="cosplayer-services-item__icon"

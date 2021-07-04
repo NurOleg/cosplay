@@ -48,13 +48,14 @@
                         <div class="input-field">
                             <div class="input-field__header"><label class="input-field__title" for="nameLastName">
                                     Фамилия и
-                                    имя</label></div>
+                                    имя*</label></div>
                             <div class="input-field__input-wrapper">
                                 <input
                                     class="input-field__input"
                                     id="nameLastName"
                                     type="text"
                                     name="name"
+                                    required
                                     value="{{ $user->name }}"
                                 >
                             </div>
@@ -64,7 +65,7 @@
                         <div class="input-field">
                             <div class="input-field__header">
                                 <label class="input-field__title"
-                                       for="nicknameRu">Организация</label>
+                                       for="nicknameRu">Организация*</label>
                                 <div class="tip" data-text="Ваша организация">
                                     <img class="tip__icon"
                                          src="{{ asset('images/tip.1645b35d.svg') }}"
@@ -75,6 +76,7 @@
                                        id="nicknameRu"
                                        type="text"
                                        name="organization"
+                                       required
                                        value="{{ $user->organization }}"
                                 >
                             </div>
@@ -120,12 +122,13 @@
                 <div class="setting-form__column">
                     <div class="input-field">
                         <div class="input-field__header"><label class="input-field__title" for="country">
-                                Страна</label>
+                                Страна*</label>
                         </div>
                         <div class="input-field__input-wrapper">
                             <input class="input-field__input"
                                    id="country"
                                    type="text"
+                                   required
                                    name="country"
                                    value="{{ $user->country }}"
                             >
@@ -146,10 +149,11 @@
                 {{--                    </div>--}}
                 <div class="setting-form__column">
                     <div class="input-field">
-                        <div class="input-field__header"><label class="input-field__title" for="city"> Город</label>
+                        <div class="input-field__header"><label class="input-field__title" for="city"> Город*</label>
                         </div>
                         <div class="input-field__input-wrapper">
                             <select class="input-field__select" id="city"
+                                    required
                                     name="city_id">
                                 @foreach($cities as $city)
                                     <option
@@ -166,18 +170,20 @@
                 <div class="setting-form__column">
                     <div class="input-field setting-form__input-field--double">
                         <div class="input-field__header"><label class="input-field__title" for="phone"> Номер
-                                телефона</label></div>
+                                телефона*</label></div>
                         <div class="input-field__input-wrapper"><input class="input-field__input" id="phone"
                                                                        type="tel"
                                                                        name="phone"
+                                                                       required
                                                                        value="{{ $user->phone }}"></div>
                     </div>
                     <div class="input-field">
                         <div class="input-field__header"><label class="input-field__title" for="email">
-                                E-mail</label>
+                                E-mail*</label>
                         </div>
                         <div class="input-field__input-wrapper"><input class="input-field__input" id="email"
                                                                        type="email" name="email"
+                                                                       required
                                                                        value="{{ $user->email }}"></div>
                     </div>
                 </div>

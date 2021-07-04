@@ -14,7 +14,7 @@
                                 alt="cosplayer.img"></div>
                         <div class="cosplayer-about-item__city cosplayer-city">{{ $executant->city->name }}</div>
                         <div class="cosplayer-about-item__name">{{ $executant->fullname }}</div>
-                        <div class="cosplayer-about-item__person">Косплеер</div>
+                        <div class="cosplayer-about-item__person">{{ $executant->specialitiesRow }}</div>
                     </div>
                     <div class="cosplayer-about-item__column">
                         <div class="cosplayer-about-item__about">

@@ -27,10 +27,10 @@ class BaseGarbRequest extends FormRequest
             //'thematic_id'        => ['string'],
             //'hero_id'            => ['string'],
             //'fandom_id'          => ['string'],
-            'concretization'     => ['string'],
-            'concretization_eng' => ['string'],
-            'description'        => ['string'],
-            'services'           => ['array'],
+            'concretization'     => ['string', 'nullable'],
+            'concretization_eng' => ['string', 'nullable'],
+            'description'        => ['string', 'nullable'],
+            'services'           => ['array', 'nullable'],
             'active'             => ['numeric'],
         ];
     }

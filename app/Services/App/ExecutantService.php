@@ -62,7 +62,9 @@ final class ExecutantService
         }
 
         if ($request->filled('nick')) {
-            $executantQuery->whereNickname($request->get('nickname'));
+            $executantQuery
+                ->where('nickname', $request->get('nick'))
+                ->orWhere('nickname_eng', $request->get('nick'));
         }
 
         if ($request->filled('city')) {

@@ -58,7 +58,7 @@
                                                             class="cosplay-card-search__status cosplay-card-search__status--pro">
                                                             PRO
                                                         </div>
-                                                        <a href="{{ route('executant_detail', ['executant' => $executant->id]) }}#{{$garb->code}}"">
+                                                        <a href="{{ route('executant_detail', ['executant' => $executant->id]) }}#{{$garb->code}}">
                                                             <img class="cosplay-card-search__img"
                                                                  src="{{ isset($garb->images[0]) ? Storage::url($garb->images[0]->path) : asset('images/no-photo.0b72cc78.jpg') }}"
                                                                  alt="cosplay photo">

@@ -45,7 +45,7 @@ class ExecutantController extends Controller
         $cities = City::all();
         $thematics = Thematic::where('active', 1)->whereNotNull('name_ru')->get();
         $specialities = Speciality::all();
-        $showGarbs = !empty($garbFilterData['hero']);
+        $showGarbs = !empty(array_filter($garbFilterData));
 
         return view('app.executant.index', compact(['executants', 'cities', 'thematics', 'specialities', 'showGarbs']));
     }

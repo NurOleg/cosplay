@@ -12,6 +12,7 @@ use App\Models\Message;
 use App\Services\App\PersonalService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
@@ -35,13 +36,36 @@ class ChatController extends Controller
 
     /**
      * @param string|null $uuid
-     * @return View
+     * @return JsonResponse
      */
-    public function index(?string $uuid = null): View
+    public function index(?string $uuid = null): JsonResponse
     {
         $user = $this->personalService->getAuthenticatedUser();
 
-        return view('app.personal.chat.index', compact('user'));
+        if ($user instanceof Executant) {
+            $relatedUser = 'customer';
+
+        } elseif ($user instanceof Customer) {
+            $relatedUser = 'executant';
+        } else {
+            abort(404);
+        }
+
+        $chat = Chat::with($relatedUser . '.image')->find($uuid);
+
+        if ($relatedUser === 'executant') {
+            $chat->customer_unreaded_messages_count = 0;
+            $chat->save();
+        } else {
+            $chat->executant_unreaded_messages_count = 0;
+            $chat->save();
+        }
+
+        $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
+
+        $chat->load('messages');
+
+        return response()->json(['chat' => $chat, 'currentUser' => $user], 200);
     }
 
     /**
@@ -105,7 +129,7 @@ class ChatController extends Controller
             $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
         }
 
-        return response()->json($chats, 200);
+        return response()->json(['chats' => $chats, 'currentUser' => $user], 200);
     }
 
     /**
@@ -126,13 +150,13 @@ class ChatController extends Controller
 
     /**
      * @param Request $request
-     * @return string[]
+     * @return JsonResponse
      */
-    public function sendMessage(Request $request)
+    public function sendMessage(string $uuid, Request $request): JsonResponse
     {
         $user = $this->personalService->getAuthenticatedUser();
 
-        $chat = Chat::find($request->input('chat'));
+        $chat = Chat::find($uuid);
 
         if ($user instanceof Executant) {
             $data['executant_id'] = $user->id;
@@ -148,14 +172,14 @@ class ChatController extends Controller
             abort(404);
         }
 
-        $data['message'] = $request->input('message');
+        $data['message'] = $request->get('message');
         $data['chat_id'] = $chat->id;
 
         $message = $user->messages()->create($data);
 
-        broadcast(new MessageSent($user, $message, $chat->id))->toOthers();
+        //broadcast(new MessageSent($user, $message, $chat->id))->toOthers();
 
-        return ['status' => 'Message Sent!'];
+        return response()->json(['status' => 'Message Sent!']);
     }
 
     /**
@@ -192,7 +216,7 @@ class ChatController extends Controller
 
         $chat->messages()->save($message);
 
-        broadcast(new MessageSent($customer, $message, $chat->id))->toOthers();
+        //broadcast(new MessageSent($customer, $message, $chat->id))->toOthers();
 
         return redirect()->route('chat_index', ['chat' => $chat->id]);
     }

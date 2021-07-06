@@ -117,12 +117,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     }
 
     return newRequire;
-})({"/images/cosplayer-arrow.svg":[function(require,module,exports) {
-        module.exports = "/images/cosplayer-arrow.95cb7f83.svg";
+})({"/images/cosplayer-arrow.45e1cef2.svg":[function(require,module,exports) {
+        module.exports = "/images/cosplayer-arrow.45e1cef2.svg";
     },{}],"/js/cosplayer.js":[function(require,module,exports) {
         "use strict";
 
-        var _cosplayerArrow = _interopRequireDefault(require("/images/cosplayer-arrow.svg"));
+        var _cosplayerArrow = _interopRequireDefault(require("/images/cosplayer-arrow.45e1cef2.svg"));
 
         function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -161,7 +161,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
             if (!tabId) return;
             openTabById(tabId);
         }
-    },{"/images/cosplayer-arrow.svg":"/images/cosplayer-arrow.svg"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+    },{"/images/cosplayer-arrow.45e1cef2.svg":"/images/cosplayer-arrow.45e1cef2.svg"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
         var global = arguments[3];
         var OVERLAY_ID = '__parcel__error__overlay__';
         var OldModule = module.bundle.Module;

@@ -123,7 +123,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
         module.exports = "/images/slider-arrow-prev.71294e1b.svg";
     },{}],"/images/no-photo.jpg":[function(require,module,exports) {
         module.exports = "/images/no-photo.02bc0e46.jpg";
-    },{}],"/script/index.js":[function(require,module,exports) {
+    },{}],"/js/script.5a81296d.js":[function(require,module,exports) {
         "use strict";
 
         var _sliderArrow = _interopRequireDefault(require("/images/slider-arrow.svg"));
@@ -474,5 +474,5 @@ parcelRequire = (function (modules, cache, entry, globalName) {
                 return true;
             }
         }
-    },{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../script/index.js"], null)
+    },{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../js/script.5a81296d.js"], null)
 //# sourceMappingURL=/script.bc738916.js.map

@@ -117,13 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     }
 
     return newRequire;
-})({"/images/slider-arrow.2c114611.svg":[function(require,module,exports) {
-        module.exports = "/images/slider-arrow.2c114611.svg";
-    },{}],"/images/slider-arrow-prev.svg":[function(require,module,exports) {
-        module.exports = "/images/slider-arrow-prev.3865e0a9.svg";
-    },{}],"/images/no-photo.jpg":[function(require,module,exports) {
-        module.exports = "/images/no-photo.0b72cc78.jpg";
-    },{}],"/js/script.5a81296d.js":[function(require,module,exports) {
+})({"/js/script.5a81296d.js":[function(require,module,exports) {
         "use strict";
 
         var _sliderArrow = _interopRequireDefault(require("/images/slider-arrow.2c114611.svg"));

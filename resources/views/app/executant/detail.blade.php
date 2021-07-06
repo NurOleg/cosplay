@@ -50,7 +50,7 @@
                 @if($garb->is_active == true)
                     open
                 @endif
-                    " id="{{ $garb->code }}" data-name="{{ $garb->code }}">
+                    " id="{{ $garb->code }}" data-name="#{{ $garb->code }}">
                     <div class="cosplayer-shape__row">
                         <div class="cosplayer-shape__column">
                             <div class="cosplayer-shape__slider cosplayer-shape-slider__wrapper">

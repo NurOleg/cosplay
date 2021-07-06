@@ -146,7 +146,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
             $(".cosplayer-shape-tab[href=\"".concat(id, "\"]")).addClass("active");
             $(".cosplayer-shape-item").fadeOut();
             $(".cosplayer-shape-item").removeClass("open");
-            $(".cosplayer-shape-item[data-name=\"".concat(id, "\"]")).addClass("open").fadeIn("linear", function () {
+            $(".cosplayer-shape-item[data-name=\"".concat(id, "\"]")).fadeIn("linear", function () {
                 $(this).find(".cosplayer-shape-slider").not(".slick-initialized").slick({
                     infinite: false,
                     prevArrow: "<button class=\"slick-prev\"><img src=\"".concat(_cosplayerArrow.default, "\"/></button>"),

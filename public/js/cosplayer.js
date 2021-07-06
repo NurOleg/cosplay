@@ -153,7 +153,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
                     nextArrow: "<button class=\"slick-next\"><img src=\"".concat(_cosplayerArrow.default, "\"/></button>")
                 });
             });
-            $(".cosplayer-services__row[data-name=\"".concat(id, "\"]")).fadeIn("linear").css("display", "flex");
+            $(".cosplayer-services__row[data-name=\"".concat(id, "\"]")).addClass("open").fadeIn("linear").css("display", "flex");
         }
 
         function openTabByDocumentUrl() {

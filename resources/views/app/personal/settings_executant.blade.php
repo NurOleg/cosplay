@@ -38,7 +38,7 @@
                             <div class="setting-form-img__title">
                                 <img src="{{ asset('images/download.0e10ec77.svg') }}"
                                      alt="downnolad svg"
-                                     aria-hidden="true"><span>Загрузить </span><div class="tip" data-text="Максимальный размер изображения - 0.5 Mb">
+                                     aria-hidden="true"><span>Загрузить </span><div class="tip" data-text="Максимальный размер изображения - 1 Mb">
                                     <img class="tip__icon" src="{{ asset('images/tip.1645b35d.svg') }}" alt="tip"></div>
                             </div>
                         </label></div>

@@ -32,7 +32,7 @@ class UserSettingsRequest extends FormRequest
             'phone'       => ['string', 'min:8', 'nullable'],
             'city_id'     => ['string'],
             'description' => ['string', 'required'],
-            'image'       => ['max:500', 'image'],
+            'image'       => ['max:1000', 'image'],
         ]);
     }
 

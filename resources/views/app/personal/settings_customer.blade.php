@@ -38,7 +38,7 @@
                                      alt="downnolad svg"
                                      aria-hidden="true">
                                 <span>Загрузить </span>
-                                <div class="tip" data-text="Максимальный размер изображения - 0.5 Mb">
+                                <div class="tip" data-text="Максимальный размер изображения - 1 Mb">
                                     <img class="tip__icon" src="{{ asset('images/tip.1645b35d.svg') }}" alt="tip"></div>
                             </div>
                         </label></div>

@@ -42,21 +42,33 @@ class HomeController extends Controller
         $result = [];
 
         if ($request->get('fandom', null)) {
-            $result = Fandom::where('name_ru', 'like', '%'. $request->get('fandom') .'%')
-                ->orWhere('name_eng', 'like', '%'. $request->get('fandom') .'%')
+            $result = Fandom::where('name_ru', 'like', '%' . $request->get('fandom') . '%')
+                ->orWhere('name_eng', 'like', '%' . $request->get('fandom') . '%')
                 ->get();
         }
 
         if ($request->get('hero', null)) {
-            $result = Hero::where('name_ru', 'like', '%'. $request->get('hero') .'%')
-                ->orWhere('name_eng', 'like', '%'. $request->get('hero') .'%')
+            $result = Hero::where('name_ru', 'like', '%' . $request->get('hero') . '%')
+                ->orWhere('name_eng', 'like', '%' . $request->get('hero') . '%')
                 ->get();
         }
 
         if ($request->get('thematic', null)) {
-            $result = Thematic::where('name_ru', 'like', '%'. $request->get('thematic') .'%')
-                ->orWhere('name_eng', 'like', '%'. $request->get('thematic') .'%')
+            $result = Thematic::where('name_ru', 'like', '%' . $request->get('thematic') . '%')
+                ->orWhere('name_eng', 'like', '%' . $request->get('thematic') . '%')
                 ->get();
+        }
+
+        if ($request->get('fullName', null)) {
+            $result = Executant::has('garbs')
+                ->where('fullName', 'like', '%' . $request->get('fullName') . '%')
+                ->get();
+
+            foreach ($result as $executant) {
+                $executant->name_ru = $executant->fullName;
+            }
+
+            return $result;
         }
 
         return response()->json($result);

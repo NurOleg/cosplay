@@ -180,7 +180,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
             var name = $(this).attr("data-name");
             if (value.length < MIN_LENGTH_VALUE) return;
             var listWrapper = $(this).parent().children("datalist");
-            fetch("http://cosplay.promo/filter?".concat(name, "=").concat(value)).then(function (res) {
+            fetch("https://cosplay.promo/filter?".concat(name, "=").concat(value)).then(function (res) {
                 return res.json();
             }).then(function (res) {
                 listWrapper.html(res.map(function (option) {

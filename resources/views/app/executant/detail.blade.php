@@ -13,8 +13,9 @@
                                 src="{{ isset($executant->image->path) ? Storage::url($executant->image->path) : asset('images/no-photo.0b72cc78.jpg') }}"
                                 alt="cosplayer.img"></div>
                         <div class="cosplayer-about-item__city cosplayer-city">{{ $executant->city->name }}</div>
-                        <div class="cosplayer-about-item__name">{{ $executant->fullname }}</div>
                         <div class="cosplayer-about-item__person">{{ $executant->specialitiesRow }}</div>
+                        <div class="cosplayer-about-item__nick">{{ $executant->nickname_eng }}</div>
+                        <div class="cosplayer-about-item__name">{{ $executant->fullname }}</div>
                     </div>
                     <div class="cosplayer-about-item__column">
                         <div class="cosplayer-about-item__about">

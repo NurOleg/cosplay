@@ -119,7 +119,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     return newRequire;
 })({"/images/cosplayer-arrow.svg":[function(require,module,exports) {
         module.exports = "/images/cosplayer-arrow.95cb7f83.svg";
-    },{}],"/script/cosplayer.js":[function(require,module,exports) {
+    },{}],"/js/cosplayer.js":[function(require,module,exports) {
         "use strict";
 
         var _cosplayerArrow = _interopRequireDefault(require("/images/cosplayer-arrow.svg"));
@@ -365,5 +365,5 @@ parcelRequire = (function (modules, cache, entry, globalName) {
                 return true;
             }
         }
-    },{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../script/cosplayer.js"], null)
+    },{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","/js/cosplayer.js"], null)
 //# sourceMappingURL=/cosplayer.95a21ff5.js.map

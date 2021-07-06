@@ -61,11 +61,11 @@ class HomeController extends Controller
 
         if ($request->get('fullName', null)) {
             $result = Executant::has('garbs')
-                ->where('fullName', 'like', '%' . $request->get('fullName') . '%')
+                ->where('fullname', 'like', '%' . $request->get('fullName') . '%')
                 ->get();
 
             foreach ($result as $executant) {
-                $executant->name_ru = $executant->fullName;
+                $executant->name_ru = $executant->fullname;
             }
         }
 

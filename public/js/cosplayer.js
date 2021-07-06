@@ -151,7 +151,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
                     infinite: false,
                     prevArrow: "<button class=\"slick-prev\"><img src=\"".concat(_cosplayerArrow.default, "\"/></button>"),
                     nextArrow: "<button class=\"slick-next\"><img src=\"".concat(_cosplayerArrow.default, "\"/></button>")
-                });
+                }).addClass("open");
             });
             $(".cosplayer-services__row[data-name=\"".concat(id, "\"]")).addClass("open").fadeIn("linear").css("display", "flex");
         }

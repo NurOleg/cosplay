@@ -340,15 +340,15 @@ template {
 
 @font-face {
     font-family: "Century Gothic";
-    src: url("/CenturyGothic-regular.3dc263c8.eot");
-    src: url("/CenturyGothic-regular.3dc263c8.eot?#iefix") format("embedded-opentype"), url("/CenturyGothic-regular.646e89ea.woff") format("woff"), url("/CenturyGothic-regular.33f28584.ttf") format("truetype");
+    src: url("/CenturyGothic-regular.eot");
+    src: url("/CenturyGothic-regular.eot?#iefix") format("embedded-opentype"), url("/CenturyGothic-regular.woff") format("woff"), url("/CenturyGothic-regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: "Century Gothic";
-    src: url("/CenturyGothic-Bold.8c35ef32.eot");
-    src: url("/CenturyGothic-Bold.8c35ef32.eot?#iefix") format("embedded-opentype"), url("/CenturyGothic-Bold.935b7ac2.woff") format("woff"), url("/CenturyGothic-Bold.32af9455.ttf") format("truetype");
+    src: url("/CenturyGothic-Bold.eot");
+    src: url("/CenturyGothic-Bold.eot?#iefix") format("embedded-opentype"), url("/CenturyGothic-Bold.woff") format("woff"), url("/CenturyGothic-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }

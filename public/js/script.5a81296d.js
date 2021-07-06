@@ -117,20 +117,20 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     }
 
     return newRequire;
-})({"/images/slider-arrow.svg":[function(require,module,exports) {
-        module.exports = "/images/slider-arrow.96c957a9.svg";
+})({"/images/slider-arrow.2c114611.svg":[function(require,module,exports) {
+        module.exports = "/images/slider-arrow.2c114611.svg";
     },{}],"/images/slider-arrow-prev.svg":[function(require,module,exports) {
-        module.exports = "/images/slider-arrow-prev.71294e1b.svg";
+        module.exports = "/images/slider-arrow-prev.3865e0a9.svg";
     },{}],"/images/no-photo.jpg":[function(require,module,exports) {
-        module.exports = "/images/no-photo.02bc0e46.jpg";
+        module.exports = "/images/no-photo.0b72cc78.jpg";
     },{}],"/js/script.5a81296d.js":[function(require,module,exports) {
         "use strict";
 
-        var _sliderArrow = _interopRequireDefault(require("/images/slider-arrow.svg"));
+        var _sliderArrow = _interopRequireDefault(require("/images/slider-arrow.2c114611.svg"));
 
-        var _sliderArrowPrev = _interopRequireDefault(require("/images/slider-arrow-prev.svg"));
+        var _sliderArrowPrev = _interopRequireDefault(require("/images/slider-arrow-prev.3865e0a9.svg"));
 
-        var _noPhoto = _interopRequireDefault(require("/images/image/no-photo.jpg"));
+        var _noPhoto = _interopRequireDefault(require("/images/no-photo.0b72cc78.jpg"));
 
         function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

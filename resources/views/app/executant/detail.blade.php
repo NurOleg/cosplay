@@ -58,6 +58,7 @@
                                     @foreach($garb->images as $image)
                                         <div class="cosplayer-shape-slider__item ibg">
                                             <img src="{{Storage::url($image->path)}}"
+                                                 class="img-popup"
                                                  alt="cosplay img"
                                                  aria-hidden="true">
                                         </div>

@@ -1,10 +1,478 @@
-parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"iAAF":[function(require,module,exports) {
-        module.exports="/slider-arrow.2c114611.svg";
-    },{}],"PnOg":[function(require,module,exports) {
-        module.exports="/slider-arrow-prev.3865e0a9.svg";
-    },{}],"h2VP":[function(require,module,exports) {
-        module.exports="/no-photo.0b72cc78.jpg";
-    },{}],"hQWJ":[function(require,module,exports) {
-        "use strict";var t=i(require("/images/slider-arrow.svg")),e=i(require("/images/slider-arrow.svg")),n=i(require("../assets/image/no-photo.jpg"));function i(t){return t&&t.__esModule?t:{default:t}}var a=2,o=524288,s="http://127.0.0.1:8000";$("#pro-accounts-slider").slick({slidesToShow:3,slidesToScroll:3,prevArrow:'<button class="slick-prev"><img src="'.concat(e.default,'"/></button>'),nextArrow:'<button class="slick-next"><img src="'.concat(t.default,'"/></button>'),responsive:[{breakpoint:1200,settings:{slidesToShow:2,slidesToScroll:2}},{breakpoint:560,settings:{slidesToShow:1,slidesToScroll:1}}]}),$(".timeline-item").hover(function(){$(".timeline-item").children(".timeline-item__body").removeClass("active"),$(this).children(".timeline-item__body").addClass("active")});var r=".input-field__input-wrapper",l=".input-field__input";function c(t,e){return new Promise(function(n,i){e.addClass(t),e.on("animationend",function(){n(!0)})})}$(l).on("focus",function(){$(this).parent(r).addClass("focus")}),$(l).on("blur",function(){$(this).parent(r).removeClass("focus")}),$(".input-field__hint").on("click",function(){var t=$(this).parent(".input-field__hints").parent();t.children(l).val($(this).text()),t.removeClass("focus")}),$("[data-selection] input").on("input",function(){var t=$(this).val(),e=$(this).attr("data-name");if(!(t.length<a)){var n=$(this).parent().children("datalist");fetch("https://cosplay.promo/filter?".concat(e,"=").concat(t)).then(function(t){return t.json()}).then(function(t){n.html(t.map(function(t){return'<option value="'.concat(t.name_ru,'"></option>\n              <option value="').concat(t.name_eng,'"></option>')}))})}}),$('input[type="file"').on("change",function(t){var e=t.target.files[0];if(console.log(e.size,"size"),e.size>o)return alert("Маскимальный размер изображения 0.5мб"),void $(this).val("");var i=new FileReader,a=$(this).attr("id"),s=$('[for="'.concat(a,'"] img'))[0];e?(i.readAsDataURL(e),i.onload=function(t){s.src=t.currentTarget.result}):s.src=n.default}),$("#header-menu").on("click",function(t){var e=$(t.target);(e.parent("[data-close]").length||e.attr("data-close"))&&$(this).removeClass("open")}),$("#menu-open-btn").on("click",function(){$("#header-menu").toggleClass("open")}),$(".tab__close-btn").on("click",function(t){$(this).parent(".tab__header").parent(".tab").toggleClass("open")}),$(".tabs-header .tab-button").on("click",function(t){var e=$(this).attr("data-tab");$(".tabs-body .c-tab").removeClass("open"),$(".tabs-header .tab-button").removeClass("active"),$(this).addClass("active"),$(e).addClass("open")}),$(".alert__close").on("click",function(){var t=$(this).parent(".alert").parent(".alerts__column");c("removeAlert",t).then(function(){t.remove()})});
-    },{"/images/slider-arrow.svg":"iAAF","/images/slider-arrow.svg":"PnOg","../assets/image/no-photo.jpg":"h2VP"}]},{},["hQWJ"], null)
-//# sourceMappingURL=/script.73260c5a.js.map
+// modules are defined as an array
+// [ module function, map of requires ]
+//
+// map of requires is short require name -> numeric require
+//
+// anything defined in a previous bundle is accessed via the
+// orig method which is the require for previous bundles
+parcelRequire = (function (modules, cache, entry, globalName) {
+    // Save the require from previous bundle to this closure if any
+    var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
+    var nodeRequire = typeof require === 'function' && require;
+
+    function newRequire(name, jumped) {
+        if (!cache[name]) {
+            if (!modules[name]) {
+                // if we cannot find the module within our internal map or
+                // cache jump to the current global require ie. the last bundle
+                // that was added to the page.
+                var currentRequire = typeof parcelRequire === 'function' && parcelRequire;
+                if (!jumped && currentRequire) {
+                    return currentRequire(name, true);
+                }
+
+                // If there are other bundles on this page the require from the
+                // previous one is saved to 'previousRequire'. Repeat this as
+                // many times as there are bundles until the module is found or
+                // we exhaust the require chain.
+                if (previousRequire) {
+                    return previousRequire(name, true);
+                }
+
+                // Try the node require function if it exists.
+                if (nodeRequire && typeof name === 'string') {
+                    return nodeRequire(name);
+                }
+
+                var err = new Error('Cannot find module \'' + name + '\'');
+                err.code = 'MODULE_NOT_FOUND';
+                throw err;
+            }
+
+            localRequire.resolve = resolve;
+            localRequire.cache = {};
+
+            var module = cache[name] = new newRequire.Module(name);
+
+            modules[name][0].call(module.exports, localRequire, module, module.exports, this);
+        }
+
+        return cache[name].exports;
+
+        function localRequire(x){
+            return newRequire(localRequire.resolve(x));
+        }
+
+        function resolve(x){
+            return modules[name][1][x] || x;
+        }
+    }
+
+    function Module(moduleName) {
+        this.id = moduleName;
+        this.bundle = newRequire;
+        this.exports = {};
+    }
+
+    newRequire.isParcelRequire = true;
+    newRequire.Module = Module;
+    newRequire.modules = modules;
+    newRequire.cache = cache;
+    newRequire.parent = previousRequire;
+    newRequire.register = function (id, exports) {
+        modules[id] = [function (require, module) {
+            module.exports = exports;
+        }, {}];
+    };
+
+    var error;
+    for (var i = 0; i < entry.length; i++) {
+        try {
+            newRequire(entry[i]);
+        } catch (e) {
+            // Save first error but execute all entries
+            if (!error) {
+                error = e;
+            }
+        }
+    }
+
+    if (entry.length) {
+        // Expose entry point to Node, AMD or browser globals
+        // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+        var mainExports = newRequire(entry[entry.length - 1]);
+
+        // CommonJS
+        if (typeof exports === "object" && typeof module !== "undefined") {
+            module.exports = mainExports;
+
+            // RequireJS
+        } else if (typeof define === "function" && define.amd) {
+            define(function () {
+                return mainExports;
+            });
+
+            // <script>
+        } else if (globalName) {
+            this[globalName] = mainExports;
+        }
+    }
+
+    // Override the current require with this new one
+    parcelRequire = newRequire;
+
+    if (error) {
+        // throw error from earlier, _after updating parcelRequire_
+        throw error;
+    }
+
+    return newRequire;
+})({"/images/slider-arrow.svg":[function(require,module,exports) {
+        module.exports = "/images/slider-arrow.96c957a9.svg";
+    },{}],"/images/slider-arrow-prev.svg":[function(require,module,exports) {
+        module.exports = "/images/slider-arrow-prev.71294e1b.svg";
+    },{}],"/images/no-photo.jpg":[function(require,module,exports) {
+        module.exports = "/images/no-photo.02bc0e46.jpg";
+    },{}],"/script/index.js":[function(require,module,exports) {
+        "use strict";
+
+        var _sliderArrow = _interopRequireDefault(require("/images/slider-arrow.svg"));
+
+        var _sliderArrowPrev = _interopRequireDefault(require("/images/slider-arrow-prev.svg"));
+
+        var _noPhoto = _interopRequireDefault(require("/images/image/no-photo.jpg"));
+
+        function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+        var MIN_LENGTH_VALUE = 2;
+        var MAX_IMAGE_SIZE = 1048576;
+        var API_URL = "http://127.0.0.1:8000";
+        $("#pro-accounts-slider").slick({
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            prevArrow: "<button class=\"slick-prev\"><img src=\"".concat(_sliderArrowPrev.default, "\"/></button>"),
+            nextArrow: "<button class=\"slick-next\"><img src=\"".concat(_sliderArrow.default, "\"/></button>"),
+            responsive: [{
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }, {
+                breakpoint: 560,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }]
+        });
+        $(".timeline-item").hover(function () {
+            $(".timeline-item").children(".timeline-item__body").removeClass("active");
+            $(this).children(".timeline-item__body").addClass("active");
+        }); // INPUT
+
+        var parentClass = ".input-field__input-wrapper";
+        var inputClass = ".input-field__input";
+        $(inputClass).on("focus", function () {
+            $(this).parent(parentClass).addClass("focus");
+        });
+        $(inputClass).on("blur", function () {
+            $(this).parent(parentClass).removeClass("focus");
+        });
+        $(".input-field__hint").on("click", function () {
+            var wrapper = $(this).parent(".input-field__hints").parent();
+            wrapper.children(inputClass).val($(this).text());
+            wrapper.removeClass("focus");
+        }); // INPUT AJAX
+
+        $("[data-selection] input").on("input", function () {
+            var value = $(this).val();
+            var name = $(this).attr("data-name");
+            if (value.length < MIN_LENGTH_VALUE) return;
+            var listWrapper = $(this).parent().children("datalist");
+            fetch("http://cosplay.promo/filter?".concat(name, "=").concat(value)).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                listWrapper.html(res.map(function (option) {
+                    return "<option value=\"".concat(option.name_ru, "\"></option>\n              <option value=\"").concat(option.name_eng, "\"></option>");
+                }));
+            });
+        }); // INPUT PHOTO
+
+        $('input[type="file"').on("change", function (e) {
+            var file = e.target.files[0];
+            var imgFieldId = $(this).attr("id");
+            var image = $("[for=\"".concat(imgFieldId, "\"] img"))[0];
+            console.log(file.size, "size");
+
+            if (file.size > MAX_IMAGE_SIZE) {
+                alert("Маскимальный размер изображения 1мб");
+                $(this).val("");
+                $(image).attr("src", _noPhoto.default);
+                return;
+            }
+
+            var reader = new FileReader();
+
+            if (!file) {
+                image.src = _noPhoto.default;
+                return;
+            }
+
+            reader.readAsDataURL(file);
+
+            reader.onload = function (img) {
+                image.src = img.currentTarget.result;
+            };
+        }); // MENU
+
+        $("#header-menu").on("click", function (e) {
+            var target = $(e.target);
+
+            if (target.parent("[data-close]").length || target.attr("data-close")) {
+                $(this).removeClass("open");
+            }
+        }); // IMAGE POPUP
+
+        $(".img-popup").on("click", function (e) {
+            var imageUrl = $(this).attr("src");
+            var popup = document.createElement("div");
+            popup.classList.add("popup");
+            popup.classList.add("image-popup");
+            popup.innerHTML = "<img class=\"popup__content\" src=\"".concat(imageUrl, "\" alt=\"image view\"/>");
+            popup.addEventListener("click", function (e) {
+                var popupContent = document.querySelector(".popup__content");
+                popupContent.classList.add("close");
+                popupContent.addEventListener("animationend", function () {
+                    popup.parentNode.removeChild(popup);
+                });
+            });
+            document.body.append(popup);
+        });
+        $("#menu-open-btn").on("click", function () {
+            $("#header-menu").toggleClass("open");
+        }); // COSPLAYER - TABS
+
+        $(".tab__close-btn").on("click", function (e) {
+            $(this).parent(".tab__header").parent(".tab").toggleClass("open");
+        }); // TABS
+
+        $(".tabs-header .tab-button").on("click", function (e) {
+            var tabId = $(this).attr("data-tab");
+            $(".tabs-body .c-tab").removeClass("open");
+            $(".tabs-header .tab-button").removeClass("active");
+            $(this).addClass("active");
+            $(tabId).addClass("open");
+        }); // ALERTS
+
+        $(".alert__close").on("click", function () {
+            var alert = $(this).parent(".alert").parent(".alerts__column");
+            fadeOut("removeAlert", alert).then(function () {
+                alert.remove();
+            });
+        });
+
+        function fadeOut(animationClassname, item) {
+            return new Promise(function (res, rej) {
+                item.addClass(animationClassname);
+                item.on("animationend", function () {
+                    res(true);
+                });
+            });
+        }
+    },{"../assets//icons/slider-arrow.svg":"../assets/icons/slider-arrow.svg","../assets//icons/slider-arrow-prev.svg":"../assets/icons/slider-arrow-prev.svg","../assets/image/no-photo.jpg":"../assets/image/no-photo.jpg"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+        var global = arguments[3];
+        var OVERLAY_ID = '__parcel__error__overlay__';
+        var OldModule = module.bundle.Module;
+
+        function Module(moduleName) {
+            OldModule.call(this, moduleName);
+            this.hot = {
+                data: module.bundle.hotData,
+                _acceptCallbacks: [],
+                _disposeCallbacks: [],
+                accept: function (fn) {
+                    this._acceptCallbacks.push(fn || function () {});
+                },
+                dispose: function (fn) {
+                    this._disposeCallbacks.push(fn);
+                }
+            };
+            module.bundle.hotData = null;
+        }
+
+        module.bundle.Module = Module;
+        var checkedAssets, assetsToAccept;
+        var parent = module.bundle.parent;
+
+        if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
+            var hostname = "" || location.hostname;
+            var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+            var ws = new WebSocket(protocol + '://' + hostname + ':' + "56652" + '/');
+
+            ws.onmessage = function (event) {
+                checkedAssets = {};
+                assetsToAccept = [];
+                var data = JSON.parse(event.data);
+
+                if (data.type === 'update') {
+                    var handled = false;
+                    data.assets.forEach(function (asset) {
+                        if (!asset.isNew) {
+                            var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
+
+                            if (didAccept) {
+                                handled = true;
+                            }
+                        }
+                    }); // Enable HMR for CSS by default.
+
+                    handled = handled || data.assets.every(function (asset) {
+                        return asset.type === 'css' && asset.generated.js;
+                    });
+
+                    if (handled) {
+                        console.clear();
+                        data.assets.forEach(function (asset) {
+                            hmrApply(global.parcelRequire, asset);
+                        });
+                        assetsToAccept.forEach(function (v) {
+                            hmrAcceptRun(v[0], v[1]);
+                        });
+                    } else if (location.reload) {
+                        // `location` global exists in a web worker context but lacks `.reload()` function.
+                        location.reload();
+                    }
+                }
+
+                if (data.type === 'reload') {
+                    ws.close();
+
+                    ws.onclose = function () {
+                        location.reload();
+                    };
+                }
+
+                if (data.type === 'error-resolved') {
+                    console.log('[parcel] ✨ Error resolved');
+                    removeErrorOverlay();
+                }
+
+                if (data.type === 'error') {
+                    console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
+                    removeErrorOverlay();
+                    var overlay = createErrorOverlay(data);
+                    document.body.appendChild(overlay);
+                }
+            };
+        }
+
+        function removeErrorOverlay() {
+            var overlay = document.getElementById(OVERLAY_ID);
+
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        function createErrorOverlay(data) {
+            var overlay = document.createElement('div');
+            overlay.id = OVERLAY_ID; // html encode message and stack trace
+
+            var message = document.createElement('div');
+            var stackTrace = document.createElement('pre');
+            message.innerText = data.error.message;
+            stackTrace.innerText = data.error.stack;
+            overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
+            return overlay;
+        }
+
+        function getParents(bundle, id) {
+            var modules = bundle.modules;
+
+            if (!modules) {
+                return [];
+            }
+
+            var parents = [];
+            var k, d, dep;
+
+            for (k in modules) {
+                for (d in modules[k][1]) {
+                    dep = modules[k][1][d];
+
+                    if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
+                        parents.push(k);
+                    }
+                }
+            }
+
+            if (bundle.parent) {
+                parents = parents.concat(getParents(bundle.parent, id));
+            }
+
+            return parents;
+        }
+
+        function hmrApply(bundle, asset) {
+            var modules = bundle.modules;
+
+            if (!modules) {
+                return;
+            }
+
+            if (modules[asset.id] || !bundle.parent) {
+                var fn = new Function('require', 'module', 'exports', asset.generated.js);
+                asset.isNew = !modules[asset.id];
+                modules[asset.id] = [fn, asset.deps];
+            } else if (bundle.parent) {
+                hmrApply(bundle.parent, asset);
+            }
+        }
+
+        function hmrAcceptCheck(bundle, id) {
+            var modules = bundle.modules;
+
+            if (!modules) {
+                return;
+            }
+
+            if (!modules[id] && bundle.parent) {
+                return hmrAcceptCheck(bundle.parent, id);
+            }
+
+            if (checkedAssets[id]) {
+                return;
+            }
+
+            checkedAssets[id] = true;
+            var cached = bundle.cache[id];
+            assetsToAccept.push([bundle, id]);
+
+            if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
+                return true;
+            }
+
+            return getParents(global.parcelRequire, id).some(function (id) {
+                return hmrAcceptCheck(global.parcelRequire, id);
+            });
+        }
+
+        function hmrAcceptRun(bundle, id) {
+            var cached = bundle.cache[id];
+            bundle.hotData = {};
+
+            if (cached) {
+                cached.hot.data = bundle.hotData;
+            }
+
+            if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
+                cached.hot._disposeCallbacks.forEach(function (cb) {
+                    cb(bundle.hotData);
+                });
+            }
+
+            delete bundle.cache[id];
+            bundle(id);
+            cached = bundle.cache[id];
+
+            if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
+                cached.hot._acceptCallbacks.forEach(function (cb) {
+                    cb();
+                });
+
+                return true;
+            }
+        }
+    },{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../script/index.js"], null)
+//# sourceMappingURL=/script.bc738916.js.map

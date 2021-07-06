@@ -67,8 +67,6 @@ class HomeController extends Controller
             foreach ($result as $executant) {
                 $executant->name_ru = $executant->fullName;
             }
-
-            return $result;
         }
 
         return response()->json($result);

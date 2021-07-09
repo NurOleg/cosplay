@@ -13,17 +13,17 @@ class MakeCodesNonUnique extends Migration
      */
     public function up()
     {
-        Schema::table('fandoms', function (Blueprint $table) {
-            $table->dropUnique('fandoms_code_unique');
-        });
-
-        Schema::table('thematics', function (Blueprint $table) {
-            $table->dropUnique('thematics_code_unique');
-        });
-
-        Schema::table('heroes', function (Blueprint $table) {
-            $table->dropUnique('heroes_code_unique');
-        });
+        //Schema::table('fandoms', function (Blueprint $table) {
+        //    $table->dropUnique('fandoms_code_unique');
+        //});
+//
+        //Schema::table('thematics', function (Blueprint $table) {
+        //    $table->dropUnique('thematics_code_unique');
+        //});
+//
+        //Schema::table('heroes', function (Blueprint $table) {
+        //    $table->dropUnique('heroes_code_unique');
+        //});
     }
 
     /**

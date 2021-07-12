@@ -509,7 +509,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
                 offsetHeight = messagesContainer.offsetHeight; // scrollMessageBtn.hidden = scrollTop + offsetHeight == scrollHeight;
 
             if (scrollTop + offsetHeight > scrollHeight - 100) messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            console.log("пизда");
+            console.log(exports.fetchAllChats);
         }
 
         function clearForm() {

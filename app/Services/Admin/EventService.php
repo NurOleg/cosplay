@@ -135,7 +135,7 @@ final class EventService
 
             $extra['path'] = $path;
         }
-dd($request->all());
+
         foreach ($request->get('programm_dates') as $k => $item) {
 
             if (empty($request->get('programm_names')[$k])) {
@@ -157,7 +157,7 @@ dd($request->all());
                 $json[$k]['extra'] = array_values($json[$k]['extra']);
             }
         }
-
+dd($json);
         $active = $request->get('active') === 'on';
         $extra['active'] = $active;
         $extra['programm'] = $json;

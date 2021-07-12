@@ -243,11 +243,12 @@
                             <div class="timeline__item">
                                 <div class="timeline-item">
                                     <div class="timeline-item__date">{{ $event->date_interval }}</div>
-                                    <div class="timeline-item__header">
+                                    <a class="timeline-item__header"
+                                       href="{{ route('public_event_detail', ['event' => $event->id]) }}">
                                         <img class="timeline-item__img"
-                                             src="{{ Storage::url($event->image_src) }}"
-                                             alt="timeline image" aria-hidden="true">
-                                    </div>
+                                                                                    src="{{ Storage::url($event->image_src) }}"
+                                                                                    alt="timeline image"
+                                                                                    aria-hidden="true"></a>
                                     <div class="timeline-item__body">
                                         <div class="timeline-item__title">{{ $event->name }}</div>
                                         <div class="timeline-item__text">

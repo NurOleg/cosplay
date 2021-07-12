@@ -340,7 +340,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
         var _chatsData = require("./data/chatsData");
 
         var fetchAllChats = function fetchAllChats() {
-             return fetch(`${API_URL}`)
+             return fetch(exports.API_URL)
                .then((res) => res.json())
                .then((data) => {
                  console.log(data);

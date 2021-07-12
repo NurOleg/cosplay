@@ -57,6 +57,7 @@ class ChatController extends Controller
         if ($relatedUser === 'executant') {
             $chat->customer_unreaded_messages_count = 0;
             $chat->save();
+            dd($chat);
         } else {
             $chat->executant_unreaded_messages_count = 0;
             $chat->save();
@@ -91,7 +92,6 @@ class ChatController extends Controller
         if ($relatedUser === 'executant') {
             $chat->customer_unreaded_messages_count = 0;
             $chat->save();
-            die(print_r($chat));
         } else {
             $chat->executant_unreaded_messages_count = 0;
             $chat->save();

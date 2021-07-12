@@ -132,6 +132,12 @@ class ChatController extends Controller
 
         foreach ($chats as $chat) {
             $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
+
+            $chat->user->detail_url = $relatedUser === 'executant'
+                ? route('executant_detail', ['executant' => $user->id])
+                : '#';
+
+            $chat->unreaded_messages_count = $relatedUser === 'executant' ? $chat->executant_unreaded_messages_count : $chat->customer_unreaded_messages_count;
             if ($chat->user->image !== null) {
                 $chat->user->image->path = Storage::disk('public')->url($chat->user->image->path);
             }

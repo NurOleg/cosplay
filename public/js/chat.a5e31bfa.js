@@ -128,7 +128,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
         exports.REQUEST_TIME = exports.defaultLink = exports.DEV_MODE = exports.TEST_COOKIE_SESSION = exports.API_URL = void 0;
         var DEV_MODE = true;
         exports.DEV_MODE = DEV_MODE;
-        var API_URL = "http://127.0.0.1:8000/personal/api/chats";
+        var API_URL = "https://cosplay.promo/personal/api/chats";
         exports.API_URL = API_URL;
         var TEST_COOKIE_SESSION = "\neyJpdiI6IlVSU29tWk8veHA3RUg0eldUN1Axd0E9PSIsInZhbHVlIjoiYzE5Y0J3cWNkSjNhYVFqRjhxS0pNSE5XWWhQREhSVkNVWWoxRTB4UEtMRzJtMWhUVEorNzkzem1vR25SMjZNVlN4citHdFNYc0t1QjRMOHZ2RlRMam5LcWFyVDVkajJxNkJNWEc4L1UrVkFhSTNsSG1HOUZNSFhidTBoemxjZ1kiLCJtYWMiOiIxZTVhODkxNTgxZmYzYTVkNDIyZTAxZWIzNGViZTYxYjk3MmM5MzBkMzYzMjM0ODMyNWNhZDBiMTFjMjg3M2NhIn0%3D";
         exports.TEST_COOKIE_SESSION = TEST_COOKIE_SESSION;
@@ -340,17 +340,17 @@ parcelRequire = (function (modules, cache, entry, globalName) {
         var _chatsData = require("./data/chatsData");
 
         var fetchAllChats = function fetchAllChats() {
-            // return fetch(`${API_URL}`)
-            //   .then((res) => res.json())
-            //   .then((data) => {
-            //     console.log(data);
-            //     return data;
-            //   });
-            return new Promise(function (res) {
-                setTimeout(function () {
-                    res(_chatsData.chats);
-                }, 500);
-            });
+             return fetch(`${API_URL}`)
+               .then((res) => res.json())
+               .then((data) => {
+                 console.log(data);
+                 return data;
+               });
+            //return new Promise(function (res) {
+            //    setTimeout(function () {
+            //        res(_chatsData.chats);
+            //    }, 500);
+            //});
         };
 
         exports.fetchAllChats = fetchAllChats;

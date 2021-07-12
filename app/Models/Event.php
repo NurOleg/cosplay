@@ -93,4 +93,23 @@ class Event extends Model
 
         return $resString;
     }
+
+    /**
+     * @return string
+     */
+    public function getFullDateIntervalAttribute(): string
+    {
+        Carbon::setLocale('ru');
+        $startDate = Carbon::parse($this->start);
+        $endDate = Carbon::parse($this->end);
+
+        if ($startDate->month === $endDate->month) {
+            $daysInterval = $startDate->day === $endDate->day ? $startDate->day : $startDate->day . '-' . $endDate->day;
+            $resString = $daysInterval . ' ' . self::MONTHS[$startDate->month] . ' ' . $startDate->year;
+        } else {
+            $resString = $startDate->day . ' ' . self::MONTHS[$startDate->month] . ' ' . $startDate->year . '-' . $endDate->day . ' ' . self::MONTHS[$endDate->month] . ' ' . $endDate->year;
+        }
+
+        return $resString;
+    }
 }

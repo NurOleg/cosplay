@@ -19,7 +19,7 @@
                         <div class="eventmap-info"><img class="eventmap-info__icon"
                                                         src="{{ asset('images/clock.71798613.svg') }}" alt="pointer"
                                                         aria-hidden="true">
-                            <div class="eventmap-info__title">29.08.2021</div>
+                            <div class="eventmap-info__title">{{ $event->full_date_interval }}</div>
                         </div>
                     </div>
                 </div>

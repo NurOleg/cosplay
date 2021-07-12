@@ -6,385 +6,392 @@
 // anything defined in a previous bundle is accessed via the
 // orig method which is the require for previous bundles
 parcelRequire = (function (modules, cache, entry, globalName) {
-  // Save the require from previous bundle to this closure if any
-  var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
-  var nodeRequire = typeof require === 'function' && require;
+    // Save the require from previous bundle to this closure if any
+    var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
+    var nodeRequire = typeof require === 'function' && require;
 
-  function newRequire(name, jumped) {
-    if (!cache[name]) {
-      if (!modules[name]) {
-        // if we cannot find the module within our internal map or
-        // cache jump to the current global require ie. the last bundle
-        // that was added to the page.
-        var currentRequire = typeof parcelRequire === 'function' && parcelRequire;
-        if (!jumped && currentRequire) {
-          return currentRequire(name, true);
+    function newRequire(name, jumped) {
+        if (!cache[name]) {
+            if (!modules[name]) {
+                // if we cannot find the module within our internal map or
+                // cache jump to the current global require ie. the last bundle
+                // that was added to the page.
+                var currentRequire = typeof parcelRequire === 'function' && parcelRequire;
+                if (!jumped && currentRequire) {
+                    return currentRequire(name, true);
+                }
+
+                // If there are other bundles on this page the require from the
+                // previous one is saved to 'previousRequire'. Repeat this as
+                // many times as there are bundles until the module is found or
+                // we exhaust the require chain.
+                if (previousRequire) {
+                    return previousRequire(name, true);
+                }
+
+                // Try the node require function if it exists.
+                if (nodeRequire && typeof name === 'string') {
+                    return nodeRequire(name);
+                }
+
+                var err = new Error('Cannot find module \'' + name + '\'');
+                err.code = 'MODULE_NOT_FOUND';
+                throw err;
+            }
+
+            localRequire.resolve = resolve;
+            localRequire.cache = {};
+
+            var module = cache[name] = new newRequire.Module(name);
+
+            modules[name][0].call(module.exports, localRequire, module, module.exports, this);
         }
 
-        // If there are other bundles on this page the require from the
-        // previous one is saved to 'previousRequire'. Repeat this as
-        // many times as there are bundles until the module is found or
-        // we exhaust the require chain.
-        if (previousRequire) {
-          return previousRequire(name, true);
+        return cache[name].exports;
+
+        function localRequire(x){
+            return newRequire(localRequire.resolve(x));
         }
 
-        // Try the node require function if it exists.
-        if (nodeRequire && typeof name === 'string') {
-          return nodeRequire(name);
+        function resolve(x){
+            return modules[name][1][x] || x;
+        }
+    }
+
+    function Module(moduleName) {
+        this.id = moduleName;
+        this.bundle = newRequire;
+        this.exports = {};
+    }
+
+    newRequire.isParcelRequire = true;
+    newRequire.Module = Module;
+    newRequire.modules = modules;
+    newRequire.cache = cache;
+    newRequire.parent = previousRequire;
+    newRequire.register = function (id, exports) {
+        modules[id] = [function (require, module) {
+            module.exports = exports;
+        }, {}];
+    };
+
+    var error;
+    for (var i = 0; i < entry.length; i++) {
+        try {
+            newRequire(entry[i]);
+        } catch (e) {
+            // Save first error but execute all entries
+            if (!error) {
+                error = e;
+            }
+        }
+    }
+
+    if (entry.length) {
+        // Expose entry point to Node, AMD or browser globals
+        // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+        var mainExports = newRequire(entry[entry.length - 1]);
+
+        // CommonJS
+        if (typeof exports === "object" && typeof module !== "undefined") {
+            module.exports = mainExports;
+
+            // RequireJS
+        } else if (typeof define === "function" && define.amd) {
+            define(function () {
+                return mainExports;
+            });
+
+            // <script>
+        } else if (globalName) {
+            this[globalName] = mainExports;
+        }
+    }
+
+    // Override the current require with this new one
+    parcelRequire = newRequire;
+
+    if (error) {
+        // throw error from earlier, _after updating parcelRequire_
+        throw error;
+    }
+
+    return newRequire;
+})({"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+        var bundleURL = null;
+
+        function getBundleURLCached() {
+            if (!bundleURL) {
+                bundleURL = getBundleURL();
+            }
+
+            return bundleURL;
         }
 
-        var err = new Error('Cannot find module \'' + name + '\'');
-        err.code = 'MODULE_NOT_FOUND';
-        throw err;
-      }
+        function getBundleURL() {
+            // Attempt to find the URL of the current script and use that as the base URL
+            try {
+                throw new Error();
+            } catch (err) {
+                var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-      localRequire.resolve = resolve;
-      localRequire.cache = {};
+                if (matches) {
+                    return getBaseURL(matches[0]);
+                }
+            }
 
-      var module = cache[name] = new newRequire.Module(name);
+            return '/';
+        }
 
-      modules[name][0].call(module.exports, localRequire, module, module.exports, this);
-    }
+        function getBaseURL(url) {
+            return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+        }
 
-    return cache[name].exports;
+        exports.getBundleURL = getBundleURLCached;
+        exports.getBaseURL = getBaseURL;
+    },{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+        var bundle = require('./bundle-url');
 
-    function localRequire(x){
-      return newRequire(localRequire.resolve(x));
-    }
+        function updateLink(link) {
+            var newLink = link.cloneNode();
 
-    function resolve(x){
-      return modules[name][1][x] || x;
-    }
-  }
+            newLink.onload = function () {
+                link.remove();
+            };
 
-  function Module(moduleName) {
-    this.id = moduleName;
-    this.bundle = newRequire;
-    this.exports = {};
-  }
+            newLink.href = link.href.split('?')[0] + '?' + Date.now();
+            link.parentNode.insertBefore(newLink, link.nextSibling);
+        }
 
-  newRequire.isParcelRequire = true;
-  newRequire.Module = Module;
-  newRequire.modules = modules;
-  newRequire.cache = cache;
-  newRequire.parent = previousRequire;
-  newRequire.register = function (id, exports) {
-    modules[id] = [function (require, module) {
-      module.exports = exports;
-    }, {}];
-  };
+        var cssTimeout = null;
 
-  var error;
-  for (var i = 0; i < entry.length; i++) {
-    try {
-      newRequire(entry[i]);
-    } catch (e) {
-      // Save first error but execute all entries
-      if (!error) {
-        error = e;
-      }
-    }
-  }
+        function reloadCSS() {
+            if (cssTimeout) {
+                return;
+            }
 
-  if (entry.length) {
-    // Expose entry point to Node, AMD or browser globals
-    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
-    var mainExports = newRequire(entry[entry.length - 1]);
+            cssTimeout = setTimeout(function () {
+                var links = document.querySelectorAll('link[rel="stylesheet"]');
 
-    // CommonJS
-    if (typeof exports === "object" && typeof module !== "undefined") {
-      module.exports = mainExports;
+                for (var i = 0; i < links.length; i++) {
+                    if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+                        updateLink(links[i]);
+                    }
+                }
 
-    // RequireJS
-    } else if (typeof define === "function" && define.amd) {
-     define(function () {
-       return mainExports;
-     });
+                cssTimeout = null;
+            }, 50);
+        }
 
-    // <script>
-    } else if (globalName) {
-      this[globalName] = mainExports;
-    }
-  }
+        module.exports = reloadCSS;
+    },{"./bundle-url":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../style/main.scss":[function(require,module,exports) {
+        var reloadCSS = require('_css_loader');
 
-  // Override the current require with this new one
-  parcelRequire = newRequire;
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+    },{"./../assets/fonts/CenturyGothic-regular.eot":[["CenturyGothic-regular.3dc263c8.eot","../assets/fonts/CenturyGothic-regular.eot"],"../assets/fonts/CenturyGothic-regular.eot"],"./../assets/fonts/CenturyGothic-regular.woff":[["CenturyGothic-regular.646e89ea.woff","../assets/fonts/CenturyGothic-regular.woff"],"../assets/fonts/CenturyGothic-regular.woff"],"./../assets/fonts/CenturyGothic-regular.ttf":[["CenturyGothic-regular.33f28584.ttf","../assets/fonts/CenturyGothic-regular.ttf"],"../assets/fonts/CenturyGothic-regular.ttf"],"./../assets/fonts/CenturyGothic-Bold.eot":[["CenturyGothic-Bold.8c35ef32.eot","../assets/fonts/CenturyGothic-Bold.eot"],"../assets/fonts/CenturyGothic-Bold.eot"],"./../assets/fonts/CenturyGothic-Bold.woff":[["CenturyGothic-Bold.935b7ac2.woff","../assets/fonts/CenturyGothic-Bold.woff"],"../assets/fonts/CenturyGothic-Bold.woff"],"./../assets/fonts/CenturyGothic-Bold.ttf":[["CenturyGothic-Bold.32af9455.ttf","../assets/fonts/CenturyGothic-Bold.ttf"],"../assets/fonts/CenturyGothic-Bold.ttf"],"_css_loader":"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+        var global = arguments[3];
+        var OVERLAY_ID = '__parcel__error__overlay__';
+        var OldModule = module.bundle.Module;
 
-  if (error) {
-    // throw error from earlier, _after updating parcelRequire_
-    throw error;
-  }
+        function Module(moduleName) {
+            OldModule.call(this, moduleName);
+            this.hot = {
+                data: module.bundle.hotData,
+                _acceptCallbacks: [],
+                _disposeCallbacks: [],
+                accept: function (fn) {
+                    this._acceptCallbacks.push(fn || function () {});
+                },
+                dispose: function (fn) {
+                    this._disposeCallbacks.push(fn);
+                }
+            };
+            module.bundle.hotData = null;
+        }
 
-  return newRequire;
-})({"scripts/main.js":[function(require,module,exports) {
-// Map
-var map = ymaps.ready(init);
+        module.bundle.Module = Module;
+        var checkedAssets, assetsToAccept;
+        var parent = module.bundle.parent;
 
-function init() {
-  var map = initialMap();
-  map.events.add("click", function (e) {
-    var cords = e.get("coords");
-    $("#point").val(cords.join(" "));
-    map.balloon.open(cords, "x: ".concat(cords[0], " \n y: ").concat(cords[1], " "));
-  });
-}
+        if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
+            var hostname = "" || location.hostname;
+            var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+            var ws = new WebSocket(protocol + '://' + hostname + ':' + "52706" + '/');
 
-function initialMap() {
-  var myMap = new ymaps.Map("map", {
-    center: [55.76, 37.64],
-    zoom: 12,
-    controls: ["zoomControl", // Ползунок масштаба
-    new ymaps.control.SearchControl({
-      options: {
-        size: "large",
-        provider: "yandex#search"
-      }
-    })]
-  });
-  return myMap;
-} // IMAGES
+            ws.onmessage = function (event) {
+                checkedAssets = {};
+                assetsToAccept = [];
+                var data = JSON.parse(event.data);
 
+                if (data.type === 'update') {
+                    var handled = false;
+                    data.assets.forEach(function (asset) {
+                        if (!asset.isNew) {
+                            var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
 
-$("#form-img-add").on("click", function () {
-  var imgField = createImgField();
-  $(".form-images__images").append(imgField);
-  var inputFile = $(imgField).find(".form-images-img__input");
-  var $img = $(imgField).find(".form-images-img__img");
-  inputFile.on("change", function () {
-    var img = inputFile.prop("files")[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(img);
-    reader.addEventListener("load", function (e) {
-      var src = e.target.result;
-      $img.attr("src", src);
-    });
-  });
-  inputFile.click();
-  document.body.addEventListener("focusin", function () {
-    return leaveFile(inputFile, imgField);
-  });
-});
+                            if (didAccept) {
+                                handled = true;
+                            }
+                        }
+                    }); // Enable HMR for CSS by default.
 
-function leaveFile(inputFile, imgField) {
-  setTimeout(function () {
-    if (!inputFile.prop("files")[0]) $(imgField).remove();
-    document.body.removeEventListener("focusin", leaveFile);
-  }, 1000);
-}
+                    handled = handled || data.assets.every(function (asset) {
+                        return asset.type === 'css' && asset.generated.js;
+                    });
 
-function createImgField() {
-  var imgField = document.createElement("div");
-  imgField.classList.add("form-images__wrapper");
-  imgField.innerHTML = "\n              <div class=\"form-images-img\">\n                <img\n                  class=\"form-images-img__img\"\n                  src=\"http://via.placeholder.com/200x200\"\n                  alt=\"your img\"\n                /><button class=\"form-images-img__close\">&#10006;</button\n                >\n                <input\n                  class=\"form-images-img__input\"\n                  type=\"file\"\n                  name=\"images[]\"\n                />\n              </div>\n  ";
-  imgField.querySelector(".form-images-img__close").addEventListener("click", function () {
-    imgField.remove();
-  });
-  return imgField;
-}
-},{}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
-var global = arguments[3];
-var OVERLAY_ID = '__parcel__error__overlay__';
-var OldModule = module.bundle.Module;
+                    if (handled) {
+                        console.clear();
+                        data.assets.forEach(function (asset) {
+                            hmrApply(global.parcelRequire, asset);
+                        });
+                        assetsToAccept.forEach(function (v) {
+                            hmrAcceptRun(v[0], v[1]);
+                        });
+                    } else if (location.reload) {
+                        // `location` global exists in a web worker context but lacks `.reload()` function.
+                        location.reload();
+                    }
+                }
 
-function Module(moduleName) {
-  OldModule.call(this, moduleName);
-  this.hot = {
-    data: module.bundle.hotData,
-    _acceptCallbacks: [],
-    _disposeCallbacks: [],
-    accept: function (fn) {
-      this._acceptCallbacks.push(fn || function () {});
-    },
-    dispose: function (fn) {
-      this._disposeCallbacks.push(fn);
-    }
-  };
-  module.bundle.hotData = null;
-}
+                if (data.type === 'reload') {
+                    ws.close();
 
-module.bundle.Module = Module;
-var checkedAssets, assetsToAccept;
-var parent = module.bundle.parent;
+                    ws.onclose = function () {
+                        location.reload();
+                    };
+                }
 
-// if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
-//   var hostname = "" || location.hostname;
-//   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-//   var ws = new WebSocket(protocol + '://' + hostname + ':' + "50966" + '/');
-//
-//   ws.onmessage = function (event) {
-//     checkedAssets = {};
-//     assetsToAccept = [];
-//     var data = JSON.parse(event.data);
-//
-//     if (data.type === 'update') {
-//       var handled = false;
-//       data.assets.forEach(function (asset) {
-//         if (!asset.isNew) {
-//           var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
-//
-//           if (didAccept) {
-//             handled = true;
-//           }
-//         }
-//       }); // Enable HMR for CSS by default.
-//
-//       handled = handled || data.assets.every(function (asset) {
-//         return asset.type === 'css' && asset.generated.js;
-//       });
-//
-//       if (handled) {
-//         console.clear();
-//         data.assets.forEach(function (asset) {
-//           hmrApply(global.parcelRequire, asset);
-//         });
-//         assetsToAccept.forEach(function (v) {
-//           hmrAcceptRun(v[0], v[1]);
-//         });
-//       } else if (location.reload) {
-//         // `location` global exists in a web worker context but lacks `.reload()` function.
-//         location.reload();
-//       }
-//     }
-//
-//     if (data.type === 'reload') {
-//       ws.close();
-//
-//       ws.onclose = function () {
-//         location.reload();
-//       };
-//     }
-//
-//     if (data.type === 'error-resolved') {
-//       console.log('[parcel] ✨ Error resolved');
-//       removeErrorOverlay();
-//     }
-//
-//     if (data.type === 'error') {
-//       console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
-//       removeErrorOverlay();
-//       var overlay = createErrorOverlay(data);
-//       document.body.appendChild(overlay);
-//     }
-//   };
-// }
+                if (data.type === 'error-resolved') {
+                    console.log('[parcel] ✨ Error resolved');
+                    removeErrorOverlay();
+                }
 
-function removeErrorOverlay() {
-  var overlay = document.getElementById(OVERLAY_ID);
+                if (data.type === 'error') {
+                    console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
+                    removeErrorOverlay();
+                    var overlay = createErrorOverlay(data);
+                    document.body.appendChild(overlay);
+                }
+            };
+        }
 
-  if (overlay) {
-    overlay.remove();
-  }
-}
+        function removeErrorOverlay() {
+            var overlay = document.getElementById(OVERLAY_ID);
 
-function createErrorOverlay(data) {
-  var overlay = document.createElement('div');
-  overlay.id = OVERLAY_ID; // html encode message and stack trace
+            if (overlay) {
+                overlay.remove();
+            }
+        }
 
-  var message = document.createElement('div');
-  var stackTrace = document.createElement('pre');
-  message.innerText = data.error.message;
-  stackTrace.innerText = data.error.stack;
-  overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
-  return overlay;
-}
+        function createErrorOverlay(data) {
+            var overlay = document.createElement('div');
+            overlay.id = OVERLAY_ID; // html encode message and stack trace
 
-function getParents(bundle, id) {
-  var modules = bundle.modules;
+            var message = document.createElement('div');
+            var stackTrace = document.createElement('pre');
+            message.innerText = data.error.message;
+            stackTrace.innerText = data.error.stack;
+            overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
+            return overlay;
+        }
 
-  if (!modules) {
-    return [];
-  }
+        function getParents(bundle, id) {
+            var modules = bundle.modules;
 
-  var parents = [];
-  var k, d, dep;
+            if (!modules) {
+                return [];
+            }
 
-  for (k in modules) {
-    for (d in modules[k][1]) {
-      dep = modules[k][1][d];
+            var parents = [];
+            var k, d, dep;
 
-      if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
-        parents.push(k);
-      }
-    }
-  }
+            for (k in modules) {
+                for (d in modules[k][1]) {
+                    dep = modules[k][1][d];
 
-  if (bundle.parent) {
-    parents = parents.concat(getParents(bundle.parent, id));
-  }
+                    if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
+                        parents.push(k);
+                    }
+                }
+            }
 
-  return parents;
-}
+            if (bundle.parent) {
+                parents = parents.concat(getParents(bundle.parent, id));
+            }
 
-function hmrApply(bundle, asset) {
-  var modules = bundle.modules;
+            return parents;
+        }
 
-  if (!modules) {
-    return;
-  }
+        function hmrApply(bundle, asset) {
+            var modules = bundle.modules;
 
-  if (modules[asset.id] || !bundle.parent) {
-    var fn = new Function('require', 'module', 'exports', asset.generated.js);
-    asset.isNew = !modules[asset.id];
-    modules[asset.id] = [fn, asset.deps];
-  } else if (bundle.parent) {
-    hmrApply(bundle.parent, asset);
-  }
-}
+            if (!modules) {
+                return;
+            }
 
-function hmrAcceptCheck(bundle, id) {
-  var modules = bundle.modules;
+            if (modules[asset.id] || !bundle.parent) {
+                var fn = new Function('require', 'module', 'exports', asset.generated.js);
+                asset.isNew = !modules[asset.id];
+                modules[asset.id] = [fn, asset.deps];
+            } else if (bundle.parent) {
+                hmrApply(bundle.parent, asset);
+            }
+        }
 
-  if (!modules) {
-    return;
-  }
+        function hmrAcceptCheck(bundle, id) {
+            var modules = bundle.modules;
 
-  if (!modules[id] && bundle.parent) {
-    return hmrAcceptCheck(bundle.parent, id);
-  }
+            if (!modules) {
+                return;
+            }
 
-  if (checkedAssets[id]) {
-    return;
-  }
+            if (!modules[id] && bundle.parent) {
+                return hmrAcceptCheck(bundle.parent, id);
+            }
 
-  checkedAssets[id] = true;
-  var cached = bundle.cache[id];
-  assetsToAccept.push([bundle, id]);
+            if (checkedAssets[id]) {
+                return;
+            }
 
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    return true;
-  }
+            checkedAssets[id] = true;
+            var cached = bundle.cache[id];
+            assetsToAccept.push([bundle, id]);
 
-  return getParents(global.parcelRequire, id).some(function (id) {
-    return hmrAcceptCheck(global.parcelRequire, id);
-  });
-}
+            if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
+                return true;
+            }
 
-function hmrAcceptRun(bundle, id) {
-  var cached = bundle.cache[id];
-  bundle.hotData = {};
+            return getParents(global.parcelRequire, id).some(function (id) {
+                return hmrAcceptCheck(global.parcelRequire, id);
+            });
+        }
 
-  if (cached) {
-    cached.hot.data = bundle.hotData;
-  }
+        function hmrAcceptRun(bundle, id) {
+            var cached = bundle.cache[id];
+            bundle.hotData = {};
 
-  if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
-    cached.hot._disposeCallbacks.forEach(function (cb) {
-      cb(bundle.hotData);
-    });
-  }
+            if (cached) {
+                cached.hot.data = bundle.hotData;
+            }
 
-  delete bundle.cache[id];
-  bundle(id);
-  cached = bundle.cache[id];
+            if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
+                cached.hot._disposeCallbacks.forEach(function (cb) {
+                    cb(bundle.hotData);
+                });
+            }
 
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    cached.hot._acceptCallbacks.forEach(function (cb) {
-      cb();
-    });
+            delete bundle.cache[id];
+            bundle(id);
+            cached = bundle.cache[id];
 
-    return true;
-  }
-}
-},{}]},{},["../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","scripts/main.js"], null)
-//# sourceMappingURL=/main.d8ebb8d6.js.map
+            if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
+                cached.hot._acceptCallbacks.forEach(function (cb) {
+                    cb();
+                });
+
+                return true;
+            }
+        }
+    },{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/main.7c1187fd.js.map

@@ -30,7 +30,7 @@ final class EventService
     public function store(StoreEventRequest $request): Event
     {
         $d = [];
-
+dd($request->all());
         foreach ($request->get('programm_dates') as $k => $item) {
 
             if (empty($request->get('programm_names')[$k])) {

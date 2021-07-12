@@ -30,7 +30,7 @@ final class EventService
     public function store(StoreEventRequest $request): Event
     {
         $d = [];
-dd($request->all());
+
         foreach ($request->get('programm_dates') as $k => $item) {
 
             if (empty($request->get('programm_names')[$k])) {
@@ -136,8 +136,31 @@ dd($request->all());
             $extra['path'] = $path;
         }
 
+        foreach ($request->get('programm_dates') as $k => $item) {
+
+            if (empty($request->get('programm_names')[$k])) {
+                continue;
+            }
+
+            $dt = Carbon::parse($item);
+            $dts = $dt->day . '.' . $dt->month . '.' . $dt->year;
+
+            $d[$dts]['date'] = $dts;
+            $d[$dts]['extra'][$k]['time'] = $dt->hour . ':' . $dt->minute;
+            $d[$dts]['extra'][$k]['name'] = $request->get('programm_names')[$k];
+        }
+
+        $json = array_values($d);
+
+        if (!empty($json)) {
+            foreach ($json as $k => $v) {
+                $json[$k]['extra'] = array_values($json[$k]['extra']);
+            }
+        }
+
         $active = $request->get('active') === 'on';
         $extra['active'] = $active;
+        $extra['programm'] = $json;
 
         $data = array_merge($request->all(), $extra);
 

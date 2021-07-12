@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <script src="{{ asset('js/main.7c1187fd.js') }}"></script>
+    <script src="{{ asset('js/main.d8ebb8d6.js') }}"></script>
     <div class="chat">
         <div class="chat__container">
             <div class="chat__content">

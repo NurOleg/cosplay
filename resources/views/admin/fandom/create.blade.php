@@ -52,7 +52,6 @@
                             <div class="form-group">
                                 <label class="" for="active">Активность</label>
                                 <input
-                                    required
                                     class="form-control"
                                     id="active"
                                     name="active"

@@ -125,7 +125,7 @@ class ChatController extends Controller
         }
 
         $chatsQuery->with([$relatedUser . '.image', 'messages' => function ($query) {
-            $query->orderBy('id', 'desc')->take(1)->get();
+            $query->orderBy('id', 'desc')->get();
         }]);
 
         $chats = $chatsQuery->get();

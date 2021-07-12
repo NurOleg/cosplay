@@ -40,7 +40,7 @@ class ChatController extends Controller
      * @return JsonResponse
      */
     public function index(?string $uuid = null): JsonResponse
-    {dd($uuid);
+    {
         $user = $this->personalService->getAuthenticatedUser();
 
         if ($user instanceof Executant) {
@@ -50,7 +50,7 @@ class ChatController extends Controller
         } else {
             abort(404);
         }
-
+dd($relatedUser);
         $chat = Chat::with($relatedUser . '.image')->find($uuid);
 
         if ($relatedUser === 'executant') {

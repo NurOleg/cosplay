@@ -128,9 +128,6 @@ class ChatController extends Controller
 
         foreach ($chats as $chat) {
             $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
-            $chat->user->image->path = $chat->user->image !== null
-                ? Storage::disk('public')->url($chat->user->image->path)
-                : '/images/no-photo.0b72cc78.jpg';
         }
 
         return response()->json(['chats' => $chats, 'currentUser' => $user], 200);

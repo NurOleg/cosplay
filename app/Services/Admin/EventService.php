@@ -157,10 +157,10 @@ final class EventService
                 $json[$k]['extra'] = array_values($json[$k]['extra']);
             }
         }
-dd($json);
+
         $active = $request->get('active') === 'on';
         $extra['active'] = $active;
-        $extra['programm'] = $json;
+        $extra['programm'] = json_encode($json);
 
         $data = array_merge($request->all(), $extra);
 

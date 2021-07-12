@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ChatController extends Controller
 {
@@ -127,6 +128,7 @@ class ChatController extends Controller
 
         foreach ($chats as $chat) {
             $chat->user = $relatedUser === 'executant' ? $chat->executant : $chat->customer;
+            $chat->user->image->path = Storage::disk('public')->url($chat->user->image->path);
         }
 
         return response()->json(['chats' => $chats, 'currentUser' => $user], 200);

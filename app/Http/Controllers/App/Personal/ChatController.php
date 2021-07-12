@@ -120,6 +120,10 @@ class ChatController extends Controller
             abort(404);
         }
 
+        if ($user->image !== null) {
+            $user->image->path = Storage::disk('public')->url($user->image->path);
+        }
+
         $chatsQuery->with([$relatedUser . '.image', 'messages' => function ($query) {
             $query->orderBy('id', 'desc')->take(1)->get();
         }]);

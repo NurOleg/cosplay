@@ -40,12 +40,11 @@ class ChatController extends Controller
      * @return JsonResponse
      */
     public function index(?string $uuid = null): JsonResponse
-    {
+    {dd($uuid);
         $user = $this->personalService->getAuthenticatedUser();
 
         if ($user instanceof Executant) {
             $relatedUser = 'customer';
-
         } elseif ($user instanceof Customer) {
             $relatedUser = 'executant';
         } else {
@@ -57,7 +56,6 @@ class ChatController extends Controller
         if ($relatedUser === 'executant') {
             $chat->customer_unreaded_messages_count = 0;
             $chat->save();
-            dd($chat);
         } else {
             $chat->executant_unreaded_messages_count = 0;
             $chat->save();

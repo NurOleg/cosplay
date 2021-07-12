@@ -50,7 +50,7 @@ class ChatController extends Controller
         } else {
             abort(404);
         }
-dd($relatedUser);
+
         $chat = Chat::with($relatedUser . '.image')->find($uuid);
 
         if ($relatedUser === 'executant') {

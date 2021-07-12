@@ -84,7 +84,11 @@ Route::group(['prefix' => 'personal', 'middleware' => 'auth'], function () {
     Route::get('/settings', [PersonalController::class, 'settingsForm'])->name('personal_settings');
     Route::post('/settings', [PersonalController::class, 'update'])->name('personal_settings_update');
 
-    Route::get('/api/chats', [ChatController::class, 'fetchChats'])->name('chat_index');
+    Route::get('/chats', function () {
+        return view('app.personal.chat.index');
+    })->name('chat_index');
+
+    Route::get('/api/chats', [ChatController::class, 'fetchChats']);
     Route::get('/api/chats/{uuid}', [ChatController::class, 'index']);
     Route::post('/api/chats/{uuid}', [ChatController::class, 'sendMessage']);
 

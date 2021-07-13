@@ -129,7 +129,7 @@ Route::prefix('admin')->group(function () {
             Route::post('/store', [FandomController::class, 'store'])->name('fandom_store');
             Route::get('/update/{fandom}', [FandomController::class, 'detail'])->name('fandom_detail');
             Route::post('/update/{fandom}', [FandomController::class, 'update'])->name('fandom_update');
-            Route::delete('/delete/{fandom}', [FandomController::class, 'delete'])->name('fandom_delete');
+            Route::get('/delete/{fandom}', [FandomController::class, 'delete'])->name('fandom_delete');
         });
 
         Route::group(['prefix' => 'thematic'], function () {
@@ -138,7 +138,7 @@ Route::prefix('admin')->group(function () {
             Route::post('/store', [ThematicController::class, 'store'])->name('thematic_store');
             Route::get('/update/{thematic}', [ThematicController::class, 'detail'])->name('thematic_detail');
             Route::post('/update/{thematic}', [ThematicController::class, 'update'])->name('thematic_update');
-            Route::delete('/delete/{thematic}', [ThematicController::class, 'delete'])->name('thematic_delete');
+            Route::get('/delete/{thematic}', [ThematicController::class, 'delete'])->name('thematic_delete');
         });
 
         Route::group(['prefix' => 'hero'], function () {
@@ -147,7 +147,7 @@ Route::prefix('admin')->group(function () {
             Route::post('/store', [HeroController::class, 'store'])->name('hero_store');
             Route::get('/update/{hero}', [HeroController::class, 'detail'])->name('hero_detail');
             Route::post('/update/{hero}', [HeroController::class, 'update'])->name('hero_update');
-            Route::delete('/delete/{hero}', [HeroController::class, 'delete'])->name('hero_delete');
+            Route::get('/delete/{hero}', [HeroController::class, 'delete'])->name('hero_delete');
         });
 
         Route::group(['prefix' => 'news'], function () {

@@ -12,6 +12,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 final class LoginService
 {
@@ -89,10 +90,12 @@ final class LoginService
         $request->session()->regenerate();
 
         if ($customer !== null) {
-            auth()->guard('customer')->logoutOtherDevices($password);
+            Log::info('customer logout:');
+            Log::info(auth()->guard('customer')->logoutOtherDevices($password));
             auth()->guard('customer')->login($customer);
         } elseif ($executant !== null) {
-            auth()->guard('executant')->logoutOtherDevices($password);
+            Log::info('executant logout:');
+            Log::info(auth()->guard('executant')->logoutOtherDevices($password));
             auth()->guard('executant')->login($executant);
         } else {
             return back()->withErrors([

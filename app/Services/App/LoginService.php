@@ -8,7 +8,7 @@ use App\Http\Requests\App\Login\LoginRequest;
 use App\Http\Requests\App\Login\RegisterRequest;
 use App\Models\Customer;
 use App\Models\Executant;
-use App\Models\User;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -60,10 +60,12 @@ final class LoginService
     /**
      * @param LoginRequest $request
      * @return RedirectResponse
+     * @throws AuthenticationException
      */
     public function login(LoginRequest $request): RedirectResponse
     {
         $phoneOrEmail = $request->get('email_or_phone');
+        $password = $request->get('password');
 
         $customer = Customer::where('phone', $phoneOrEmail)
             ->orWhere('email', $phoneOrEmail)->first();
@@ -77,8 +79,8 @@ final class LoginService
             ]);
         }
 
-        if (($customer && !Hash::check($request->get('password'), $customer->password))
-        || ($executant && !Hash::check($request->get('password'), $executant->password))) {
+        if (($customer && !Hash::check($password, $customer->password))
+        || ($executant && !Hash::check($password, $executant->password))) {
             return back()->withErrors([
                 'email' => 'Вы ещё не зарегестрированы либо ввели неправильный пароль.',
             ]);
@@ -87,8 +89,10 @@ final class LoginService
         $request->session()->regenerate();
 
         if ($customer !== null) {
+            auth()->guard('customer')->logoutOtherDevices($password);
             auth()->guard('customer')->login($customer);
         } elseif ($executant !== null) {
+            auth()->guard('executant')->logoutOtherDevices($password);
             auth()->guard('executant')->login($executant);
         } else {
             return back()->withErrors([

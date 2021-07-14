@@ -95,7 +95,7 @@ final class LoginService
             auth()->guard('customer')->login($customer);
         } elseif ($executant !== null) {
             Log::info('executant logout:');
-            Log::info(auth()->guard('executant')->logoutOtherDevices($password));
+            Log::info(json_encode(auth()->guard('executant')->logoutOtherDevices($password)));
             auth()->guard('executant')->login($executant);
         } else {
             return back()->withErrors([

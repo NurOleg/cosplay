@@ -81,7 +81,7 @@ final class LoginService
         }
 
         if (($customer && !Hash::check($password, $customer->password))
-        || ($executant && !Hash::check($password, $executant->password))) {
+            || ($executant && !Hash::check($password, $executant->password))) {
             return back()->withErrors([
                 'email' => 'Вы ещё не зарегестрированы либо ввели неправильный пароль.',
             ]);
@@ -92,9 +92,23 @@ final class LoginService
         //$request->session()->regenerate();
 
         if ($customer !== null) {
-            auth()->guard('customer')->login($customer, true);
+
+            $credentials = [
+                'password' => $password,
+                'email'    => $customer->email,
+                'phone'    => $customer->phone,
+            ];
+
+            auth()->guard('customer')->attempt($credentials, true);
         } elseif ($executant !== null) {
-            auth()->guard('executant')->login($executant, true);
+
+            $credentials = [
+                'password' => $password,
+                'email'    => $executant->email,
+                'phone'    => $executant->phone,
+            ];
+
+            auth()->guard('executant')->attempt($credentials, true);
         } else {
             return back()->withErrors([
                 'email' => 'Что-то пошло не так.',

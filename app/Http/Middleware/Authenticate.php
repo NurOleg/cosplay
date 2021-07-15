@@ -16,6 +16,7 @@ class Authenticate extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
+        dd(auth());
         if (auth()->guard('executant')->user() || auth()->guard('customer')->user()) {
             return $next($request);
         }

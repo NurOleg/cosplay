@@ -17,10 +17,10 @@ class Authenticate extends Middleware
     public function handle($request, Closure $next, ...$guards)
     {
         if (auth()->guard('executant')->user() || auth()->guard('customer')->user()) {
-            dd($next($request));
+            //dd($next($request));
             return $next($request);
         }
 
-        return redirect(route('public_login_form'));
+        //return redirect(route('public_login_form'));
     }
 }

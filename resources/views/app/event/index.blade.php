@@ -62,14 +62,14 @@
                     @foreach($events as $event)
                         <div class="events-cards__column">
                             <div class="event-cosplay-card">
-                                <div class="event-cosplay-card">
+                                <a href="{{ route('public_event_detail', ['event' => $event->id]) }}" class="event-cosplay-card">
                                     <div class="event-cosplay-card__header ibg">
                                         <img class="event-cosplay-card__image"
                                              src="{{ Storage::url($event->image_src) }}"
                                              alt="{{ $event->name }}"
                                              aria-hidden="true">
                                     </div>
-                                </div>
+                                </a>
                                 <div class="event-cosplay-card__body">
                                     <a class="event-cosplay-card__title"
                                        href="{{ route('public_event_detail', ['event' => $event->id]) }}">

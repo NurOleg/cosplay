@@ -87,16 +87,14 @@ final class LoginService
             ]);
         }
 
-        $request->session()->regenerate();
+        //dd(auth()->guard('executant')->check());
+
+        //$request->session()->regenerate();
 
         if ($customer !== null) {
-            Log::info('customer logout:');
-            Log::info(auth()->guard('customer')->logoutOtherDevices($password));
-            auth()->guard('customer')->login($customer);
+            auth()->guard('customer')->login($customer, true);
         } elseif ($executant !== null) {
-            Log::info('executant logout:');
-            Log::info(json_encode(auth()->guard('executant')->logoutOtherDevices($password)));
-            auth()->guard('executant')->login($executant);
+            auth()->guard('executant')->login($executant, true);
         } else {
             return back()->withErrors([
                 'email' => 'Что-то пошло не так.',

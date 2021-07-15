@@ -21,6 +21,6 @@ class Authenticate extends Middleware
             return $next($request);
         }
 
-        //return redirect(route('public_login_form'));
+        return redirect(route('public_login_form'));
     }
 }
